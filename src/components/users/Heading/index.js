@@ -1,9 +1,9 @@
-import './Heading.css'
-
+import styles from './Heading.module.scss'
+import clsx from 'clsx';
 
 function Heading(params) {
     return (
-        <h1>Day la Heading</h1>
+        <h1 className={styles.heading}>Day la Heading</h1>
     )
 }
 
