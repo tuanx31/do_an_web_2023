@@ -16,7 +16,7 @@ const Header = () => {
                     </Col>
                     <Col lg={10} className='d-flex align-items-center' >
                         <Navbar.Collapse>
-                            <Nav className='d-flex w-100 justify-content-around '>
+                            <Nav className='d-flex w-100 justify-content-between'>
                                 <Nav.Item>
                                     <Link to={""} className='fs-6 nav-link'>Trang Chủ</Link>
                                 </Nav.Item>
