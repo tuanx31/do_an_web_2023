@@ -1,0 +1,69 @@
+@import "/src/global/styles/all";
+
+
+.navbar {
+    min-height: 80px;
+}
+
+.text-logo {
+    font-size: 38px;
+}
+
+@media screen and (max-width: 1025px) {
+    .text-logo {
+        font-size: 35px;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    .text-logo {
+        font-size: 42px;
+    }
+
+    .nav-item a {
+        font-size: 20px !important;
+    }
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.navbar,
+.dropdown-menu {
+    background-color: $--main-color !important;
+}
+
+// .active {
+//     font-weight: bold;
+//     color: #979797 !important;
+// }
+
+.nav-item a {
+    color: #fff;
+
+    &:hover {
+        color: #999;
+    }
+
+    &:focus {
+        font-weight: bold;
+        color: #999 !important;
+
+    }
+}
+
+
+button.navbar-toggler {
+    background-color: #fff;
+}
+
+.btntoggle {
+    position: absolute;
+    width: 60px;
+    height: 50px;
+    top: 20px;
+    right: 20px;
+
+}

@@ -1,8 +1,8 @@
-import styles from './Footer.module.scss'
 import { memo } from 'react';
-function Footer(params) {
+import "./Footer.scss"
+const Footer = () => {
     return (
-        <h1>Day la Footer</h1>
+        <h1 className="footer" >Day la Footer</h1>
     )
 }
 
