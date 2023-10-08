@@ -1,0 +1,31 @@
+@import "/src/global/styles/all";
+
+.footer {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.footer-title {
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.footer-address,
+.ft-email,
+.ft-hotline {
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 20px;
+}
+
+.color-footer {
+    color: #9b9b9b !important;
+}
+
+.footer-title>a {
+    color: #9b9b9b !important;
+
+}
+
+.footer-copyright {
+    background-color: #212121;
+}

@@ -2,6 +2,8 @@ const Home = () => {
     return (
         <h1>
             day la Home
+            aaa
+            aaa
         </h1>
     )
 }
