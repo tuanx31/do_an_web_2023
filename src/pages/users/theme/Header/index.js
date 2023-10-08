@@ -10,24 +10,24 @@ const Header = () => {
     return (
         <Navbar expand="lg" >
             <Container>
-                <Row className='w-100' >
+                <Row className='w-100 text-uppercase' >
                     <Col lg={2}>
-                        <Navbar.Brand href="" className='text-logo text-light '>Tuna Shop</Navbar.Brand>
+                        <Navbar.Brand href="" className='text-logo text-light text-capitalize'>Tuna Shop</Navbar.Brand>
                     </Col>
                     <Col lg={10} className='d-flex align-items-center' >
                         <Navbar.Collapse>
-                            <Nav className='d-flex w-100 justify-content-around'>
+                            <Nav className='d-flex w-100 justify-content-around '>
                                 <Nav.Item>
                                     <Link to={""} className='fs-6 nav-link'>Trang Chủ</Link>
                                 </Nav.Item>
-                                <NavDropdown title="Sản Phẩm" id="basic-nav-dropdown">
-                                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                                <NavDropdown title="Sản Phẩm" id="basic-nav-dropdown text-uppercase">
+                                    <NavDropdown.Item href="">Phụ kiện macbook ,iwatch</NavDropdown.Item>
                                     <NavDropdown.Item href="#action/3.2">
-                                        Another action
+                                        Phụ kiện điện thoại
                                     </NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action/3.3">Phụ kiện ô tô , đồ chơi công nghệ</NavDropdown.Item>
                                     <NavDropdown.Item href="#action/3.4">
-                                        Separated link
+                                        Others
                                     </NavDropdown.Item>
                                 </NavDropdown>
                                 <Nav.Item>
