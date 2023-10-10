@@ -34,11 +34,6 @@
     background-color: $--main-color !important;
 }
 
-// .active {
-//     font-weight: bold;
-//     color: #979797 !important;
-// }
-
 .nav-item a {
     color: #fff;
 
@@ -49,7 +44,6 @@
     &:focus {
         font-weight: bold;
         color: #999 !important;
-
     }
 }
 
@@ -65,4 +59,8 @@ button.navbar-toggler {
     top: 20px;
     right: 20px;
 
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }

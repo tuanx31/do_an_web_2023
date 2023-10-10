@@ -6,29 +6,30 @@ import { Link } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoCartOutline, IoCallSharp } from 'react-icons/io5';
 import { useState } from 'react';
-
+import "bootstrap/js/dist/dropdown"
+import { trademark } from '../../../../data/trademark';
 const Header = () => {
-    const [products, setProduct] = useState([
-        {
-            id: 0,
-            name: "Phụ kiện macbook ,iwatch",
-            patth: ""
-        },
-        {
-            id: 1,
-            name: "Phụ kiện điện thoại",
-            patth: ""
-        }, {
-            id: 2,
-            name: "Phụ kiện ô tô , đồ chơi công nghệ",
-            patth: ""
-        },
-        {
-            id: 3,
-            name: "Others",
-            patth: ""
-        },
-    ])
+    // const [products, setProduct] = useState([
+    //     {
+    //         id: 1,
+    //         name: "Phụ kiện macbook ,iwatch",
+    //         path: "product1"
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Phụ kiện điện thoại",
+    //         path: "product2"
+    //     }, {
+    //         id: 3,
+    //         name: "Phụ kiện ô tô , đồ chơi công nghệ",
+    //         path: "product3"
+    //     },
+    //     {
+    //         id: 0,
+    //         name: "Others",
+    //         path: "otherProduct"
+    //     },
+    // ])
     return (
         <Navbar expand="lg" >
             <Container>
@@ -42,13 +43,17 @@ const Header = () => {
                                 <Nav.Item>
                                     <Link to={""} className='fs-6 nav-link'>Trang Chủ</Link>
                                 </Nav.Item>
-                                <NavDropdown title="Sản Phẩm" id="basic-nav-dropdown text-uppercase">
-                                    {
-                                        products?.map((product, index) => (
-                                            <NavDropdown.Item ><Link key={index} to={"product" + product.id} >{product?.name}</Link></NavDropdown.Item>
-                                        ))
-                                    }
-                                </NavDropdown>
+                                <li className="nav-item dropdown">
+                                    <Link className="nav-link dropdown-toggle" to="allproduct" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Sản Phẩm                                    </Link>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        {
+                                            trademark?.map((product, index) => (
+                                                <li><Link className="dropdown-item" key={index} to={product.path}>{product?.name}</Link></li>
+                                            ))
+                                        }
+                                    </ul>
+                                </li>
                                 <Nav.Item>
                                     <Link to={"contact"} className='fs-6 nav-link'>Liên hệ</Link>
                                 </Nav.Item>

@@ -5,6 +5,7 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { HiMail } from 'react-icons/hi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { trademark } from '../../../../data/trademark';
 const Footer = () => {
     return (
         <>
@@ -46,10 +47,15 @@ const Footer = () => {
                         <Col lg={4} md={6} className='d-flex justify-content-lg-end'>
                             <div>
                                 <h3 className='footer-title text-uppercase'>Sản phẩm</h3>
-                                <p><Link to={""} className='color-footer'>Phụ kiện Macbook</Link></p>
+                                {
+                                    trademark?.map((product, index) => (
+                                        <p><Link className="dropdown-item color-footer" key={index} to={product.path}>{product?.name}</Link></p>
+                                    ))
+                                }
+                                {/* <p><Link to={""} className='color-footer'>Phụ kiện Macbook</Link></p>
                                 <p><Link to={""} className='color-footer'>Phụ kiện điện thoại</Link></p>
                                 <p><Link to={""} className='color-footer'>Đồ chơi công nghệ </Link></p>
-                                <p><Link to={""} className='color-footer'>Others</Link></p>
+                                <p><Link to={""} className='color-footer'>Others</Link></p> */}
                             </div>
 
                         </Col>
