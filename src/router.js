@@ -4,6 +4,9 @@ import Introduce from "./pages/users/Introduce/Introduce"
 import { Route, Routes } from "react-router-dom"
 import MasterLayout from "./pages/users/theme/masterLayout"
 import Contact from "./pages/users/contact/Contact"
+import Cart from "./pages/users/cart/Cart"
+import Search from "./pages/users/search/Search"
+import Account from "./pages/users/account/Account"
 
 
 const renderUserRouter = () => {
@@ -19,6 +22,18 @@ const renderUserRouter = () => {
         {
             path: ROUTERS.USER.CONTACT,
             component: <Contact />
+        },
+        {
+            path: ROUTERS.USER.CART,
+            component: <Cart />
+        },
+        {
+            path: ROUTERS.USER.SEARCH,
+            component: <Search />
+        },
+        {
+            path: ROUTERS.USER.ACCOUNT,
+            component: <Account />
         }
     ]
     return (
