@@ -8,9 +8,23 @@
     font-size: 38px;
 }
 
+.dropdown:focus .dropdown-menu {
+    display: block;
+}
+
+@media screen and (min-width: 992px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
 @media screen and (max-width: 1025px) {
     .text-logo {
-        font-size: 35px;
+        font-size: 25px;
+    }
+
+    .nav-item a {
+        font-size: 13px !important;
     }
 }
 
@@ -19,14 +33,6 @@
         font-size: 42px;
     }
 
-    .nav-item a {
-        font-size: 20px !important;
-    }
-
-    svg {
-        width: 30px;
-        height: 30px;
-    }
 }
 
 .navbar,
@@ -61,6 +67,53 @@ button.navbar-toggler {
 
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
+
+
+.btn-search .search {
+    display: block !important;
+}
+
+.search {
+    display: none !important;
+    border-radius: 50px;
+    background: rgba(22, 24, 35, .06);
+    // border: #000 solid 2px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+
+
+    input {
+        outline: none;
+        border: none;
+        background-color: #f1f1f2;
+    }
+
+    svg {
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+        color: #999;
+    }
+
+}
+
+.formsearch {
+    border-radius: 20px;
+
+    button {
+        outline: none;
+        border: none;
+
+        &:hover {
+            background-color: #212121;
+
+        }
+    }
+
+    svg {
+        color: #fff;
+
+    }
 }

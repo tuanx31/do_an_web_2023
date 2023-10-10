@@ -1,6 +1,6 @@
 import Home from "./pages/users/Homepage/Home"
 import { ROUTERS } from "./utils/router"
-import Introduce from "./pages/users/Introduce/Introduce"
+import Introduce from "./pages/users/Introduce"
 import { Route, Routes } from "react-router-dom"
 import MasterLayout from "./pages/users/theme/masterLayout"
 import Contact from "./pages/users/contact/Contact"
