@@ -1,15 +1,14 @@
 import { memo } from 'react';
 import "./Footer.scss";
-import { Col, Container, Nav, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { AiOutlineHome } from 'react-icons/ai';
 import { HiMail } from 'react-icons/hi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { trademark } from '../../../../data/trademark';
+import { trademark } from '~/data/trademark';
 const Footer = () => {
     return (
         <>
-
             <div className='footer text-light'>
                 <Container>
                     <Row className='pt-5'>
@@ -62,7 +61,7 @@ const Footer = () => {
                     </Row>
                     <Row>
                         <div className='pay-acept mb-4'>
-                            <img src='https://theme.hstatic.net/1000357512/1001018547/14/pay_acept.png?v=74' width={250}></img>
+                            <img src='https://theme.hstatic.net/1000357512/1001018547/14/pay_acept.png?v=74' alt='' width={250}></img>
                         </div>
                     </Row>
 
