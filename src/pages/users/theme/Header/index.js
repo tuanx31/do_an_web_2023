@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoCartOutline } from 'react-icons/io5';
 import "bootstrap/js/dist/dropdown"
-import { trademark } from '~/data/trademark';
+import { Category } from '~/data/Category';
 const Header = () => {
     return (
         <Navbar expand="lg" >
@@ -26,8 +26,8 @@ const Header = () => {
                                         Sản Phẩm </Link>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         {
-                                            trademark?.map((product, index) => (
-                                                <li><Link className="dropdown-item" key={index} to={product.path}>{product?.name}</Link></li>
+                                            Category?.map((product, index) => (
+                                                <li><Link className="dropdown-item" key={index} to={`/products/${product.id}`}>{product?.name}</Link></li>
                                             ))
                                         }
                                     </ul>

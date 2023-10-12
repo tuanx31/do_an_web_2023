@@ -4,7 +4,7 @@ export const ROUTERS = {
         INTRODUCE: "introduce",
         CONTACT: "contact",
         ACCOUNT: "account",
-        PRODUCT: "products",
+        PRODUCT: "products/:idCategory",
         SEARCH: "search",
         CART: "cart",
 

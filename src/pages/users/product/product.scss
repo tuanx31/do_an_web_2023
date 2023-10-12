@@ -1,0 +1,22 @@
+.card {
+    height: 472px;
+}
+
+.title {
+    margin-bottom: 30px;
+
+    h1 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0px;
+        line-height: 50px;
+        padding: 0px 10px;
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
