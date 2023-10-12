@@ -7,6 +7,7 @@ import Contact from "./pages/users/contact/Contact"
 import Cart from "./pages/users/cart/Cart"
 import Search from "./pages/users/search/Search"
 import Account from "./pages/users/account/Account"
+import Product from "~/pages/users/product"
 
 
 const renderUserRouter = () => {
@@ -30,6 +31,10 @@ const renderUserRouter = () => {
         {
             path: ROUTERS.USER.SEARCH,
             component: <Search />
+        },
+        {
+            path: ROUTERS.USER.PRODUCT,
+            component: <Product />
         },
         {
             path: ROUTERS.USER.ACCOUNT,

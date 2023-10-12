@@ -5,7 +5,7 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { HiMail } from 'react-icons/hi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { trademark } from '~/data/trademark';
+import { Category } from '~/data/Category';
 const Footer = () => {
     return (
         <>
@@ -47,7 +47,7 @@ const Footer = () => {
                             <div>
                                 <h3 className='footer-title text-uppercase'>Sản phẩm</h3>
                                 {
-                                    trademark?.map((product, index) => (
+                                    Category?.map((product, index) => (
                                         <p><Link className="dropdown-item color-footer" key={index} to={product.path}>{product?.name}</Link></p>
                                     ))
                                 }
@@ -61,7 +61,7 @@ const Footer = () => {
                     </Row>
                     <Row>
                         <div className='pay-acept mb-4'>
-                            <img src='https://theme.hstatic.net/1000357512/1001018547/14/pay_acept.png?v=74' alt='' width={250}></img>
+                            <img src={require('~/assest/users/img/Footer/pay_acept.webp')} alt='' width={250}></img>
                         </div>
                     </Row>
 
