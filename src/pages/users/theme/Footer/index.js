@@ -4,6 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { AiOutlineHome } from 'react-icons/ai';
 import { HiMail } from 'react-icons/hi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
+import { FaFacebook, FaFacebookF } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Category } from '~/data/Category';
 const Footer = () => {
@@ -48,13 +49,9 @@ const Footer = () => {
                                 <h3 className='footer-title text-uppercase'>Sản phẩm</h3>
                                 {
                                     Category?.map((product, index) => (
-                                        <p><Link className="dropdown-item color-footer" key={index} to={product.path}>{product?.name}</Link></p>
+                                        <p><Link className="dropdown-item color-footer" key={index} to={`/products/${product.id}`}>{product?.name}</Link></p>
                                     ))
                                 }
-                                {/* <p><Link to={""} className='color-footer'>Phụ kiện Macbook</Link></p>
-                                <p><Link to={""} className='color-footer'>Phụ kiện điện thoại</Link></p>
-                                <p><Link to={""} className='color-footer'>Đồ chơi công nghệ </Link></p>
-                                <p><Link to={""} className='color-footer'>Others</Link></p> */}
                             </div>
 
                         </Col>
@@ -68,15 +65,9 @@ const Footer = () => {
                 </Container>
             </div>
             <div className='footer-copyright'>
-                <Container>
-                    <Row >
-                        <Col lg={6} >
-                            <span className='color-footer'>Copyrights © 2018 by Tuna,Vinh University</span>
-                        </Col>
-                        <Col lg={6}>
-
-                        </Col>
-                    </Row>
+                <Container >
+                    <span className='color-footer '>Copyrights © 2023 by Tuna</span>
+                    <a href='https://www.facebook.com/tuanx31/'><FaFacebook className='icon-fb float-end' size={20} /></a>
                 </Container>
             </div>
         </>
