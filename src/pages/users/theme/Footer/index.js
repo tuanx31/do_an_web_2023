@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { AiOutlineHome } from 'react-icons/ai';
 import { HiMail } from 'react-icons/hi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
-import { FaFacebook, FaFacebookF } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Category } from '~/data/Category';
 const Footer = () => {
