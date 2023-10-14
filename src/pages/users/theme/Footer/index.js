@@ -1,12 +1,17 @@
 import { memo } from 'react';
-import "./Footer.scss";
+
 import { Col, Container, Row } from 'react-bootstrap';
+
 import { AiOutlineHome } from 'react-icons/ai';
 import { HiMail } from 'react-icons/hi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { FaFacebook } from 'react-icons/fa';
+
 import { Link } from 'react-router-dom';
-import { Category } from '~/data/Category';
+
+import "./Footer.scss";
+
+import { Category } from '~/assest/users/data/Category';
 const Footer = () => {
     return (
         <>
@@ -49,7 +54,7 @@ const Footer = () => {
                                 <h3 className='footer-title text-uppercase'>Sản phẩm</h3>
                                 {
                                     Category?.map((product, index) => (
-                                        <p><Link className="dropdown-item color-footer" key={index} to={`/products/${product.id}`}>{product?.name}</Link></p>
+                                        <p key={index}><Link className="dropdown-item color-footer" key={index} to={`/products/${product.id}`}>{product?.name}</Link></p>
                                     ))
                                 }
                             </div>

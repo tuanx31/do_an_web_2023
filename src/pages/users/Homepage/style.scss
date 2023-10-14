@@ -1,3 +1,8 @@
+:root {
+    --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    --bs-border-radius: 0.8rem;
+}
+
 .sale-title {
     a {
         &:hover {
@@ -14,4 +19,8 @@
             background: #8a8982;
         }
     }
+}
+
+.sale-products {
+    min-height: 500px;
 }

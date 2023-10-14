@@ -1,8 +1,13 @@
+import "./style.scss"
+
 const Account = () => {
     return (
-        <h1>
-            day la Account
-        </h1>
+        <div className="content">
+            <h1>
+                day la Account
+            </h1>
+        </div>
+
     )
 }
 
