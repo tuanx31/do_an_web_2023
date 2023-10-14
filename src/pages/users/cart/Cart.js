@@ -1,7 +1,7 @@
 const Cart = () => {
     return (
         <h1>
-            day la Cart
+            sua by thuy
         </h1>
     )
 }
