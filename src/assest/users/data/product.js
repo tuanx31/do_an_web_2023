@@ -158,5 +158,6 @@ export const products = [
         price: 1500000,
         img: require("../img/product/mac.webp"),
         sale_of: 9
-    }
+    },
+
 ]

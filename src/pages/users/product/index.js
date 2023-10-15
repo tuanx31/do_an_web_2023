@@ -1,15 +1,15 @@
 import { products } from "~/assest/users/data/product";
 import { Category } from "~/assest/users/data/Category";
 
-import Cards from "~/components/users/card";
 
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 
 import "./product.scss"
+import renderCard from "~/service/users/renderproduct";
 
 //render card
-const renderCard = (item, title) => {
+const render = (item, title) => {
     return (
         <>
             <div className="breadcrumb-small my-1">
@@ -21,11 +21,7 @@ const renderCard = (item, title) => {
                     <h1 className="text-uppercase border-bottom">{title}</h1>
                 </div>
                 {
-                    item?.map((item, index) => (
-                        <Col key={index} xl={3} lg={3} md={4} sm={6} xs={12} className="mb-4">
-                            <Cards key={index} imgurl={item?.img} title={item?.title} price={item?.price} sale_of={item?.sale_of} />
-                        </Col>
-                    ))
+                    renderCard(item)
                 }
             </Row>
         </>
@@ -35,7 +31,7 @@ const renderCard = (item, title) => {
 const renderProduct = (idCategory) => {
     if (idCategory === "all") {
 
-        return renderCard(products, "Tất cả sản phẩm")
+        return render(products, "Tất cả sản phẩm")
     }
     else {
         const productFilter = products?.filter((item) => {
@@ -45,18 +41,19 @@ const renderProduct = (idCategory) => {
             return String(item.id) === idCategory
         })
         const filter = categoryFilter.name
-        return renderCard(productFilter, filter)
+        return render(productFilter, filter)
     }
 }
 
 
 const Product = () => {
+    //get id của giỏ hàng từ param
     const { idCategory } = useParams();
-
-
     return (
         <Container>
+
             {renderProduct(idCategory)}
+
         </Container>
     )
 }
