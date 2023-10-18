@@ -1,6 +1,6 @@
 :root {
     --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.0);
-    --bs-box-shadow: 0 0.8rem 0.8rem rgba(0, 0, 0, 0.3);
+    --bs-box-shadow: 5px 10px 0.8rem rgba(0, 0, 0, 0.4);
 }
 
 .card {
@@ -20,4 +20,37 @@
 
     --boder: 8px;
 
+    .card-footer {
+        display: grid;
+        gap: 10px;
+
+        button {
+            height: 38px;
+            width: 100%;
+        }
+
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .card-text {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .card-text {
+        font-size: 14px;
+    }
+
+    .card-footer {
+        display: grid;
+        gap: 10px;
+
+        button {
+            height: 38px;
+            width: 100%;
+        }
+    }
 }

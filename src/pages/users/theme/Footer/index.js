@@ -19,7 +19,7 @@ const Footer = () => {
                 <Container>
                     <Row className='pt-5'>
                         <Col lg={4} md={12} className='pe-5'>
-                            <h3 className='footer-title text-uppercase'>Tuna Shop</h3>
+                            <h3 className='footer-title text-uppercase fw-bold'>Tuna Shop</h3>
                             <div className='footer-address color-footer'>
                                 <AiOutlineHome className='me-2' />
                                 <span>Showroom: 108 Lê Duẩn, Thành Phố Vinh, Tỉnh Nghệ An</span>
