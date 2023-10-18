@@ -20,9 +20,7 @@ const render = (item, title) => {
                 <div className="title">
                     <h1 className="text-uppercase border-bottom">{title}</h1>
                 </div>
-                {
-                    renderCard(item)
-                }
+                {renderCard(item)}
             </Row>
         </>
     )

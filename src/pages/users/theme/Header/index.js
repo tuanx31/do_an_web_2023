@@ -9,7 +9,6 @@ import { IoCartOutline } from 'react-icons/io5';
 
 import { NavLink, Link } from 'react-router-dom';
 
-
 import { Category } from '~/assest/users/data/Category';
 
 const Header = () => {
@@ -18,7 +17,7 @@ const Header = () => {
             <Container>
                 <Row className='w-100 text-uppercase' >
                     <Col lg={2} className='pe-4'>
-                        <Navbar.Brand className='text-capitalize'><Link to={""} className='text-logo text-light '>Tuna Shop</Link></Navbar.Brand>
+                        <Navbar.Brand className='text-capitalize'><Link to={""} className='text-logo text-light fw-bold'>Tuna Shop</Link></Navbar.Brand>
                     </Col>
                     <Col lg={10} className='d-flex align-items-center p-0' >
                         <Navbar.Collapse>
@@ -30,11 +29,9 @@ const Header = () => {
                                     <Link className="nav-link dropdown-toggle" to="allproduct" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Sản Phẩm </Link>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        {
-                                            Category?.map((product, index) => (
-                                                <li key={index}><Link className="dropdown-item" key={index} to={`/products/${product.id}`}>{product?.name}</Link></li>
-                                            ))
-                                        }
+                                        {Category?.map((product, index) => (
+                                            <li key={index}><Link className="dropdown-item" key={index} to={`/products/${product.id}`}>{product?.name}</Link></li>
+                                        ))}
                                     </ul>
                                 </li>
                                 <Nav.Item>
@@ -53,9 +50,6 @@ const Header = () => {
                                 <Nav.Item>
                                     <NavLink to={"cart"} className='fs-6 nav-link'><span className='d-lg-none d-xl-inline d-md-inline me-1'></span><IoCartOutline size={20} /></NavLink>
                                 </Nav.Item>
-                                {/* <Nav.Item>
-                                    <NavLink to={"contact"} className='fs-6 nav-link d-none phone'><IoCallSharp className='me-1' /> 0824892083</NavLink>
-                                </Nav.Item> */}
                             </Nav>
                         </Navbar.Collapse>
                     </Col>
