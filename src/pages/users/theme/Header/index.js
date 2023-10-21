@@ -16,7 +16,7 @@ const Header = () => {
         <Navbar expand="lg" >
             <Container>
                 <Row className='w-100 text-uppercase' >
-                    <Col lg={2} className='pe-4'>
+                    <Col lg={2} className='pe-4 logo'>
                         <Navbar.Brand className='text-capitalize'><Link to={""} className='text-logo text-light fw-bold'>Tuna Shop</Link></Navbar.Brand>
                     </Col>
                     <Col lg={10} className='d-flex align-items-center p-0' >
