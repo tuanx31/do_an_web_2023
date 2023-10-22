@@ -1,11 +1,14 @@
 import { Card } from "react-bootstrap"
 import { IoCartOutline } from 'react-icons/io5';
-
+import { toast } from 'react-toastify';
 import "./card.scss"
 
 
 const Cards = (props) => {
     const { imgurl, title, price, sale_of } = props;
+    const handleAddtoCart = () => {
+        toast.success("Add to cart susess!");
+    }
     return (
         <>
             <Card className="shadow">
@@ -18,7 +21,7 @@ const Cards = (props) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-around">
-                    <button className="btn btn-warning btn-add-card"><IoCartOutline size={20} /></button>
+                    <button className="btn btn-warning btn-add-card" onClick={() => handleAddtoCart()}><IoCartOutline size={20} /></button>
                     <button className="btn btn-primary">Buy</button>
                 </Card.Footer>
             </Card>
