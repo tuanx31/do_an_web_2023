@@ -72,7 +72,7 @@ const Footer = () => {
             <div className='footer-copyright'>
                 <Container >
                     <span className='color-footer '>Copyrights © 2023 by Tuna</span>
-                    <a href='https://www.facebook.com/tuanx31/'><FaFacebook className='icon-fb float-end' size={20} /></a>
+                    <a href='https://www.facebook.com/tunax31/'><FaFacebook className='icon-fb float-end' size={20} /></a>
                 </Container>
             </div>
         </>
