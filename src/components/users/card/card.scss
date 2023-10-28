@@ -42,8 +42,10 @@
 }
 
 @media screen and (max-width: 425px) {
-    .card-text {
-        font-size: 14px;
+
+    .card-text,
+    .card-title {
+        font-size: 12px !important;
     }
 
     .card-footer {
@@ -53,6 +55,20 @@
         button {
             height: 38px;
             width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .card-text,
+    .card-title {
+        font-size: 11px !important;
+    }
+
+    .card-text {
+        span {
+            display: none;
         }
     }
 }
