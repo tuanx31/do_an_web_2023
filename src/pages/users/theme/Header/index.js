@@ -115,9 +115,8 @@ const Header = () => {
                             <AiOutlineSearch size={20} color="white" />
                         </button>
                     </div>
-
-                    <div className="nav-link">
-                        <NavLink to={"cart"} className='fs-14px nav-link'><IoCartOutline size={20} color="white" /></NavLink>
+                    <div className="position-relative">
+                        <NavLink to={"cart"} className='fs-14px nav-link cart'><IoCartOutline size={20} color="white" /><span className="rounded-circle position-absolute text-center text-white">1</span></NavLink>
                     </div>
                     <button
                         className="navbar-toggler border-1 shadow-none"

@@ -214,3 +214,14 @@
         width: 70px;
     }
 }
+
+.cart {
+    span {
+        background-color: $--color-sale;
+        width: 20px;
+        height: auto;
+        font-size: 15px;
+        left: 14px;
+        top: -4px;
+    }
+}
