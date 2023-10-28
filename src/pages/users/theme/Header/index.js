@@ -1,7 +1,6 @@
-import { Col, Navbar, Row, Container } from 'react-bootstrap';
-import Nav from 'react-bootstrap/Nav';
-import "bootstrap/js/dist/dropdown"
 
+import "bootstrap/js/dist/dropdown"
+import "bootstrap/js/dist/offcanvas"
 import './Heading.scss'
 
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -11,52 +10,96 @@ import { NavLink, Link } from 'react-router-dom';
 
 import { Category } from '~/assest/users/data/Category';
 
+
 const Header = () => {
     return (
-        <Navbar expand="lg" >
-            <Container>
-                <Row className='w-100 text-uppercase' >
-                    <Col lg={2} className='pe-4 logo'>
-                        <Navbar.Brand className='text-capitalize'><Link to={""} className='text-logo text-light fw-bold'>Tuna Shop</Link></Navbar.Brand>
-                    </Col>
-                    <Col lg={10} className='d-flex align-items-center ' >
-                        <Navbar.Collapse>
-                            <Nav className='d-flex w-100 justify-content-between'>
-                                <Nav.Item>
-                                    <NavLink to={""} className='fs-14px nav-link'>Trang Chủ</NavLink>
-                                </Nav.Item>
-                                <li className="nav-item dropdown">
-                                    <Link className="nav-link dropdown-toggle fs-14px" to="allproduct" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Sản Phẩm </Link>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        {Category?.map((product, index) => (
-                                            <li key={index}><Link className="dropdown-item fs-14px" key={index} to={`/products/${product.id}`}>{product?.name}</Link></li>
-                                        ))}
-                                    </ul>
-                                </li>
-                                <Nav.Item>
-                                    <NavLink to={"contact"} className='fs-14px nav-link'>Liên hệ</NavLink>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <NavLink to={"introduce"} className='fs-14px nav-link'>Giới Thiệu</NavLink>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <NavLink to={"account"} className='fs-14px nav-link'>Tài khoản</NavLink>
-                                </Nav.Item>
-                                <form className="d-flex formsearch">
-                                    <input className="form-control me-2" type="search" placeholder="Tìm kiếm ..." aria-label="Search" />
-                                    <button className="btn" type="submit"><AiOutlineSearch size={20} /></button>
-                                </form>
-                                <Nav.Item>
-                                    <NavLink to={"cart"} className='fs-14px nav-link'><span className='d-lg-none d-xl-inline d-md-inline me-1'></span><IoCartOutline size={20} /></NavLink>
-                                </Nav.Item>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Col>
-                    <Navbar.Toggle aria-controls="basic-navbar" className='btntoggle' />
-                </Row>
-            </Container>
-        </Navbar >
+
+        <nav className="navbar navbar-dark bg-dark navbar-expand-lg bg-body-tertiary ">
+            <div className="container ">
+                <Link className="navbar-brand fw-bold fs-3" to={""}>
+                    Tuna Shop
+                </Link>
+                <div
+                    className="sidebar offcanvas offcanvas-end"
+                    tabIndex={-1}
+                    id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel"
+                >
+                    <div className="offcanvas-header">
+                        <Link className="offcanvas-title text-white fw-bold fs-3" id="offcanvasNavbarLabel " to={""}>
+                            Tuna Shop
+                        </Link>
+                        <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"
+                        />
+                    </div>
+                    <div className="offcanvas-body justify-content-around">
+                        <ul className="navbar-nav justify-content-around">
+                            <li className="nav-item">
+                                <NavLink className="nav-link text-uppercase" aria-current="page" to="">
+                                    Trang Chủ
+                                </NavLink>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <NavLink
+                                    className="nav-link dropdown-toggle  text-uppercase"
+                                    to="products"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Sản Phẩm
+                                </NavLink>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {Category?.map((product, index) => (
+                                        <li key={index}><Link className="dropdown-item fs-14px" key={index} to={`/products/${product.id}`}>{product?.name}</Link></li>
+                                    ))}
+                                </ul>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to={"contact"} className='nav-link text-uppercase'>Liên hệ</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to={"introduce"} className='nav-link text-uppercase'>Giới Thiệu</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to={"account"} className='nav-link text-uppercase'>Tài khoản</NavLink>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <form className="d-flex bg-white rounded-2 me-lg-3 form-search " role="search">
+                    <input
+                        className="form-control shadow-none border-0 d-none d-sm-block"
+                        type="search"
+                        placeholder="Tìm kiếm ..."
+                        aria-label="Search"
+                    />
+                    <button className="btn shadow-none border-0 rounded-0" type="submit">
+                        <AiOutlineSearch size={20} />
+                    </button>
+                </form>
+                <div className="nav-link">
+                    <NavLink to={"cart"} className='fs-14px nav-link'><IoCartOutline size={20} color="white" /></NavLink>
+                </div>
+                <button
+                    className="navbar-toggler border-1 shadow-none"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon" />
+                </button>
+            </div>
+        </nav>
+
     )
 }
 
