@@ -119,7 +119,7 @@ const Header = () => {
                         <NavLink to={"cart"} className='fs-14px cart'><IoCartOutline size={20} color="white" /><span className="rounded-circle position-absolute text-center text-white">1</span></NavLink>
                     </div>
                     <button
-                        className="navbar-toggler border-1 shadow-none"
+                        className="navbar-toggler border-0 shadow-none"
                         type="button"
                         data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar"
