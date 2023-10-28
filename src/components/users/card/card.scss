@@ -1,3 +1,5 @@
+@import "/src/global/styles/all";
+
 :root {
     --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.0);
     --bs-box-shadow: 5px 10px 0.8rem rgba(0, 0, 0, 0.4);
@@ -53,4 +55,14 @@
             width: 100%;
         }
     }
+}
+
+.sale_of {
+    top: 5px;
+    left: 5px;
+    width: 50px;
+    height: 50px;
+    background-color: $--color-sale;
+    line-height: 50px;
+    font-style: 14px;
 }

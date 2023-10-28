@@ -84,7 +84,7 @@ const Header = () => {
                         </div>
 
                     </div>
-                    <form className="d-flex bg-white me-lg-3 position-absolute form-searchmb d-none shadow" id="form-searchmb" role="search">
+                    <form className="d-flex bg-white me-lg-3 position-absolute form-searchmb d-none shadow z-1" id="form-searchmb" role="search">
                         <button className="btn border-end rounded-0 " onClick={closeSearch} type="reset">
                             <GrPrevious />
                         </button>
@@ -115,9 +115,8 @@ const Header = () => {
                             <AiOutlineSearch size={20} color="white" />
                         </button>
                     </div>
-
-                    <div className="nav-link">
-                        <NavLink to={"cart"} className='fs-14px nav-link'><IoCartOutline size={20} color="white" /></NavLink>
+                    <div className="position-relative">
+                        <NavLink to={"cart"} className='fs-14px cart'><IoCartOutline size={20} color="white" /><span className="rounded-circle position-absolute text-center text-white">1</span></NavLink>
                     </div>
                     <button
                         className="navbar-toggler border-1 shadow-none"
