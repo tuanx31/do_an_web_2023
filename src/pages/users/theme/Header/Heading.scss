@@ -171,6 +171,16 @@
     padding: 3px 0;
 }
 
+@media screen and (max-width: 1200px) {
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .navbar-expand-lg .offcanvas .offcanvas-body {
+        margin-left: unset;
+    }
+}
+
 @media screen and (max-width: 425px) {
     .form-search {
         background-color: transparent !important;
