@@ -16,12 +16,18 @@
 @media screen and (min-width: 992px) {
     .dropdown:hover .dropdown-menu {
         display: block;
+        margin-top: 8px;
     }
 }
 
 @media screen and (max-width: 1025px) {
     .text-logo {
         font-size: 25px;
+    }
+
+    .ttk {
+        position: absolute;
+        width: 180px;
     }
 
     .nav-item a {
@@ -121,4 +127,9 @@ button.navbar-toggler {
 
 .navbar-nav .nav-link.show {
     color: #999;
+}
+
+.ttk {
+    position: relative;
+    float: right;
 }
