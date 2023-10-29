@@ -8,15 +8,15 @@ import { Link, useParams } from "react-router-dom";
 import "./product.scss"
 import renderCard from "~/service/users/renderproduct";
 
-//render card
+//render page
 const render = (item, title) => {
     return (
         <>
-            <div className="breadcrumb-small my-1">
+            <div className="breadcrumb-small my-2">
                 <Link to={"/"} className="text-dark">Trang chủ </Link>
                 <span>/{title}</span>
             </div>
-            <Row className="mb-5">
+            <Row className="mb-5 mt-3">
                 <div className="title">
                     <h1 className="text-uppercase border-bottom">{title}</h1>
                 </div>
@@ -32,6 +32,7 @@ const renderProduct = (idCategory) => {
         return render(products, "Tất cả sản phẩm")
     }
     else {
+        // lọc sản phẩm theo id category
         const productFilter = products?.filter((item) => {
             return item.id_category === Number(idCategory)
         })

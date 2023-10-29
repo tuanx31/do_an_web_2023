@@ -1,13 +1,14 @@
-import Home from "./pages/users/Homepage/Home"
-import { ROUTERS } from "./utils/router"
-import Introduce from "./pages/users/Introduce"
 import { Route, Routes } from "react-router-dom"
+import { ROUTERS } from "./utils/router"
+import Home from "./pages/users/Homepage/Home"
+import Introduce from "./pages/users/Introduce"
 import MasterLayout from "./pages/users/theme/masterLayout"
 import Contact from "./pages/users/contact/Contact"
 import Cart from "./pages/users/cart/Cart"
 import Search from "./pages/users/search/Search"
 import Account from "./pages/users/account/Account"
 import Product from "~/pages/users/product"
+import DetailProduct from "~/pages/users/detailProduct"
 
 
 const renderUserRouter = () => {
@@ -35,6 +36,10 @@ const renderUserRouter = () => {
         {
             path: ROUTERS.USER.PRODUCT,
             component: <Product />
+        },
+        {
+            path: ROUTERS.USER.DETAILPRODUCT,
+            component: <DetailProduct />
         },
         {
             path: ROUTERS.USER.ACCOUNT,
