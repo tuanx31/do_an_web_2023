@@ -1,0 +1,47 @@
+.title-product {
+    font-size: 20px;
+    font-weight: 600;
+
+}
+
+
+.product-inf {
+    position: relative;
+
+    .line-price {
+        .ProductPrice {
+            font-size: 30px;
+            color: #000;
+        }
+    }
+}
+
+.imgdown {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+
+    .imgSmall {
+        cursor: pointer;
+
+        .active {
+            border: 2.5px solid orange !important;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+}
+
+select {
+    border: none;
+    border-radius: 3px;
+    background-color: #928072;
+    color: aliceblue;
+    outline: none;
+    width: 120px;
+    height: 27px;
+}
