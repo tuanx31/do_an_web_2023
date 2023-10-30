@@ -5,7 +5,8 @@ export const products = [
         title: "Ốp lưng chống sốc iPhone X",
         price: 350000,
         img: require("../img/product/mac.webp"),
-        sale_of: 10
+        sale_of: 10,
+
     },
     {
         id: 2,
