@@ -1,3 +1,8 @@
+import { GiRibbonMedal } from 'react-icons/gi';
+import { LiaShippingFastSolid } from 'react-icons/lia'
+import { BsShieldFillCheck } from 'react-icons/bs'
+import { PiNumberSquareSevenThin } from 'react-icons/pi'
+
 import { useState } from 'react';
 // import { useParams } from 'react-router-dom'
 import './detailProduct.scss'
@@ -38,6 +43,7 @@ const DetailProduct = (props) => {
     }
     return (
         <Container>
+            <div className='routed'></div>
             <Row className='gap-5 my-3'>
                 <Col lg={5} className='col-12'>
                     <div className='imgup'>
@@ -60,8 +66,8 @@ const DetailProduct = (props) => {
                     </div>
                 </Col>
                 <Col >
-                    <div className='title-product '>BAO DA CHỐNG SỐC MACBOOK TAIKESEN | DA LỘN CAO CẤP - TS03</div>
-                    <p className='category text-decoration-underline fs-14px'>Taikesen</p>
+                    <div className='title-product mb-3'>BAO DA CHỐNG SỐC MACBOOK TAIKESEN | DA LỘN CAO CẤP - TS03</div>
+                    <p className='category text-decoration-underline fs-14px mb-5'>Taikesen</p>
                     <div className='product-inf border-bottom'>
                         <div className='product-short-desc'>
                             <ul className='fs-14px'>
@@ -86,23 +92,36 @@ const DetailProduct = (props) => {
                     <div className='select-ops border-bottom'>
                         <div className='color py-3 d-flex gap-3' >
                             <strong className='d-flex align-items-center'>Màu sắc :</strong>
-                            <select name="select-color" id="color">
+                            <select name="select-color" className='shadow-sm form-select rounded-1 border-0' id="color">
                                 <option value="xanhBlue">Xanh Blue</option>
                                 <option value="black">Đen</option>
                                 <option value="pink">Hồng</option>
                                 <option value="grey">Nâu</option>
                             </select>
                         </div>
-                        <div className='size py-3'>
-                            <strong>Kích thước :</strong>
-                            <select name="select-color" id="color">
-                                <option value="sd">Size 12.5"/13.5</option>
-                                <option value="sd">Size 13.5"/14</option>
+                        <div className='size py-3 d-flex gap-3'>
+                            <strong className='d-flex align-items-center'>Kích thước :</strong>
+                            <select className="form-select shadow-sm rounded-1 border-0" aria-label="Default select example">
+                                <option selected="">Size 12.5"/13.5</option>
+                                <option value={1}>Size 13.5"/14</option>
                             </select>
                         </div>
+
+                    </div>
+                    <div className='quantity-Product border-bottom py-4 d-flex gap-3'>
+                        <label className='d-flex align-items-center'>Số Lượng : </label>
+                        <input className='input-group rounded-1 border-1' type="number" id="quantity" name="quantity" min="1" max="999999" />
+                        <button className='btn btn-outline-primary rounded-1'>Mua Ngay</button> <button className='btn btn-outline-success rounded-1' >Thêm vào giỏ hàng</button>
                     </div>
                 </Col>
             </Row>
+
+            <div style={{ background: "#f4f4f4" }} className=' py-4 row my-4' >
+                <div className='fs-14px col-3 text-center text-uppercase'><GiRibbonMedal size={35} className='me-1' color='#9f876b' />Hàng chính hãng</div>
+                <div className='fs-14px col-3 text-center text-uppercase'><LiaShippingFastSolid size={35} className='me-2' color='#9f876b' />Miễn phí vận chuyển</div>
+                <div className='fs-14px col-3 text-center text-uppercase'><BsShieldFillCheck size={35} className='me-2' color='#9f876b' />bảo hành 5 năm</div>
+                <div className='fs-14px col-3 text-center text-uppercase'><PiNumberSquareSevenThin size={35} className='me-2' color='#9f876b' />đổi hàng trong vòng 7 ngày</div>
+            </div>
             {isViewerOpen && (
                 <ImageViewer
                     src={images}

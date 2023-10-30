@@ -36,12 +36,36 @@
 
 }
 
+// select {
+//     background-color: #fafafa;
+//     border: none;
+//     border-radius: 3px;
+//     outline: none;
+//     width: 120px;
+//     height: 27px;
+// }
+
+.product-short-desc {
+    ul li {
+        margin-bottom: 10px;
+    }
+}
+
+.quantity-Product {
+    #quantity {
+        width: 50px;
+        text-align: center;
+    }
+}
+
+.form-select {
+    width: unset;
+}
+
 select {
-    border: none;
-    border-radius: 3px;
-    background-color: #928072;
-    color: aliceblue;
-    outline: none;
-    width: 120px;
-    height: 27px;
+    cursor: pointer;
+
+    option {
+        cursor: pointer;
+    }
 }
