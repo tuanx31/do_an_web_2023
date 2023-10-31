@@ -44,7 +44,6 @@ const DetailProduct = (props) => {
     }
     return (
         <Container>
-
             <div className='routed fs-14px my-3'><Link to="" className='text-black'>Trang chủ</Link> / BAO DA CHỐNG SỐC MACBOOK TAIKESEN | DA LỘN CAO CẤP - TS03</div>
             <Row className='gap-5 my-5'>
                 <Col lg={5} className='col-12'>
