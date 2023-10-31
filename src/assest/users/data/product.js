@@ -14,7 +14,9 @@ export const products = [
         title: "Tai nghe Bluetooth Sony WH-1000XM4",
         price: 2500000,
         img: require("../img/product/sp2.png"),
-        sale_of: 30
+        sale_of: 30,
+
+
     },
     {
         id: 3,
