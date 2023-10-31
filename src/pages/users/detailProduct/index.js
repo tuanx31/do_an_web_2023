@@ -15,6 +15,7 @@ import img2 from "~/assest/users/img/product/baoda1_2.webp";
 import img3 from "~/assest/users/img/product/baoda1.3.webp";
 import img4 from "~/assest/users/img/product/baoda.14.webp";
 import { useCallback } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -43,8 +44,9 @@ const DetailProduct = (props) => {
     }
     return (
         <Container>
-            <div className='routed'></div>
-            <Row className='gap-5 my-3'>
+
+            <div className='routed fs-14px my-3'><Link to="" className='text-black'>Trang chủ</Link> / BAO DA CHỐNG SỐC MACBOOK TAIKESEN | DA LỘN CAO CẤP - TS03</div>
+            <Row className='gap-5 my-5'>
                 <Col lg={5} className='col-12'>
                     <div className='imgup'>
                         <img src={currentImg} alt='hinh anh' width={"100%"} height={'auto'} onClick={() => openImageViewer(photoIndex)} />
