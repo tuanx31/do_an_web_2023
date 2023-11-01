@@ -1,0 +1,134 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+
+const baseurl = "https://localhost:7139"
+
+const AdminProduct = () => {
+
+    const [name, setname] = useState()
+    const [price, setprice] = useState()
+    const [quantity, setquantity] = useState()
+    const [desc, setdesc] = useState()
+    const [sale_of, setsale_of] = useState()
+    const [material, setmaterial] = useState()
+    const [color, setcolor] = useState()
+    const [consident, setconsident] = useState()
+    const [design, setdesign] = useState()
+    const [size, setsize] = useState()
+    const [id_category, setid_category] = useState(4)
+    const [id_tradeMark, setid_tradeMark] = useState(1)
+    const [images, setimages] = useState("")
+    const [listImage, setlistImage] = useState("")
+
+    const [listIdcategory, setlistIdcategory] = useState()
+    const [listIdTrademark, setlistIdTrademark] = useState()
+
+
+    const fetchdata = async () => {
+        const response = await axios.get(`${baseurl}/api/Category`, {
+            headers: {
+                'accept': 'application/json'
+            }
+        });
+        if (response && response.data) {
+            setlistIdcategory(response.data)
+        }
+    }
+    const fetchdataTrademark = async () => {
+        const response = await axios.get(`${baseurl}/api/Trademarks`, {
+            headers: {
+                'accept': 'application/json'
+            }
+        });
+        if (response && response.data) {
+            setlistIdTrademark(response.data)
+        }
+    }
+    useEffect(() => { fetchdata(); fetchdataTrademark(); }
+        , [])
+
+
+    const handleChangeCategory = (e) => {
+        setid_category(e.target.value);
+    };
+    const handleChangeTrademark = (e) => {
+        setid_tradeMark(e.target.value);
+    };
+    return (<>
+        <Container>
+            <div className="row themsp my-5">
+
+                <h1>Thêm sản phẩm</h1>
+                <form>
+                    <div className="my-3 form-floating">
+                        <input type="text" className="form-control rounded-0" id="floatingInput" value={name} onChange={e => setname(e.target.value)} placeholder="Tên sản phẩm" />
+                        <label htmlFor="floatingInput">Tên sản phẩm</label>
+                    </div>
+                    <div className="mb-3 ">
+                        <input type="text" className="form-control rounded-0" value={price} onChange={e => setprice(e.target.value)} placeholder="Giá sản phẩm" />
+                    </div>
+                    <div className="mb-3 ">
+                        <input type="text" className="form-control rounded-0" value={quantity} onChange={e => setquantity(e.target.value)} placeholder="Số lượng trong kho" />
+                    </div>
+                    <div className="mb-3">
+                        <input type="text" className="form-control rounded-0" value={desc} onChange={e => setdesc(e.target.value)} placeholder="Thông tin sản phẩm" />
+                    </div>
+                    <div className="mb-3">
+                        <input type="text" className="form-control rounded-0" value={sale_of} onChange={e => setsale_of(e.target.value)} placeholder="Giảm giá" />
+                    </div>
+                    <div className="mb-3">
+                        <input type="text" className="form-control rounded-0" value={material} onChange={e => setmaterial(e.target.value)} placeholder="Chất liệu sp" />
+                    </div>
+                    <div className="mb-3">
+                        <input type="text" className="form-control rounded-0" value={color} onChange={e => setcolor(e.target.value)} placeholder="Màu sp" />
+                    </div>
+                    <div className="mb-3">
+                        <input type="text" className="form-control rounded-0" value={consident} onChange={e => setconsident(e.target.value)} placeholder="Tương thích" />
+                    </div>
+                    <div className="mb-3">
+                        <input type="text" className="form-control rounded-0" value={design} onChange={e => setdesign(e.target.value)} placeholder="Kiểu thiết kế" />
+                    </div>
+                    <div className="mb-3">
+                        <input type="text" className="form-control rounded-0" value={size} onChange={e => setsize(e.target.value)} placeholder="Size" />
+                    </div>
+                    <div className="d-flex gap-5 ">
+                        <div className="form-floating">
+                            <select className="form-select mb-3" id="floatingSelect" value={id_category} onChange={handleChangeCategory}>
+                                {
+                                    listIdcategory?.map((item, index) => (
+                                        <option value={item.categoryId} key={item.categoryId}>{item.name}</option>
+                                    ))
+                                }
+                            </select>
+                            <label htmlFor="floatingSelect">Loại sản phẩm</label>
+                        </div>
+                        <div className="form-floating">
+                            <select className="form-select form-select-lg mb-3" id="floatingSelect" value={id_tradeMark} onChange={handleChangeTrademark}>
+                                {
+                                    listIdTrademark?.map((item, index) => (
+                                        <option value={item.name} key={item.categoryId} >{item.name}</option>
+                                    ))
+                                }
+                            </select>
+                            <label htmlFor="floatingSelect">Thương hiệu</label>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div className="input-group mb-3 rounded-0">
+                            <label className="input-group-text rounded-0" htmlFor="inputGroupFile01">Upload Big Img</label>
+                            <input type="file" className="form-control rounded-0" id="inputGroupFile01" />
+                        </div>
+                        <div className="input-group mb-3 rounded-0">
+                            <label className="input-group-text rounded-0" htmlFor="inputGroupFile01">Upload small Img</label>
+                            <input type="file" className="form-control rounded-0" id="inputGroupFile01" multiple="multiple" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </Container>
+    </>);
+}
+
+export default AdminProduct;

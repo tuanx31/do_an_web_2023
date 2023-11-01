@@ -1,9 +1,11 @@
+import AdminHeader from "../adminHeader";
+
+
 const AdminMasterLayout = ({ children, ...props }) => {
     return (
         <div {...props}>
-            headeradmin
+            <AdminHeader />
             {children}
-            footer admin
         </div>
     )
 }
