@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import { ROUTERS } from "./utils/router"
 import Home from "./pages/users/Homepage/Home"
 import Introduce from "./pages/users/Introduce"
@@ -9,9 +9,14 @@ import Search from "./pages/users/search/Search"
 import Account from "./pages/users/account/Account"
 import Product from "~/pages/users/product"
 import DetailProduct from "~/pages/users/detailProduct"
+import AdminHome from "~/pages/admin/home"
+import AdminMasterLayout from "~/pages/admin/theme/adminMasterLayout"
+
+
 
 
 const renderUserRouter = () => {
+
     const userRouter = [
         {
             path: ROUTERS.USER.HOME,
@@ -47,19 +52,43 @@ const renderUserRouter = () => {
         }
     ]
     return (
-        <MasterLayout>
-            <Routes>
-                {userRouter.map((item, key) => (
-                    <Route key={key} path={item.path} element={item.component} />
-                ))}
-            </Routes>
-        </MasterLayout>
+        <>
+            <MasterLayout>
+                <Routes>
+                    {userRouter.map((item, key) => (
+                        <Route key={key} path={item.path} element={item.component} />
+                    ))}
+                </Routes>
+            </MasterLayout>
+        </>
+    )
+}
+
+const renderAdminRouter = () => {
+    const adminRouter = [
+        {
+            path: ROUTERS.ADMIN.HOME,
+            component: <AdminHome />,
+        },
+    ]
+    return (
+        <>
+            <AdminMasterLayout>
+                <Routes>
+                    {adminRouter.map((item, key) => (
+                        <Route key={key} path={item.path} element={item.component} />
+                    ))}
+                </Routes>
+            </AdminMasterLayout>
+        </>
     )
 }
 
 
 const RouteCustom = () => {
-    return renderUserRouter();
+    const location = useLocation();
+    const isAdminRoute = location.pathname.startsWith("/admin");
+    return isAdminRoute ? renderAdminRouter() : renderUserRouter();
 };
 
 export default RouteCustom;
