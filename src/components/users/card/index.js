@@ -27,8 +27,8 @@ const Cards = (props) => {
 
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-around">
-                    <button className="btn btn-warning btn-add-card" onClick={() => handleAddtoCart()}><IoCartOutline size={20} /></button>
-                    <button className="btn btn-primary">Buy</button>
+                    <button className="btn btn-outline-warning btn-add-card" onClick={() => handleAddtoCart()}><IoCartOutline size={20} /></button>
+                    <button className="btn btn-outline-primary">Buy</button>
                 </Card.Footer>
             </Card>
         </>

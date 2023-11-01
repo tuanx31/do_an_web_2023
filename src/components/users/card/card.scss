@@ -7,6 +7,7 @@
 
 .card {
     height: auto;
+    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
 
     .card-title {
         min-height: 33px !important;
@@ -31,6 +32,11 @@
             width: 100%;
         }
 
+    }
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: --bs-box-shadow !important;
     }
 }
 

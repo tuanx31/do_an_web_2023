@@ -1,4 +1,7 @@
 export const ROUTERS = {
+    ADMIN: {
+        HOME: "admin"
+    },
     USER: {
         HOME: "",
         INTRODUCE: "introduce",
