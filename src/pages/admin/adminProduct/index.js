@@ -1,11 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
+import FormData from 'form-data';
+
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 
 const baseurl = "https://localhost:7139"
 
 const AdminProduct = () => {
-
     const [name, setname] = useState()
     const [price, setprice] = useState()
     const [quantity, setquantity] = useState()
@@ -18,32 +19,79 @@ const AdminProduct = () => {
     const [size, setsize] = useState()
     const [id_category, setid_category] = useState(4)
     const [id_tradeMark, setid_tradeMark] = useState(1)
-    const [images, setimages] = useState("")
-    const [listImage, setlistImage] = useState("")
+    const [images, setimages] = useState()
+    const [listImage, setlistImage] = useState()
+
 
     const [listIdcategory, setlistIdcategory] = useState()
     const [listIdTrademark, setlistIdTrademark] = useState()
 
 
-    const fetchdata = async () => {
-        const response = await axios.get(`${baseurl}/api/Category`, {
-            headers: {
-                'accept': 'application/json'
-            }
-        });
-        if (response && response.data) {
-            setlistIdcategory(response.data)
+
+
+    const addNewProduct = async () => {
+        const form = new FormData();
+        form.append('size', size);
+        form.append('id_category', id_category);
+        form.append('color', color);
+        form.append('Material', material);
+        form.append('price', price);
+        form.append('quantity', quantity);
+        form.append('name', name);
+        form.append('id_trademark', id_tradeMark);
+        form.append('sale_of', sale_of);
+        form.append('consistent', consident);
+        form.append('ImageFile', images);
+        for (let index = 0; index < listImage.length; index++) {
+            const element = listImage[index];
+            form.append('listImageFile', element);
         }
+
+        form.append('description', desc);
+        form.append('design', design);
+        const response = await axios.post(
+            'https://localhost:7139/api/Products',
+            form,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        );
+        console.log(response)
+    }
+
+
+    const fetchdata = async () => {
+        try {
+            const response = await axios.get(`${baseurl}/api/Category`, {
+                headers: {
+                    'accept': 'application/json'
+                }
+            });
+            if (response && response.data) {
+                setlistIdcategory(response.data)
+            }
+        } catch {
+            setlistIdcategory(["failer connect", ""])
+        }
+
     }
     const fetchdataTrademark = async () => {
-        const response = await axios.get(`${baseurl}/api/Trademarks`, {
-            headers: {
-                'accept': 'application/json'
+        try {
+            const response = await axios.get(`${baseurl}/api/Trademarks`, {
+                headers: {
+                    'accept': 'application/json'
+                }
+            });
+            if (response && response.data) {
+                setlistIdTrademark(response.data)
             }
-        });
-        if (response && response.data) {
-            setlistIdTrademark(response.data)
+        } catch (error) {
+            console.log(error)
+            setlistIdTrademark(["failer connect", ""])
         }
+
     }
     useEffect(() => { fetchdata(); fetchdataTrademark(); }
         , [])
@@ -55,6 +103,18 @@ const AdminProduct = () => {
     const handleChangeTrademark = (e) => {
         setid_tradeMark(e.target.value);
     };
+
+    const handleImg = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            setimages(e.target.files[0])
+        }
+    }
+
+    const handlelistImg = (e) => {
+        if (e.target.files) {
+            setlistImage(e.target.files)
+        }
+    }
     return (<>
         <Container>
             <div className="row themsp my-5">
@@ -113,18 +173,20 @@ const AdminProduct = () => {
                             </select>
                             <label htmlFor="floatingSelect">Thương hiệu</label>
                         </div>
-
                     </div>
                     <div>
                         <div className="input-group mb-3 rounded-0">
                             <label className="input-group-text rounded-0" htmlFor="inputGroupFile01">Upload Big Img</label>
-                            <input type="file" className="form-control rounded-0" id="inputGroupFile01" />
+                            <input type="file" className="form-control rounded-0" id="inputGroupFile01" onChange={handleImg} />
                         </div>
                         <div className="input-group mb-3 rounded-0">
                             <label className="input-group-text rounded-0" htmlFor="inputGroupFile01">Upload small Img</label>
-                            <input type="file" className="form-control rounded-0" id="inputGroupFile01" multiple="multiple" />
+                            <input type="file" className="form-control rounded-0" id="inputGroupFile01" multiple="multiple" onChange={handlelistImg} />
                         </div>
                     </div>
+                    <button className='btn btn-success' onClick={() => {
+                        addNewProduct();
+                    }}>Add</button>
                 </form>
             </div>
         </Container>
