@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import { Button, Container, Modal } from "react-bootstrap";
 import { fetchAllProduct, deleteProduct } from '~/service/admin/adminService';
 
+import { toast } from 'react-toastify';
 
-function MydModalWithGrid(props) {
+const MydModalWithGrid = (props) => {
     const [name, setname] = useState()
     const [price, setprice] = useState()
     const [quantity, setquantity] = useState()
@@ -21,7 +22,7 @@ function MydModalWithGrid(props) {
     const [id_tradeMark, setid_tradeMark] = useState(1)
     const [images, setimages] = useState()
     const [listImage, setlistImage] = useState()
-
+    const [hot, sethot] = useState(false)
 
     const [listIdcategory, setlistIdcategory] = useState([])
     const [listIdTrademark, setlistIdTrademark] = useState([])
@@ -42,6 +43,7 @@ function MydModalWithGrid(props) {
             form.append('sale_of', sale_of);
             form.append('consistent', consident);
             form.append('ImageFile', images);
+            form.append('hot', hot);
             for (let index = 0; index < listImage.length; index++) {
                 const element = listImage[index];
                 form.append('listImageFile', element);
@@ -58,9 +60,10 @@ function MydModalWithGrid(props) {
                     }
                 }
             );
-
+            toast.success("Thêm sản phẩm thành công")
         } catch (error) {
             console.log(error)
+            toast.error("thất bại")
         }
 
     }
@@ -202,6 +205,13 @@ function MydModalWithGrid(props) {
                                     </select>
                                     <label htmlFor="floatingSelect">Thương hiệu</label>
                                 </div>
+                                <div className="form-floating">
+                                    <select className="form-select form-select-lg mb-3" id="floatingSelect" value={hot} onChange={(e) => sethot(e.target.value)}>
+                                        <option value={true}>True</option>
+                                        <option value={false}>False</option>
+                                    </select>
+                                    <label htmlFor="floatingSelect">Hot</label>
+                                </div>
                             </div>
                             <div>
                                 <div className="input-group mb-3 rounded-0">
@@ -229,10 +239,12 @@ function MydModalWithGrid(props) {
     );
 }
 
+
+
 const AdminProduct = () => {
-
+    const [Delshow, setDelShow] = useState(false);
     const [modalShow, setModalShow] = useState(false);
-
+    const [iddel, setiddel] = useState(null)
     const [listProduct, setListProduct] = useState([]);
 
 
@@ -247,13 +259,22 @@ const AdminProduct = () => {
     }
     useEffect(() => {
         fetchAllProducts();
-    }, [])
+    }, [modalShow])
 
 
-    const handleDelteProduct = async (id) => {
-        await deleteProduct(id);
-        window.location.reload();
+    const handleDelteProduct = (id) => {
+        setDelShow(true)
+        setiddel(id)
+
     }
+    const ComfirmDelete = async () => {
+        if (iddel) {
+            await deleteProduct(iddel);
+            fetchAllProducts();
+        }
+        setDelShow(false)
+    }
+
     return (<>
         <Container>
             <Button variant="primary" className='float-end my-4' onClick={() => setModalShow(true)}>
@@ -263,10 +284,11 @@ const AdminProduct = () => {
             <MydModalWithGrid size={"lg"} show={modalShow} onHide={() => setModalShow(false)} />
             <div className='ShowProduct'>
                 <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Stt</th>
+                    <thead >
+                        <tr >
+                            <th scope="col" >Stt</th>
                             <th scope="col">Id</th>
+                            <th scope="col" >Thumbnail</th>
                             <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Xóa/sửa</th>
                         </tr>
@@ -277,14 +299,35 @@ const AdminProduct = () => {
                                 <tr key={item.id}>
                                     <th scope="row">{index + 1}</th>
                                     <th>{item.id}</th>
+                                    <td><img src={"https://localhost:7139/resources/" + item.img} alt='' style={{ width: "80px" }} /></td>
                                     <td>{item.name}</td>
-                                    <td><button className='btn btn-warning'>Sửa</button> <button className='btn btn-danger' onClick={() => handleDelteProduct(item.id)}>Xóa</button></td>
+                                    <td ><button className='btn btn-warning '>Sửa</button> <button className='btn btn-danger' onClick={() => handleDelteProduct(item.id)}>Xóa</button></td>
                                 </tr>
                             ))
                         }
                     </tbody>
                 </table>
             </div>
+
+            <Modal
+                show={Delshow}
+                onHide={() => { setDelShow(false); setiddel(null) }}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Xoá sản phẩm ?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Xác nhận xóa
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => { setDelShow(false); setiddel(null) }}>
+                        Close
+                    </Button>
+                    <Button variant="danger" onClick={ComfirmDelete} >Xóa</Button>
+                </Modal.Footer>
+            </Modal>
         </Container>
     </>);
 }
