@@ -121,32 +121,41 @@ const AdminProduct = () => {
                         <input type="text" className="form-control rounded-0" id="floatingInput" value={name} onChange={e => setname(e.target.value)} placeholder="Tên sản phẩm" />
                         <label htmlFor="floatingInput">Tên sản phẩm</label>
                     </div>
-                    <div className="mb-3 ">
-                        <input type="text" className="form-control rounded-0" value={price} onChange={e => setprice(e.target.value)} placeholder="Giá sản phẩm" />
+                    <div className="mb-3 form-floating">
+                        <input type="text" className="form-control rounded-0" id="floatingInput" value={price} onChange={e => setprice(e.target.value)} placeholder="Giá sản phẩm" />
+                        <label htmlFor="floatingInput">Giá sản phẩm</label>
                     </div>
-                    <div className="mb-3 ">
-                        <input type="text" className="form-control rounded-0" value={quantity} onChange={e => setquantity(e.target.value)} placeholder="Số lượng trong kho" />
+                    <div className="mb-3 form-floating">
+                        <input type="text" className="form-control rounded-0" id="floatingInput" value={quantity} onChange={e => setquantity(e.target.value)} placeholder=" Số lượng trong kho" />
+                        <label htmlFor="floatingInput">Số lượng trong kho</label>
                     </div>
-                    <div className="mb-3">
-                        <input type="text" className="form-control rounded-0" value={desc} onChange={e => setdesc(e.target.value)} placeholder="Thông tin sản phẩm" />
+                    <div className="mb-3 form-floating">
+                        <input type="text" className="form-control rounded-0" id="floatingInput" value={desc} onChange={e => setdesc(e.target.value)} placeholder="Thông tin sản phẩm" />
+                        <label htmlFor="floatingInput">Thông tin sản phẩm</label>
                     </div>
-                    <div className="mb-3">
-                        <input type="text" className="form-control rounded-0" value={sale_of} onChange={e => setsale_of(e.target.value)} placeholder="Giảm giá" />
+                    <div className="mb-3 form-floating">
+                        <input type="text" className="form-control rounded-0" id="floatingInput" value={sale_of} onChange={e => setsale_of(e.target.value)} placeholder="Giảm giá" />
+                        <label htmlFor="floatingInput">Giảm giá</label>
                     </div>
-                    <div className="mb-3">
-                        <input type="text" className="form-control rounded-0" value={material} onChange={e => setmaterial(e.target.value)} placeholder="Chất liệu sp" />
+                    <div className="mb-3 form-floating">
+                        <input type="text" className="form-control rounded-0" id="floatingInput" value={material} onChange={e => setmaterial(e.target.value)} placeholder="Chất liệu sp" />
+                        <label htmlFor="floatingInput">Chất liệu</label>
                     </div>
-                    <div className="mb-3">
-                        <input type="text" className="form-control rounded-0" value={color} onChange={e => setcolor(e.target.value)} placeholder="Màu sp" />
+                    <div className="mb-3 form-floating">
+                        <input type="text" className="form-control rounded-0" id="floatingInput" value={color} onChange={e => setcolor(e.target.value)} placeholder="Màu sp" />
+                        <label htmlFor="floatingInput">Màu sp</label>
                     </div>
-                    <div className="mb-3">
-                        <input type="text" className="form-control rounded-0" value={consident} onChange={e => setconsident(e.target.value)} placeholder="Tương thích" />
+                    <div className="mb-3 form-floating">
+                        <input type="text" className="form-control rounded-0" id="floatingInput" value={consident} onChange={e => setconsident(e.target.value)} placeholder="Tương thích" />
+                        <label htmlFor="floatingInput">Tương thích</label>
                     </div>
-                    <div className="mb-3">
-                        <input type="text" className="form-control rounded-0" value={design} onChange={e => setdesign(e.target.value)} placeholder="Kiểu thiết kế" />
+                    <div className="mb-3 form-floating">
+                        <input type="text" className="form-control rounded-0" id="floatingInput" value={design} onChange={e => setdesign(e.target.value)} placeholder="Kiểu thiết kế" />
+                        <label htmlFor="floatingInput">Kiểu thiết kế</label>
                     </div>
-                    <div className="mb-3">
-                        <input type="text" className="form-control rounded-0" value={size} onChange={e => setsize(e.target.value)} placeholder="Size" />
+                    <div className="mb-3 form-floating">
+                        <input type="text" className="form-control rounded-0" id="floatingInput" value={size} onChange={e => setsize(e.target.value)} placeholder="Size" />
+                        <label htmlFor="floatingInput">size</label>
                     </div>
                     <div className="d-flex gap-5 ">
                         <div className="form-floating">
