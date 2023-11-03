@@ -37,13 +37,17 @@ const Cart = () => {
             <Row className="mt-3 " >
                 <div className="mb-3 ">
                     <p>Ghi chú cho đơn hàng</p>
-                    <textarea className="form-control text-muted" rows="5" />
+                    <div className="form-floating">
+                        <textarea id="floatingTextarea2" className="form-control text-muted" style={{ height: "100px" }} />
+                        <label for="floatingTextarea2" >Ghi chú cho đơn hàng. Ví dụ: Thời gian giao hàng nhanh hơn...</label>
+                    </div>
+
                 </div>
                 <div>
                     <div className="float-end text-end">
                         <p ><span>Tổng tiền</span> <span className="fw-bold">320.000</span></p>
                         <i>Vận chuyển</i>
-                        <div className="d-flex gap-2 mt-2 ">
+                        <div className="d-flex gap-2 mt-2 mb-4 ">
                             <button className="btn btn-primary">Cập nhật</button>
                             <button className="btn btn-primary">Thanh toán</button>
                         </div>
