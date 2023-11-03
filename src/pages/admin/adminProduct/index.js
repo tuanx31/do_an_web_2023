@@ -1,10 +1,9 @@
-import axios from 'axios';
+import axios from '~/setup/axios';
 import FormData from 'form-data';
 
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 
-const baseurl = "https://localhost:7139"
 
 const AdminProduct = () => {
     const [name, setname] = useState()
@@ -23,10 +22,8 @@ const AdminProduct = () => {
     const [listImage, setlistImage] = useState()
 
 
-    const [listIdcategory, setlistIdcategory] = useState()
-    const [listIdTrademark, setlistIdTrademark] = useState()
-
-
+    const [listIdcategory, setlistIdcategory] = useState([])
+    const [listIdTrademark, setlistIdTrademark] = useState([])
 
 
     const addNewProduct = async () => {
@@ -50,7 +47,7 @@ const AdminProduct = () => {
         form.append('description', desc);
         form.append('design', design);
         const response = await axios.post(
-            'https://localhost:7139/api/Products',
+            '/api/Products',
             form,
             {
                 headers: {
@@ -64,32 +61,31 @@ const AdminProduct = () => {
 
     const fetchdata = async () => {
         try {
-            const response = await axios.get(`${baseurl}/api/Category`, {
+            const response = await axios.get(`/api/Category`, {
                 headers: {
                     'accept': 'application/json'
                 }
             });
-            if (response && response.data) {
-                setlistIdcategory(response.data)
+            if (response) {
+                setlistIdcategory(response)
             }
-        } catch {
-            setlistIdcategory(["failer connect", ""])
+        } catch (error) {
+            console.log(error)
         }
 
     }
     const fetchdataTrademark = async () => {
         try {
-            const response = await axios.get(`${baseurl}/api/Trademarks`, {
+            const response = await axios.get(`/api/Trademarks`, {
                 headers: {
                     'accept': 'application/json'
                 }
             });
-            if (response && response.data) {
-                setlistIdTrademark(response.data)
+            if (response) {
+                setlistIdTrademark(response)
             }
         } catch (error) {
             console.log(error)
-            setlistIdTrademark(["failer connect", ""])
         }
 
     }
@@ -155,21 +151,37 @@ const AdminProduct = () => {
                     <div className="d-flex gap-5 ">
                         <div className="form-floating">
                             <select className="form-select mb-3" id="floatingSelect" value={id_category} onChange={handleChangeCategory}>
-                                {
-                                    listIdcategory?.map((item, index) => (
+                                {listIdcategory && listIdcategory.length > 0 ?
+                                    <>{listIdcategory?.map((item, index) => (
                                         <option value={item.categoryId} key={item.categoryId}>{item.name}</option>
-                                    ))
+                                    ))}
+                                    </>
+                                    :
+                                    <>
+                                        <option>error fetch data</option>
+                                    </>
                                 }
                             </select>
                             <label htmlFor="floatingSelect">Loại sản phẩm</label>
                         </div>
                         <div className="form-floating">
                             <select className="form-select form-select-lg mb-3" id="floatingSelect" value={id_tradeMark} onChange={handleChangeTrademark}>
-                                {
+
+                                {listIdTrademark && listIdTrademark.length > 0 ?
+                                    <>{listIdTrademark?.map((item, index) => (
+                                        <option value={item.categoryId} key={item.categoryId}>{item.name}</option>
+                                    ))}
+                                    </>
+                                    :
+                                    <>
+                                        <option>error fetch data</option>
+                                    </>
+                                }
+                                {/* {
                                     listIdTrademark?.map((item, index) => (
                                         <option value={item.name} key={item.categoryId} >{item.name}</option>
                                     ))
-                                }
+                                } */}
                             </select>
                             <label htmlFor="floatingSelect">Thương hiệu</label>
                         </div>
