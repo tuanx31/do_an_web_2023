@@ -237,8 +237,13 @@ const AdminProduct = () => {
 
 
     const fetchAllProducts = async () => {
-        const res = await fetchAllProduct()
-        setListProduct(res);
+        try {
+            const res = await fetchAllProduct()
+            setListProduct(res);
+        } catch (error) {
+            console.log(error)
+        }
+
     }
     useEffect(() => {
         fetchAllProducts();
