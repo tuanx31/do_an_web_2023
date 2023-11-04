@@ -11,6 +11,7 @@ import Search from "./pages/users/search/Search"
 import Account from "./pages/users/account/Account"
 import Product from "~/pages/users/product"
 import DetailProduct from "~/pages/users/detailProduct"
+import Checkout from "~/pages/users/checkout"
 
 import AdminMasterLayout from "~/pages/admin/theme/adminMasterLayout"
 import AdminHome from "~/pages/admin/adminHome"
@@ -53,6 +54,10 @@ const renderUserRouter = () => {
         {
             path: ROUTERS.USER.ACCOUNT,
             component: <Account />
+        },
+        {
+            path: ROUTERS.USER.CHECKOUT,
+            component: <Checkout />
         }
     ]
     return (

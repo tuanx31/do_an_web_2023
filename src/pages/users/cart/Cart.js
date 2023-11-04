@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { GoTrash } from "react-icons/go"
 import img1 from "~/assest/users/img/product/baoda1.webp";
@@ -26,7 +26,7 @@ const Cart = () => {
                         <tr className="text-center" style={{ verticalAlign: "middle" }}>
                             <th scope="row"><img src={img1} alt="hinh anh" style={{ width: "120px", height: "120px" }} /></th>
                             <td className="text-muted fw-normal" >Bao da chống sốc Macbook cao cấp Takesen TS03 </td>
-                            <td className="fw-bold ">320.000 </td>
+                            <td className="fw-bold dongia">320.000 </td>
                             <td><input type="number" min="0" style={{ width: "30px", height: "30px" }} /></td>
                             <th>320.000</th>
                             <td><GoTrash style={{ cursor: "pointer" }} color="red" /></td>
@@ -49,7 +49,7 @@ const Cart = () => {
                         <i>Vận chuyển</i>
                         <div className="d-flex gap-2 mt-2 mb-4 ">
                             <button className="btn btn-primary">Cập nhật</button>
-                            <button className="btn btn-primary">Thanh toán</button>
+                            <button className="btn btn-primary"><Link to={"/checkout"} className="text-white">Thanh toán</Link></button>
                         </div>
                     </div>
 

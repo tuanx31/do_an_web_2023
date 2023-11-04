@@ -2,4 +2,19 @@
     thead{
         display: none;
     }
+    tbody{
+        td{
+            border-bottom-width: inherit !important;
+        }
+        tr{
+            display: flex;
+            flex-direction: column;
+            .dongia{
+                display: none;
+            }
+            
+            
+
+        }
+    }
 }
