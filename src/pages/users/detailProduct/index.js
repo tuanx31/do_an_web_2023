@@ -14,15 +14,19 @@ import { Link, useParams } from 'react-router-dom';
 
 import ImageViewer from 'react-simple-image-viewer';
 
-import img1 from "~/assest/users/img/product/baoda1.webp";
-import img2 from "~/assest/users/img/product/baoda1_2.webp";
-import img3 from "~/assest/users/img/product/baoda1.3.webp";
-import img4 from "~/assest/users/img/product/baoda.14.webp";
+import _ from 'lodash';
+
 
 import { fetch1Product } from '~/service/users/product';
 
 
 const DetailProduct = (props) => {
+    const innitlistimg = {
+        img1: "",
+        img2: "",
+        img3: "",
+        img4: ""
+    }
 
     const { idProduct } = useParams();
 
@@ -36,12 +40,28 @@ const DetailProduct = (props) => {
     useEffect(() => {
         fetchDetailProduct();
     }, [])
+    useEffect(() => {
+        setCurrentImg("https://localhost:7139/resources/" + product.img);
+        if (product.listImage) {
+            var kq = product.listImage.split('|');
+            let _ListImg = _.cloneDeep(listImg);
+            _ListImg.img1 = "https://localhost:7139/resources/" + kq[0];
+            _ListImg.img2 = "https://localhost:7139/resources/" + kq[1];
+            _ListImg.img3 = "https://localhost:7139/resources/" + kq[2];
+            _ListImg.img4 = "https://localhost:7139/resources/" + kq[3];
+            setListImg(_ListImg);
+            console.log(listImg)
+        }
+
+    }, [product])
     const [currentImg, setCurrentImg] = useState();
     const [currentImage, setCurrentImage] = useState(0);
     const [isViewerOpen, setIsViewerOpen] = useState(false);
     const [photoIndex, setPhotoIndex] = useState(0);
+    const [listImg, setListImg] = useState(innitlistimg)
+
     const images = [
-        img1, img2, img3, img4
+        listImg.img1, listImg.img2, listImg.img3, listImg.img4
     ];
 
     const openImageViewer = useCallback((index) => {
@@ -63,20 +83,20 @@ const DetailProduct = (props) => {
             <Row className='gap-5 my-5'>
                 <Col lg={5} className='col-12'>
                     <div className='imgup'>
-                        <img src={"https://localhost:7139/resources/" + product.img} alt='hinh anh' width={"100%"} height={'auto'} onClick={() => openImageViewer(photoIndex)} />
+                        <img src={currentImg} alt='hinh anh' width={"100%"} height={'auto'} onClick={() => openImageViewer(photoIndex)} />
                     </div>
                     <div className='imgdown'>
                         <div className='imgSmall'>
-                            <img src={img1} alt='imgnho' onClick={() => handleClickImgs(img1, 0)} className={currentImg === img1 ? "active" : ""} />
+                            <img src={listImg.img1} alt='imgnho' onClick={() => handleClickImgs(listImg.img1, 0)} className={currentImg === listImg.img1 ? "active" : ""} />
                         </div>
                         <div className='imgSmall'>
-                            <img src={img2} alt='imgnho' onClick={() => handleClickImgs(img2, 1)} className={currentImg === img2 ? "active" : ""} />
+                            <img src={listImg.img2} alt='imgnho' onClick={() => handleClickImgs(listImg.img2, 1)} className={currentImg === listImg.img2 ? "active" : ""} />
                         </div>
                         <div className='imgSmall'>
-                            <img src={img3} alt='imgnho' onClick={() => handleClickImgs(img3, 2)} className={currentImg === img3 ? "active" : ""} />
+                            <img src={listImg.img3} alt='imgnho' onClick={() => handleClickImgs(listImg.img3, 2)} className={currentImg === listImg.img3 ? "active" : ""} />
                         </div>
                         <div className='imgSmall'>
-                            <img src={img4} alt='imgnho' onClick={() => handleClickImgs(img4, 3)} className={currentImg === img4 ? "active" : ""} />
+                            <img src={listImg.img4} alt='imgnho' onClick={() => handleClickImgs(listImg.img4, 3)} className={currentImg === listImg.img4 ? "active" : ""} />
                         </div>
 
                     </div>
