@@ -1,12 +1,16 @@
+import './detailProduct.scss'
+
 import { GiRibbonMedal } from 'react-icons/gi';
 import { LiaShippingFastSolid } from 'react-icons/lia'
 import { BsShieldFillCheck } from 'react-icons/bs'
 import { PiNumberSquareSevenThin } from 'react-icons/pi'
 
-import { useState } from 'react';
-// import { useParams } from 'react-router-dom'
-import './detailProduct.scss'
 import { Col, Container, Row } from 'react-bootstrap';
+
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useCallback } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 import ImageViewer from 'react-simple-image-viewer';
 
@@ -14,15 +18,25 @@ import img1 from "~/assest/users/img/product/baoda1.webp";
 import img2 from "~/assest/users/img/product/baoda1_2.webp";
 import img3 from "~/assest/users/img/product/baoda1.3.webp";
 import img4 from "~/assest/users/img/product/baoda.14.webp";
-import { useCallback } from 'react';
-import { Link } from 'react-router-dom';
 
+import { fetch1Product } from '~/service/users/product';
 
 
 const DetailProduct = (props) => {
-    // const { idProduct } = useParams();
-    const [currentImg, setCurrentImg] = useState(img1);
 
+    const { idProduct } = useParams();
+
+    const [product, setProduct] = useState({})
+    const fetchDetailProduct = async () => {
+        const dProduct = await fetch1Product(idProduct);
+        await setProduct(dProduct);
+
+    }
+
+    useEffect(() => {
+        fetchDetailProduct();
+    }, [])
+    const [currentImg, setCurrentImg] = useState();
     const [currentImage, setCurrentImage] = useState(0);
     const [isViewerOpen, setIsViewerOpen] = useState(false);
     const [photoIndex, setPhotoIndex] = useState(0);
@@ -42,53 +56,53 @@ const DetailProduct = (props) => {
         setCurrentImg(img);
         setPhotoIndex(index);
     }
+
     return (
         <Container>
-            <div className='routed fs-14px my-3'><Link to="" className='text-black'>Trang chủ</Link> / BAO DA CHỐNG SỐC MACBOOK TAIKESEN | DA LỘN CAO CẤP - TS03</div>
+            <div className='routed fs-14px my-3'><Link to="" className='text-black'>Trang chủ</Link> / {product.name}</div>
             <Row className='gap-5 my-5'>
                 <Col lg={5} className='col-12'>
                     <div className='imgup'>
-                        <img src={currentImg} alt='hinh anh' width={"100%"} height={'auto'} onClick={() => openImageViewer(photoIndex)} />
+                        <img src={"https://localhost:7139/resources/" + product.img} alt='hinh anh' width={"100%"} height={'auto'} onClick={() => openImageViewer(photoIndex)} />
                     </div>
                     <div className='imgdown'>
                         <div className='imgSmall'>
-                            <img src={img1} alt='imgnho' onClick={() => handleClickImgs(img1, 0)} className={currentImg === img1 && "active"} />
+                            <img src={img1} alt='imgnho' onClick={() => handleClickImgs(img1, 0)} className={currentImg === img1 ? "active" : ""} />
                         </div>
                         <div className='imgSmall'>
-                            <img src={img2} alt='imgnho' onClick={() => handleClickImgs(img2, 1)} className={currentImg === img2 && "active"} />
+                            <img src={img2} alt='imgnho' onClick={() => handleClickImgs(img2, 1)} className={currentImg === img2 ? "active" : ""} />
                         </div>
                         <div className='imgSmall'>
-                            <img src={img3} alt='imgnho' onClick={() => handleClickImgs(img3, 2)} className={currentImg === img3 && "active"} />
+                            <img src={img3} alt='imgnho' onClick={() => handleClickImgs(img3, 2)} className={currentImg === img3 ? "active" : ""} />
                         </div>
                         <div className='imgSmall'>
-                            <img src={img4} alt='imgnho' onClick={() => handleClickImgs(img4, 3)} className={currentImg === img4 && "active"} />
+                            <img src={img4} alt='imgnho' onClick={() => handleClickImgs(img4, 3)} className={currentImg === img4 ? "active" : ""} />
                         </div>
 
                     </div>
                 </Col>
                 <Col >
-                    <div className='title-product mb-3'>BAO DA CHỐNG SỐC MACBOOK TAIKESEN | DA LỘN CAO CẤP - TS03</div>
+                    <div className='title-product mb-3 text-uppercase'>{product.name}</div>
                     <p className='category text-decoration-underline fs-14px mb-5'>Taikesen</p>
                     <div className='product-inf border-bottom'>
                         <div className='product-short-desc'>
                             <ul className='fs-14px'>
                                 <li><strong>Brand: </strong><span style={{ color: "#002ED0" }}>Taikesen - Model TS03</span></li>
-                                <li><strong>Thiết kế: </strong><span >Nhỏ gọn ôm sát máy, đường may chắc chắn, vật liệu bền bỉ</span></li>
-                                <li><strong>Vật liệu: </strong><span style={{ color: "red" }}>Da lộn PU cao cấp</span></li>
-                                <li className='text-muted'>Khóa gài chắc chắn bằng nam châm hít, không làm tuột máy ra khỏi bao da, an toàn tuyệt đối khi sử dụng.</li>
-                                <li><strong>Tương thích: </strong>Macbook/Laptop 12.5" - 16" inch</li>
+                                <li><strong>Thiết kế: </strong><span >{product.design}</span></li>
+                                <li><strong>Vật liệu: </strong><span style={{ color: "red" }}>{product.consistent}</span></li>
+                                <li className='text-muted'>{product.desc}</li>
+                                <li><strong>Tương thích: </strong>{product.consistent}</li>
                                 <li><strong>Combo gồm : </strong><span style={{ color: "#002ED0" }}>Bao da + Túi phụ kiện</span></li>
-                                <li><strong>Màu sắc : </strong><span className='text-muted'>Xám-Hồng-Kem-Xanh-Đen</span></li>
+                                <li><strong>Màu sắc : </strong><span className='text-muted'>{product.color}</span></li>
                             </ul>
                         </div>
                         <p className='line-price'>
-                            <span id="ProductPrice" class="ProductPrice fw-bold me-3" itemprop="price" content="650000">650,000₫</span>
-                            <s id="ComparePrice" class="ComparePrice"> 900,000₫</s>
+                            <span id="ProductPrice" className="ProductPrice fw-bold me-3" itemProp="price" >{product.price && (product.price - (product.sale_of / 100 * product.price)).toLocaleString()}₫</span>
+                            <s id="ComparePrice" className="ComparePrice">{product.price && product.price.toLocaleString()}₫</s>
                         </p>
                         <p>
-                            <em id="PriceSaving" class="PriceSaving">(Bạn sẽ tiết kiệm được 250,000₫)</em>
+                            <em id="PriceSaving" className="PriceSaving">(Bạn sẽ tiết kiệm được {product.price && (product.price * product.sale_of / 100).toLocaleString()}₫)</em>
                         </p>
-
                     </div>
                     <div className='select-ops border-bottom'>
                         <div className='color py-3 d-flex gap-3' >

@@ -1,0 +1,7 @@
+const handleArray = () => {
+
+}
+
+export {
+    handleArray
+}

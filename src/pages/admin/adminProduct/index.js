@@ -267,7 +267,7 @@ const AdminProduct = () => {
     const fetchAllProducts = async () => {
         try {
             const res = await fetchAllProduct()
-            setListProduct(res);
+            await setListProduct(res);
         } catch (error) {
             console.log(error)
         }

@@ -10,8 +10,6 @@ const fetchAllProduct = async () => {
 
 const deleteProduct = async (id) => {
     return await axios.delete(`/api/Products/${id}`)
-
-
 }
 
 export {
