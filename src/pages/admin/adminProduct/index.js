@@ -21,7 +21,7 @@ const MydModalWithGrid = (props) => {
     const [id_category, setid_category] = useState(4)
     const [id_tradeMark, setid_tradeMark] = useState(1)
     const [images, setimages] = useState()
-    const [listImage, setlistImage] = useState()
+    const [listImage, setlistImage] = useState([])
     const [hot, sethot] = useState(false)
 
     const [listIdcategory, setlistIdcategory] = useState([])
@@ -32,25 +32,25 @@ const MydModalWithGrid = (props) => {
     const addNewProduct = async () => {
         try {
             const form = new FormData();
-            form.append('size', size);
-            form.append('id_category', id_category);
-            form.append('color', color);
-            form.append('Material', material);
-            form.append('price', price);
-            form.append('quantity', quantity);
+            size && form.append('size', size);
+            id_category && form.append('id_category', id_category);
+            color && form.append('color', color);
+            material && form.append('Material', material);
+            price && form.append('price', price);
+            quantity && form.append('quantity', quantity);
             form.append('name', name);
-            form.append('id_trademark', id_tradeMark);
-            form.append('sale_of', sale_of);
-            form.append('consistent', consident);
-            form.append('ImageFile', images);
-            form.append('hot', hot);
+            id_tradeMark && form.append('id_trademark', id_tradeMark);
+            sale_of && form.append('sale_of', sale_of);
+            consident && form.append('consistent', consident);
+            images && form.append('ImageFile', images);
+            hot && form.append('hot', hot);
             for (let index = 0; index < listImage.length; index++) {
                 const element = listImage[index];
-                form.append('listImageFile', element);
+                listImage && form.append('listImageFile', element);
             }
 
-            form.append('description', desc);
-            form.append('design', design);
+            desc && form.append('description', desc);
+            design && form.append('design', design);
             await axios.post(
                 '/api/Products',
                 form,
@@ -61,6 +61,22 @@ const MydModalWithGrid = (props) => {
                 }
             );
             toast.success("Thêm sản phẩm thành công")
+            setname("");
+            setprice("");
+            setquantity("");
+            setdesc("");
+            setsale_of("");
+            setmaterial("");
+            setcolor("");
+            setconsident("");
+            setdesign("");
+            setsize("");
+            setid_category(4);
+            setid_tradeMark(1);
+            setimages(null);
+            setlistImage([]);
+            sethot(false);
+            fetchAllProduct("");
         } catch (error) {
             console.log(error)
             toast.error("thất bại")
@@ -194,7 +210,7 @@ const MydModalWithGrid = (props) => {
 
                                         {listIdTrademark && listIdTrademark.length > 0 ?
                                             <>{listIdTrademark?.map((item, index) => (
-                                                <option value={item.categoryId} key={item.categoryId}>{item.name}</option>
+                                                <option value={item.id} key={item.id}>{item.name}</option>
                                             ))}
                                             </>
                                             :
@@ -290,6 +306,7 @@ const AdminProduct = () => {
                             <th scope="col">Id</th>
                             <th scope="col" >Thumbnail</th>
                             <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Số Lượng trong kho</th>
                             <th scope="col">Xóa/sửa</th>
                         </tr>
                     </thead>
@@ -301,6 +318,7 @@ const AdminProduct = () => {
                                     <th>{item.id}</th>
                                     <td><img src={"https://localhost:7139/resources/" + item.img} alt='' style={{ width: "80px" }} /></td>
                                     <td>{item.name}</td>
+                                    <td>{item.quantity}</td>
                                     <td ><button className='btn btn-warning '>Sửa</button> <button className='btn btn-danger' onClick={() => handleDelteProduct(item.id)}>Xóa</button></td>
                                 </tr>
                             ))
