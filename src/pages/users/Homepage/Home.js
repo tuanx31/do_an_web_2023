@@ -6,18 +6,21 @@ import Uytin from "~/components/users/uytin/Uytin";
 
 
 import renderCard from "~/service/users/renderproduct";
+import { fetchHotProduct } from "~/service/users/product";
 
 
 import "./style.scss"
 import { useEffect, useState } from "react";
-import { fetchAllProduct } from "~/service/admin/adminService";
+
 
 const Home = () => {
 
-    const [newProduct, setNewProduct] = useState([]);
+    const [hotProduct, setHotProduct] = useState([]);
     const fetchNewProduct = async () => {
-        const newProducts = await fetchAllProduct();
-        setNewProduct(newProducts);
+        const newProducts = await fetchHotProduct();
+        if (newProducts) {
+            setHotProduct(newProducts);
+        }
     }
 
     useEffect(() => {
@@ -29,15 +32,15 @@ const Home = () => {
             <Slider />
             <Container>
                 <div className="Sale my-4">
-                    <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link className="text-black position-relative ">SẢN PHẨM KHUYẾN MÃI</Link></h2>
+                    <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link className="text-black position-relative text-uppercase">Sản Phẩm Hot</Link></h2>
                     <div className="sale-products my-5">
                         <Row>
-                            {renderCard(newProduct)}
+                            {renderCard(hotProduct)}
                         </Row>
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-center text-uppercase fw-bold">Vì sao nên chọn chúng tôi</h2>
+                    <h2 className="text-center text-uppercase uytin position-relative fw-bold">Vì sao nên chọn chúng tôi</h2>
                     <Uytin />
                 </div>
             </Container>

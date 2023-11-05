@@ -1,6 +1,9 @@
 import { Route, Routes, useLocation } from "react-router-dom"
 import { ROUTERS } from "./utils/router"
 
+import AdminMasterLayout from "~/pages/admin/theme/adminMasterLayout"
+import AdminHome from "~/pages/admin/adminHome"
+import AdminProduct from "~/pages/admin/adminProduct"
 
 import Home from "./pages/users/Homepage/Home"
 import Introduce from "./pages/users/Introduce"
@@ -12,10 +15,8 @@ import Account from "./pages/users/account/Account"
 import Product from "~/pages/users/product"
 import DetailProduct from "~/pages/users/detailProduct"
 import Checkout from "~/pages/users/checkout"
-
-import AdminMasterLayout from "~/pages/admin/theme/adminMasterLayout"
-import AdminHome from "~/pages/admin/adminHome"
-import AdminProduct from "~/pages/admin/adminProduct"
+import ChinhSachBaoHanh from "~/pages/users/chinhsachbaohanh"
+import ChinhSachBaoMat from "~/pages/users/chinhsachbaomat"
 
 
 
@@ -58,7 +59,15 @@ const renderUserRouter = () => {
         {
             path: ROUTERS.USER.CHECKOUT,
             component: <Checkout />
-        }
+        },
+        {
+            path: ROUTERS.USER.CSBH,
+            component: <ChinhSachBaoHanh />
+        },
+        {
+            path: ROUTERS.USER.CSBM,
+            component: <ChinhSachBaoMat />
+        },
     ]
     return (
         <>

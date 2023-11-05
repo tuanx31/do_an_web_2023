@@ -13,10 +13,23 @@
             bottom: -10px;
             content: '';
             height: 3px;
-            width: 80px;
-            left: calc(50% - 40px);
+            width: 100px;
+            left: calc(50% - 50px);
             background: #8a8982;
         }
+    }
+}
+
+.uytin {
+
+    &:after {
+        position: absolute;
+        bottom: -10px;
+        content: '';
+        height: 3px;
+        width: 200px;
+        left: calc(50% - 100px);
+        background: #8a8982;
     }
 }
 

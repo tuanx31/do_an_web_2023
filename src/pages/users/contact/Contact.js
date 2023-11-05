@@ -3,13 +3,17 @@ import "./Contact.scss"
 import { BsFillTelephoneFill } from "react-icons/bs"
 import { AiFillHome } from "react-icons/ai"
 import { MdEmail } from "react-icons/md"
+import { Link } from "react-router-dom"
 
 const Contact = () => {
   return (
     <>
       <div className="container lienhe">
-        <p className="my-2">Trang chủ/ Liên hệ</p>
-        <h4 className="mt-4 mb-1 fw-bold">LIÊN HỆ</h4>
+        <div className="breadcrumb-small my-2">
+          <Link to={"/"} className="text-dark">Trang chủ </Link>
+          <span> / Liên Hệ</span>
+        </div>
+        <h4 className="mt-3 mb-1 fw-bold">LIÊN HỆ</h4>
         <div className="row mb-5">
           <div className="col-lg-4 col-12 mt-3">
             <p className="text-muted fs-16px fs-16px">Số điện thoại/Hotline</p>

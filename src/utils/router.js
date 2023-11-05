@@ -13,6 +13,8 @@ export const ROUTERS = {
         DETAILPRODUCT: "products/:idCategory/detail/:idProduct",
         SEARCH: "search",
         CART: "cart",
-        CHECKOUT: "checkout"
+        CHECKOUT: "checkout",
+        CSBM: "chinh-sach-bao-mat",
+        CSBH: "chinh-sach-bao-hanh"
     }
 }

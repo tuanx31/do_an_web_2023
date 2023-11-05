@@ -42,8 +42,8 @@ const Footer = () => {
                                 <h3 className='footer-title text-uppercase '>Dịch vụ</h3>
                                 <p><Link to={"search"} className='color-footer'>Tìm kiếm</Link></p>
                                 <p><Link to={"introduce"} className='color-footer'>Giới thiệu</Link></p>
-                                <p><Link to={""} className='color-footer'>Chính sách bảo hành</Link></p>
-                                <p><Link to={""} className='color-footer'>Chính sách bảo mật</Link></p>
+                                <p><Link to={"chinh-sach-bao-hanh"} className='color-footer'>Chính sách bảo hành</Link></p>
+                                <p><Link to={"chinh-sach-bao-mat"} className='color-footer'>Chính sách bảo mật</Link></p>
                                 <p><Link to={""} className='color-footer'>Điều khoản dịch vụ</Link></p>
                             </div>
 
@@ -54,7 +54,7 @@ const Footer = () => {
                                 <h3 className='footer-title text-uppercase'>Sản phẩm</h3>
                                 {
                                     Category?.map((product, index) => (
-                                        <p key={index}><Link className="dropdown-item color-footer" key={index} to={`/products/${product.id}`}>{product?.name}</Link></p>
+                                        <p key={index}><Link className="color-footer" key={index} to={`/products/${product.id}`}>{product?.name}</Link></p>
                                     ))
                                 }
                             </div>

@@ -33,7 +33,6 @@ const DetailProduct = (props) => {
     const fetchDetailProduct = async () => {
         const dProduct = await fetch1Product(idProduct);
         setProduct(dProduct);
-        console.log(dProduct)
 
     }
 

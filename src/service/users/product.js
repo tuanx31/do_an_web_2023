@@ -17,6 +17,22 @@ const fetchCateGorys = async () => {
     });
 }
 
+const fetchProductByCategory = async (id) => {
+    return await axios.get(`/api/Products/productbycategory/${id}`, {
+        headers: {
+            'accept': 'application/json'
+        }
+    });
+}
+
+const fetchHotProduct = async () => {
+    return await axios.get(`/api/Products/hotproduct`, {
+        headers: {
+            'accept': 'application/json'
+        }
+    });
+}
+
 export {
-    fetch1Product, fetchCateGorys
+    fetch1Product, fetchCateGorys, fetchProductByCategory, fetchHotProduct
 }

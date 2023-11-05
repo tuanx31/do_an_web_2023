@@ -1,12 +1,13 @@
-import { products } from "~/assest/users/data/product";
-import { Category } from "~/assest/users/data/Category";
-
-
 import { Container, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 
 import "./product.scss"
 import renderCard from "~/service/users/renderproduct";
+import { useEffect } from "react";
+import { fetchAllProduct } from "~/service/admin/adminService";
+import { fetchProductByCategory } from "~/service/users/product";
+import { useState } from "react";
+
 
 //render page
 const render = (item, title) => {
@@ -25,34 +26,37 @@ const render = (item, title) => {
         </>
     )
 }
-//filter product
-const renderProduct = (idCategory) => {
-    if (idCategory === "all") {
 
-        return render(products, "Tất cả sản phẩm")
-    }
-    else {
-        // lọc sản phẩm theo id category
-        const productFilter = products?.filter((item) => {
-            return item.id_category === Number(idCategory)
-        })
-        const categoryFilter = Category.find((item) => {
-            return String(item.id) === idCategory
-        })
-        const filter = categoryFilter.name
-        return render(productFilter, filter)
-    }
-}
 
 
 const Product = () => {
     //get id của giỏ hàng từ param
     const { idCategory } = useParams();
+    const [listProduct, setListProduct] = useState([]);
+
+    const fetchAllProducts = async () => {
+        const data = await fetchAllProduct();
+        if (data) {
+            setListProduct(data)
+        }
+    }
+
+    const fetchProductByCategorys = async () => {
+        const data = await fetchProductByCategory(idCategory);
+        if (data) {
+            setListProduct(data)
+        }
+    }
+
+    useEffect(() => {
+        idCategory === "all" ? fetchAllProducts() : fetchProductByCategorys();
+    }, [listProduct])
+
+
+
     return (
         <Container>
-
-            {renderProduct(idCategory)}
-
+            {listProduct[0] && render(listProduct, listProduct[0].categories.name)}
         </Container>
     )
 }

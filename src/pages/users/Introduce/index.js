@@ -4,7 +4,7 @@ import "./Introduce.scss"
 const Introduce = () => {
     return (
         <Container>
-            <div className="breadcrumb-small my-1">
+            <div className="breadcrumb-small my-2">
                 <Link to={"/"} className="text-dark">Trang chủ </Link>
                 <span> / Giới thiệu</span>
             </div>

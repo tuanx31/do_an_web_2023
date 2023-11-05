@@ -232,6 +232,11 @@
     }
 }
 
+.form-search {
+    --bs-border-radius: 0.7rem;
+}
+
+
 .cart {
     span {
         background-color: $--color-sale;
