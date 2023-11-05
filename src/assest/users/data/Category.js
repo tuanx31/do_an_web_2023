@@ -19,7 +19,7 @@ export const Category = [
         path: "phu-kien-o-to"
     },
     {
-        id: "0",
+        id: "4",
         name: "Others",
         path: "otherProduct"
     },

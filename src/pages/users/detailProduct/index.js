@@ -1,9 +1,6 @@
 import './detailProduct.scss'
 
-import { GiRibbonMedal } from 'react-icons/gi';
-import { LiaShippingFastSolid } from 'react-icons/lia'
-import { BsShieldFillCheck } from 'react-icons/bs'
-import { PiNumberSquareSevenThin } from 'react-icons/pi'
+
 
 import { Col, Container, Row } from 'react-bootstrap';
 
@@ -18,6 +15,8 @@ import _ from 'lodash';
 
 
 import { fetch1Product } from '~/service/users/product';
+import { handleArray } from '~/service/tools';
+import Uytin from '~/components/users/uytin/Uytin';
 
 
 const DetailProduct = (props) => {
@@ -43,17 +42,25 @@ const DetailProduct = (props) => {
     useEffect(() => {
         setCurrentImg("https://localhost:7139/resources/" + product.img);
         if (product.listImage) {
-            var kq = product.listImage.split('|');
+
+            var kq = handleArray(product.listImage);
             let _ListImg = _.cloneDeep(listImg);
             _ListImg.img1 = "https://localhost:7139/resources/" + kq[0];
             _ListImg.img2 = "https://localhost:7139/resources/" + kq[1];
             _ListImg.img3 = "https://localhost:7139/resources/" + kq[2];
             _ListImg.img4 = "https://localhost:7139/resources/" + kq[3];
             setListImg(_ListImg);
-            console.log(listImg)
+            setListColor(handleArray(product.color))
+            setListSize(handleArray(product.size))
         }
 
     }, [product])
+    const [listColor, setListColor] = useState([])
+    const [listSize, setListSize] = useState([])
+    const [color, setColor] = useState(listColor[0])
+    const [size, setSize] = useState(listSize[0])
+    const [amount, setAmount] = useState(1)
+
     const [currentImg, setCurrentImg] = useState();
     const [currentImage, setCurrentImage] = useState(0);
     const [isViewerOpen, setIsViewerOpen] = useState(false);
@@ -63,6 +70,7 @@ const DetailProduct = (props) => {
     const images = [
         listImg.img1, listImg.img2, listImg.img3, listImg.img4
     ];
+
 
     const openImageViewer = useCallback((index) => {
         setCurrentImage(index);
@@ -127,36 +135,35 @@ const DetailProduct = (props) => {
                     <div className='select-ops border-bottom'>
                         <div className='color py-3 d-flex gap-3' >
                             <strong className='d-flex align-items-center'>Màu sắc :</strong>
-                            <select name="select-color" className='shadow-sm form-select rounded-1 border-0' id="color">
-                                <option value="xanhBlue">Xanh Blue</option>
-                                <option value="black">Đen</option>
-                                <option value="pink">Hồng</option>
-                                <option value="grey">Nâu</option>
+                            <select name="select-color" className='shadow-sm form-select rounded-1 border-0' value={color} onChange={(e) => setColor(e.target.value)} id="color">
+                                {
+                                    listColor && listColor.map((item, index) => (
+                                        <option key={item + index} value={item}>{item}</option>
+                                    ))
+                                }
                             </select>
                         </div>
                         <div className='size py-3 d-flex gap-3'>
                             <strong className='d-flex align-items-center'>Kích thước :</strong>
-                            <select className="form-select shadow-sm rounded-1 border-0" aria-label="Default select example">
-                                <option selected="">Size 12.5"/13.5</option>
-                                <option value={1}>Size 13.5"/14</option>
+                            <select className="form-select shadow-sm rounded-1 border-0" value={size} onChange={(e) => setSize(e.target.value)} >
+                                {
+                                    listSize && listSize.map((item, index) => (
+                                        <option key={item + index} value={item}>{item}</option>
+                                    ))
+                                }
                             </select>
                         </div>
 
                     </div>
                     <div className='quantity-Product border-bottom py-4 d-flex gap-3'>
                         <label className='d-flex align-items-center'>Số Lượng : </label>
-                        <input className='input-group rounded-1 border-1' type="number" id="quantity" name="quantity" min="1" max="999999" />
+                        <input className='input-group rounded-1 border-1' type="number" id="quantity" value={amount} onChange={e => setAmount(e.target.value)} name="quantity" min="1" max="999999" />
                         <button className='btn btn-outline-primary rounded-1'>Mua Ngay</button> <button className='btn btn-outline-success rounded-1' >Thêm vào giỏ hàng</button>
                     </div>
                 </Col>
             </Row>
 
-            <div style={{ background: "#f4f4f4" }} className=' py-4 row my-4' >
-                <div className='fs-14px col-3 text-center text-uppercase'><GiRibbonMedal size={35} className='me-1' color='#9f876b' />Hàng chính hãng</div>
-                <div className='fs-14px col-3 text-center text-uppercase'><LiaShippingFastSolid size={35} className='me-2' color='#9f876b' />Miễn phí vận chuyển</div>
-                <div className='fs-14px col-3 text-center text-uppercase'><BsShieldFillCheck size={35} className='me-2' color='#9f876b' />bảo hành 5 năm</div>
-                <div className='fs-14px col-3 text-center text-uppercase'><PiNumberSquareSevenThin size={35} className='me-2' color='#9f876b' />đổi hàng trong vòng 7 ngày</div>
-            </div>
+            <Uytin />
             {isViewerOpen && (
                 <ImageViewer
                     src={images}

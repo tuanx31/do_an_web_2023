@@ -1,5 +1,5 @@
-const handleArray = () => {
-
+const handleArray = (str) => {
+    return str.split("|")
 }
 
 export {

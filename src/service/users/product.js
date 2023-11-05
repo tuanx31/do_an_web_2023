@@ -9,6 +9,14 @@ const fetch1Product = async (id) => {
     });
 }
 
+const fetchCateGorys = async () => {
+    return await axios.get(`/api/Category`, {
+        headers: {
+            'accept': 'application/json'
+        }
+    });
+}
+
 export {
-    fetch1Product
+    fetch1Product, fetchCateGorys
 }

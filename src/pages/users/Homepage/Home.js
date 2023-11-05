@@ -2,7 +2,9 @@ import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import Slider from "~/components/users/carousel";
-import { test_products } from "~/assest/users/data/test";
+import Uytin from "~/components/users/uytin/Uytin";
+
+
 import renderCard from "~/service/users/renderproduct";
 
 
@@ -33,6 +35,10 @@ const Home = () => {
                             {renderCard(newProduct)}
                         </Row>
                     </div>
+                </div>
+                <div>
+                    <h2 className="text-center text-uppercase fw-bold">Vì sao nên chọn chúng tôi</h2>
+                    <Uytin />
                 </div>
             </Container>
 
