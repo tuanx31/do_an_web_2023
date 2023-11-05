@@ -32,7 +32,8 @@ const DetailProduct = (props) => {
     const [product, setProduct] = useState({})
     const fetchDetailProduct = async () => {
         const dProduct = await fetch1Product(idProduct);
-        await setProduct(dProduct);
+        setProduct(dProduct);
+        console.log(dProduct)
 
     }
 
@@ -111,11 +112,11 @@ const DetailProduct = (props) => {
                 </Col>
                 <Col >
                     <div className='title-product mb-3 text-uppercase'>{product.name}</div>
-                    <p className='category text-decoration-underline fs-14px mb-5'>Taikesen</p>
+                    <p className='category text-decoration-underline fs-14px mb-5'>{product.trademarks && product.trademarks.name}</p>
                     <div className='product-inf border-bottom'>
                         <div className='product-short-desc'>
                             <ul className='fs-14px'>
-                                <li><strong>Brand: </strong><span style={{ color: "#002ED0" }}>Taikesen - Model TS03</span></li>
+                                <li><strong>Brand: </strong><span style={{ color: "#002ED0" }}>{product.trademarks && product.trademarks.name}</span></li>
                                 <li><strong>Thiết kế: </strong><span >{product.design}</span></li>
                                 <li><strong>Vật liệu: </strong><span style={{ color: "red" }}>{product.consistent}</span></li>
                                 <li className='text-muted'>{product.desc}</li>
