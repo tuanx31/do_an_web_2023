@@ -44,9 +44,8 @@ const Footer = () => {
                                 <p><Link to={"introduce"} className='color-footer'>Giới thiệu</Link></p>
                                 <p><Link to={"chinh-sach-bao-hanh"} className='color-footer'>Chính sách bảo hành</Link></p>
                                 <p><Link to={"chinh-sach-bao-mat"} className='color-footer'>Chính sách bảo mật</Link></p>
-                                <p><Link to={""} className='color-footer'>Điều khoản dịch vụ</Link></p>
+                                <p><Link to={"dieu-khoan-dich-vu"} className='color-footer'>Điều khoản dịch vụ</Link></p>
                             </div>
-
 
                         </Col>
                         <Col lg={4} md={6} className='d-flex justify-content-lg-end'>

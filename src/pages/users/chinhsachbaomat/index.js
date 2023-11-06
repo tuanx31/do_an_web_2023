@@ -3,7 +3,7 @@ import './csbm.scss'
 
 const ChinhSachBaoMat = () => {
     return (<Container>
-        <div class="cs my-3">
+        <div class="cs">
             <div>
                 <h4 class="hah fw-bold my-2">CHÍNH SÁCH BẢO MẬT</h4>
             </div>

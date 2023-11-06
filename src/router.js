@@ -17,6 +17,7 @@ import DetailProduct from "~/pages/users/detailProduct"
 import Checkout from "~/pages/users/checkout"
 import ChinhSachBaoHanh from "~/pages/users/chinhsachbaohanh"
 import ChinhSachBaoMat from "~/pages/users/chinhsachbaomat"
+import DieuKhoanDichVu from "~/pages/users/dieukhoandichvu"
 
 
 
@@ -67,7 +68,10 @@ const renderUserRouter = () => {
         {
             path: ROUTERS.USER.CSBM,
             component: <ChinhSachBaoMat />
-        },
+        }, {
+            path: ROUTERS.USER.DKDV,
+            component: <DieuKhoanDichVu />
+        }
     ]
     return (
         <>
