@@ -50,6 +50,7 @@ const Product = () => {
 
     useEffect(() => {
         idCategory === "all" ? fetchAllProducts() : fetchProductByCategorys();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idCategory])
 
     return (
