@@ -46,8 +46,13 @@
 // }
 
 .product-short-desc {
-    ul li {
-        margin-bottom: 10px;
+    ul {
+        padding-left: 0px !important;
+
+        li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
     }
 }
 

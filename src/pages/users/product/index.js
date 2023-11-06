@@ -56,7 +56,9 @@ const Product = () => {
 
     return (
         <Container>
-            {listProduct[0] && render(listProduct, listProduct[0].categories.name)}
+
+            {idCategory === "all" ? render(listProduct, "Tất cả sản phẩm") :
+                listProduct[0] && render(listProduct, listProduct[0].categories.name)}
         </Container>
     )
 }
