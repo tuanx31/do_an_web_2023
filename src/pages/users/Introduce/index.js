@@ -1,7 +1,12 @@
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Introduce.scss"
+
+import { useEffect } from 'react'
 const Introduce = () => {
+    useEffect(() => {
+        document.title = "Giới thiệu";
+    }, [])
     return (
         <Container>
             <div className="breadcrumb-small my-2">

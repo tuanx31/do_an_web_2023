@@ -24,6 +24,7 @@ const Home = () => {
     }
 
     useEffect(() => {
+        document.title = "Tuna Shop";
         fetchNewProduct();
     }, [])
 
