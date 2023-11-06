@@ -7,7 +7,7 @@ const Account = () => {
             <div className="content container">
                 <h1>
                     <Link to={"/admin"}>go to admin</Link>
-                    <img src="https://localhost:7139/resources/4fbe731f-1591-46b2-9e52-8ddc8636e291.jpeg" alt="" />
+
                 </h1>
             </div>
         </>

@@ -20,6 +20,7 @@ import Uytin from '~/components/users/uytin/Uytin';
 
 
 const DetailProduct = (props) => {
+    const [title, setTitle] = useState("")
     const innitlistimg = {
         img1: "",
         img2: "",
@@ -53,7 +54,8 @@ const DetailProduct = (props) => {
             setListColor(handleArray(product.color))
             setListSize(handleArray(product.size))
         }
-
+        product && setTitle(product.name)
+        document.title = title;
     }, [product])
     const [listColor, setListColor] = useState([])
     const [listSize, setListSize] = useState([])

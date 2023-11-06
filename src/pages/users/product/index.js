@@ -50,6 +50,8 @@ const Product = () => {
 
     useEffect(() => {
         idCategory === "all" ? fetchAllProducts() : fetchProductByCategorys();
+        let title = "Sản phẩm";
+        document.title = title;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idCategory])
 

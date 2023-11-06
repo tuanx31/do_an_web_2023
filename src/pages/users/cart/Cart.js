@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { GoTrash } from "react-icons/go"
@@ -6,6 +7,9 @@ import img1 from "~/assest/users/img/product/baoda1.webp";
 import "./Cart.scss"
 
 const Cart = () => {
+    useEffect(() => {
+        document.title = "Giỏ Hàng"
+    }, [])
     return (
         <Container>
             <div className="my-2"><Link className="text-dark" to={"/"}>Trang chủ /</Link>Giỏ hàng</div>

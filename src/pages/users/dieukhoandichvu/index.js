@@ -1,6 +1,11 @@
 import { Container } from "react-bootstrap";
 
+import { useEffect } from "react"
+
 const DieuKhoanDichVu = () => {
+    useEffect(() => {
+        document.title = "Điều khoản dịch vụ";
+    }, []);
     return (<>
         <Container>
             <h4 className="my-2">

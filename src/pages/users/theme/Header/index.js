@@ -9,9 +9,11 @@ import { GrPrevious } from 'react-icons/gr'
 import { NavLink, Link } from 'react-router-dom';
 
 import { Category } from '~/assest/users/data/Category';
+import { useState } from "react";
 
 
 const Header = () => {
+    const [keyword, setkeyword] = useState("")
     const openSearch = () => {
         const form_search = document.getElementById("form-searchmb")
 

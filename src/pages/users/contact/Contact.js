@@ -1,4 +1,6 @@
 import "./Contact.scss"
+import { useEffect } from 'react'
+
 
 import { BsFillTelephoneFill } from "react-icons/bs"
 import { AiFillHome } from "react-icons/ai"
@@ -6,6 +8,9 @@ import { MdEmail } from "react-icons/md"
 import { Link } from "react-router-dom"
 
 const Contact = () => {
+  useEffect(() => {
+    document.title = "Liên Hệ"
+  }, []);
   return (
     <>
       <div className="container lienhe">
