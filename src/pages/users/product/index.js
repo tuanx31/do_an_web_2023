@@ -50,13 +50,10 @@ const Product = () => {
 
     useEffect(() => {
         idCategory === "all" ? fetchAllProducts() : fetchProductByCategorys();
-    }, [listProduct])
-
-
+    }, [idCategory])
 
     return (
         <Container>
-
             {idCategory === "all" ? render(listProduct, "Tất cả sản phẩm") :
                 listProduct[0] && render(listProduct, listProduct[0].categories.name)}
         </Container>
