@@ -17,10 +17,15 @@ const Home = () => {
 
     const [hotProduct, setHotProduct] = useState([]);
     const fetchNewProduct = async () => {
-        const newProducts = await fetchHotProduct();
-        if (newProducts) {
-            setHotProduct(newProducts);
+        try {
+            const newProducts = await fetchHotProduct();
+            if (newProducts) {
+                setHotProduct(newProducts);
+            }
+        } catch (error) {
+            console.log(error)
         }
+
     }
 
     useEffect(() => {
