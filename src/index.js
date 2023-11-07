@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import App from '~/App';
 import "./global/styles/style.scss"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
@@ -19,10 +18,8 @@ const store = reduxCustomize()
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  // <React.StrictMode>
   <Provider store={store}>
     <BrowserRouter>
-      {/* <App /> */}
       <RouteCustom />
       <ToastContainer
         position="top-right"
@@ -38,6 +35,5 @@ root.render(
       />
     </BrowserRouter>
   </Provider>
-  // </React.StrictMode>
 );
 
