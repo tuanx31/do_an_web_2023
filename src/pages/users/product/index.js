@@ -5,8 +5,9 @@ import "./product.scss"
 import renderCard from "~/service/users/renderproduct";
 import { useEffect } from "react";
 import { fetchAllProduct } from "~/service/admin/adminService";
-import { fetchProductByCategory } from "~/service/users/product";
+import { fetchProductByCategory, fetchHotProduct, fetchNewProduct } from "~/service/users/product";
 import { useState } from "react";
+
 
 
 //render page
@@ -34,6 +35,20 @@ const Product = () => {
     const { idCategory } = useParams();
     const [listProduct, setListProduct] = useState([]);
 
+
+
+    const fetchNewProducts = async () => {
+        try {
+            const data = await fetchNewProduct();
+            if (data) {
+                setListProduct(data);
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
     const fetchAllProducts = async () => {
         const data = await fetchAllProduct();
         if (data) {
@@ -41,15 +56,43 @@ const Product = () => {
         }
     }
 
-    const fetchProductByCategorys = async () => {
-        const data = await fetchProductByCategory(idCategory);
-        if (data) {
-            setListProduct(data)
+    const fetchHotProducts = async () => {
+        try {
+            const data = await fetchHotProduct();
+            console.log(data)
+            if (data) {
+                setListProduct(data)
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 
+    const fetchProductByCategorys = async () => {
+        try {
+            const data = await fetchProductByCategory(idCategory);
+            if (data) {
+                setListProduct(data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
     useEffect(() => {
-        idCategory === "all" ? fetchAllProducts() : fetchProductByCategorys();
+        if (idCategory === "all") {
+            fetchAllProducts();
+        }
+        else if (idCategory === "hotproduct") {
+            fetchHotProducts();
+        }
+        else if (idCategory === "newproduct") {
+            fetchNewProducts();
+        }
+        else {
+            fetchProductByCategorys();
+        }
         let title = "Sản phẩm";
         document.title = title;
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,7 +100,9 @@ const Product = () => {
 
     return (
         <Container>
-            {idCategory === "all" ? render(listProduct, "Tất cả sản phẩm") :
+            {/* {idCategory === "all" ? render(listProduct, "Tất cả sản phẩm") :
+                listProduct[0] && render(listProduct, listProduct[0].categories.name)} */}
+            {idCategory === "all" ? render(listProduct, "Tất cả sản phẩm") : idCategory === "hotproduct" ? render(listProduct, "Sản phẩm hot") : idCategory === "newproduct" ? render(listProduct, "Sản phẩm mới") :
                 listProduct[0] && render(listProduct, listProduct[0].categories.name)}
         </Container>
     )

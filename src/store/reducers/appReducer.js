@@ -1,7 +1,7 @@
 import actionType from "../actions/actionType";
 
 const initState = {
-    homeData: []
+    newProduct: []
 }
 
 const appReducer = (state = initState, action) => {

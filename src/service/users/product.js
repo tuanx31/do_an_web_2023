@@ -32,7 +32,13 @@ const fetchHotProduct = async () => {
         }
     });
 }
-
+const fetchNewProduct = async () => {
+    return await axios.get(`/api/Products/newproduct`, {
+        headers: {
+            'accept': 'application/json'
+        }
+    });
+}
 export {
-    fetch1Product, fetchCateGorys, fetchProductByCategory, fetchHotProduct
+    fetch1Product, fetchCateGorys, fetchProductByCategory, fetchHotProduct, fetchNewProduct
 }

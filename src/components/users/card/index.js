@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 
 const Cards = (props) => {
     const { imgurl, title, price, sale_of, id, idCategory } = props;
+
     const handleAddtoCart = () => {
+
         toast.success("Add to cart susess!");
     }
     return (
@@ -24,7 +26,6 @@ const Cards = (props) => {
                             <strong >{(sale_of ? price - price * sale_of / 100 : price).toLocaleString()}đ</strong> <span className="text-decoration-line-through float-end">{price.toLocaleString()}đ</span>
                         </Card.Text>
                     </Link>
-
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-around">
                     <button className="btn btn-outline-warning btn-add-card" onClick={() => handleAddtoCart()}><IoCartOutline size={20} /></button>
