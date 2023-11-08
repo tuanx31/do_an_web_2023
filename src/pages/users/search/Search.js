@@ -1,10 +1,13 @@
 import { Container, Row } from "react-bootstrap";
 import "./search.scss"
 import { AiOutlineSearch } from "react-icons/ai"
+import TextAnimation from "~/components/users/textAnimation";
+
 
 const Search = () => {
     return (
         <Container>
+            <TextAnimation />
             <Row>
                 <p> Trang chủ/ Tìm kiếm</p>
                 <div className=" timkiem">
@@ -23,7 +26,6 @@ const Search = () => {
                     <p className="d-flex  align-items-center justify-content-center  fs-4 bg-light " style={{ height: "40px" }}>CÓ 31 SẢN PHẨM VỚI TỪ KHÓA: MACBOOK</p>
                 </div>
             </Row>
-
 
         </Container>
     )
