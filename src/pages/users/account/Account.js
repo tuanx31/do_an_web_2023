@@ -5,10 +5,8 @@ import * as actions from '~/store/actions';
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from "react-bootstrap";
 
-
-
-
 const Account = () => {
+
     const dispatch = useDispatch()
 
     const handleclick = () => {

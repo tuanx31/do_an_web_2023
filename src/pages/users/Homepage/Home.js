@@ -1,19 +1,22 @@
 import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import Slider from "~/components/users/carousel";
+import SliderCarousel from "~/components/users/carousel";
 import Uytin from "~/components/users/uytin/Uytin";
 
 
-import renderCard from "~/service/users/renderproduct";
 import { fetchHotProduct } from "~/service/users/product";
-
 
 import "./style.scss"
 import { useEffect, useState } from "react";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import ProductCollection from "~/components/users/productCollection";
 
 const Home = () => {
+
+
 
     const [hotProduct, setHotProduct] = useState([]);
     const fetchNewProduct = async () => {
@@ -35,13 +38,13 @@ const Home = () => {
 
     return (
         <>
-            <Slider />
+            <SliderCarousel />
             <Container>
                 <div className="Sale my-4">
                     <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link className="text-black position-relative text-uppercase">Sản Phẩm Hot</Link></h2>
                     <div className="sale-products my-5">
                         <Row>
-                            {renderCard(hotProduct)}
+                            <ProductCollection data={hotProduct} />
                         </Row>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import { Carousel } from "react-bootstrap";
 import './style.scss'
 
-function Slider() {
+function SliderCarousel() {
     return (
         <Carousel interval={2500}>
             <Carousel.Item>
@@ -18,4 +18,4 @@ function Slider() {
     )
 }
 
-export default Slider;
+export default SliderCarousel;
