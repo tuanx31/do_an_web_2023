@@ -16,7 +16,7 @@ const Cart = () => {
     }
 
     useEffect(() => {
-        document.title = "Giỏ Hàng"
+        document.title = "Tuna Shop-Giỏ Hàng"
     }, [])
     return (
         <Container>
@@ -40,7 +40,7 @@ const Cart = () => {
                                 <th scope="row"><img src={"https://localhost:7139/resources/" + item.img} alt="hinh anh" style={{ width: "120px", height: "120px" }} /></th>
                                 <td className="text-muted fw-normal" >{item?.name}</td>
                                 <td className="fw-bold dongia">{item.price && (item.price - item.price * item.sale_of / 100).toLocaleString()}</td>
-                                <td><input type="number" min="0" style={{ width: "30px", height: "30px" }} value={item?.soluong} /></td>
+                                <td><input type="number" min="0" style={{ width: "60px", height: "30px" }} value={item?.soluong} /></td>
                                 <th>{item.price && ((item.price - item.price * item.sale_of / 100) * item.soluong).toLocaleString()}</th>
                                 <td><GoTrash onClick={() => handleDeleteProduct(item)} style={{ cursor: "pointer" }} color="red" /></td>
                             </tr>
@@ -54,7 +54,7 @@ const Cart = () => {
                     <p>Ghi chú cho đơn hàng</p>
                     <div className="form-floating">
                         <textarea id="floatingTextarea2" className="form-control text-muted" style={{ height: "100px" }} />
-                        <label for="floatingTextarea2" >Ghi chú cho đơn hàng. Ví dụ: Thời gian giao hàng nhanh hơn...</label>
+                        <label htmlFor="floatingTextarea2" >Ghi chú cho đơn hàng. Ví dụ: Thời gian giao hàng nhanh hơn...</label>
                     </div>
 
                 </div>
