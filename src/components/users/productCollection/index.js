@@ -45,9 +45,9 @@ const ProductCollection = (props) => {
     return (<>
         <Slider {...settings}>
             {data?.map((item, index) => (
-                <div>
+                <div key={item.id || index}>
                     <div className='p-3 pt-2 pb-5'>
-                        <Cards key={item.id || index} imgurl={"https://localhost:7139/resources/" + item.img} title={item?.name} price={item?.price} sale_of={item?.sale_of} id={item?.id} idCategory={item.id_category} />
+                        <Cards imgurl={"https://localhost:7139/resources/" + item.img} title={item?.name} price={item?.price} sale_of={item?.sale_of} id={item?.id} idCategory={item.id_category} fulldata={{ ...item, soluong: 1 }} />
                     </div>
                 </div>
             ))}

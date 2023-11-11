@@ -10,11 +10,11 @@ const Account = () => {
     const dispatch = useDispatch()
 
     const handleclick = () => {
-        dispatch(actions.addToCart())
+        // dispatch(actions.addToCart())
     }
 
-    const { data } = useSelector(state => state.cart)
-    console.log(data)
+    // const { data } = useSelector(state => state.cart)
+    // console.log(data)
     return (
         <>
             <div className="content container">

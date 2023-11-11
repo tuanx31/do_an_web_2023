@@ -3,6 +3,8 @@
     color: unset !important;
     border-radius: 50%;
 
+
+
     .slick-prev {
         left: 0px;
         z-index: 999;
@@ -15,5 +17,13 @@
 
     &:hover {
         background-color: black !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .slick-prev,
+    .slick-next {
+        display: none !important;
     }
 }

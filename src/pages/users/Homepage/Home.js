@@ -58,7 +58,7 @@ const Home = () => {
             <Container>
                 <div className="Sale my-4">
                     <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/hotproduct"} className="text-black position-relative text-uppercase">Sản Phẩm Hot</Link></h2>
-                    <div className="sale-products my-5 ">
+                    <div className="sale-products my-4 ">
                         <Row>
                             {hotProduct && <ProductCollection data={hotProduct} />}
                         </Row>
@@ -70,7 +70,7 @@ const Home = () => {
 
                 <div className="Sale my-4">
                     <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/newproduct"} className="text-black position-relative text-uppercase">Sản Phẩm Mới Nhất</Link></h2>
-                    <div className="sale-products my-5 ">
+                    <div className="sale-products my-4 ">
                         <Row>
                             {newProduct && <ProductCollection data={newProduct} />}
                         </Row>

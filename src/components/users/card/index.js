@@ -3,14 +3,16 @@ import { IoCartOutline } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 import "./card.scss"
 import { Link } from "react-router-dom";
+import * as actions from '~/store/actions';
 
-
+import { useDispatch } from 'react-redux'
 const Cards = (props) => {
-    const { imgurl, title, price, sale_of, id, idCategory } = props;
+    const { imgurl, title, price, sale_of, id, idCategory, fulldata } = props;
+    const dispatch = useDispatch()
 
     const handleAddtoCart = () => {
-
-        toast.success("Add to cart susess!");
+        dispatch(actions.addToCart(fulldata))
+        toast.success("Thêm vào giỏ hàng thành công!");
     }
     return (
         <>
@@ -29,7 +31,7 @@ const Cards = (props) => {
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-around">
                     <button className="btn btn-outline-warning btn-add-card" onClick={() => handleAddtoCart()}><IoCartOutline size={20} /></button>
-                    <button className="btn btn-outline-primary">Buy</button>
+                    <button className="btn btn-outline-primary ">Mua Ngay</button>
                 </Card.Footer>
             </Card>
         </>

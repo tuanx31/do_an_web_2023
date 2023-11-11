@@ -2,11 +2,12 @@ import { useEffect } from 'react'
 import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { GoTrash } from "react-icons/go"
-import img1 from "~/assest/users/img/product/baoda1.webp";
 
 import "./Cart.scss"
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
+    const { cartStore } = useSelector(state => state.cart)
     useEffect(() => {
         document.title = "Giỏ Hàng"
     }, [])
@@ -27,14 +28,17 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="text-center" style={{ verticalAlign: "middle" }}>
-                            <th scope="row"><img src={img1} alt="hinh anh" style={{ width: "120px", height: "120px" }} /></th>
-                            <td className="text-muted fw-normal" >Bao da chống sốc Macbook cao cấp Takesen TS03 </td>
-                            <td className="fw-bold dongia">320.000 </td>
-                            <td><input type="number" min="0" style={{ width: "30px", height: "30px" }} /></td>
-                            <th>320.000</th>
-                            <td><GoTrash style={{ cursor: "pointer" }} color="red" /></td>
-                        </tr>
+                        {cartStore && cartStore.length > 0 && cartStore?.map((item, index) => (
+                            <tr className="text-center" style={{ verticalAlign: "middle" }}>
+                                <th scope="row"><img src={"https://localhost:7139/resources/" + item.img} alt="hinh anh" style={{ width: "120px", height: "120px" }} /></th>
+                                <td className="text-muted fw-normal" >{item?.name}</td>
+                                <td className="fw-bold dongia">{item.price && (item.price - item.price * item.sale_of / 100).toLocaleString()}</td>
+                                <td><input type="number" min="0" style={{ width: "30px", height: "30px" }} value={item?.soluong} /></td>
+                                <th>{item.price && ((item.price - item.price * item.sale_of / 100) * item.soluong).toLocaleString()}</th>
+                                <td><GoTrash style={{ cursor: "pointer" }} color="red" /></td>
+                            </tr>
+                        ))
+                        }
                     </tbody>
                 </table>
             </Row>
