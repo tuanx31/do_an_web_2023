@@ -4,10 +4,17 @@ import { Link } from "react-router-dom";
 import { GoTrash } from "react-icons/go"
 
 import "./Cart.scss"
-import { useSelector } from 'react-redux';
+
+import * as actions from '~/store/actions';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Cart = () => {
     const { cartStore } = useSelector(state => state.cart)
+    const dispatch = useDispatch()
+    const handleDeleteProduct = (item) => {
+        dispatch(actions.deleteFromCart(item))
+    }
+
     useEffect(() => {
         document.title = "Giỏ Hàng"
     }, [])
@@ -35,7 +42,7 @@ const Cart = () => {
                                 <td className="fw-bold dongia">{item.price && (item.price - item.price * item.sale_of / 100).toLocaleString()}</td>
                                 <td><input type="number" min="0" style={{ width: "30px", height: "30px" }} value={item?.soluong} /></td>
                                 <th>{item.price && ((item.price - item.price * item.sale_of / 100) * item.soluong).toLocaleString()}</th>
-                                <td><GoTrash style={{ cursor: "pointer" }} color="red" /></td>
+                                <td><GoTrash onClick={() => handleDeleteProduct(item)} style={{ cursor: "pointer" }} color="red" /></td>
                             </tr>
                         ))
                         }

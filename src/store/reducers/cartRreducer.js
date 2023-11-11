@@ -58,6 +58,11 @@ const cartReducer = (state = initState, action) => {
                 }
                 return { cartStore: [...newCart] };
             }
+        case actionType.DETELE_FROM_CART:
+            let newCart = state.cartStore;
+            const objIndex = newCart.findIndex(obj => obj.id === action.payload.id);
+            newCart.splice(objIndex, 1);
+            return { cartStore: [...newCart] };
         default:
             return state
     }
