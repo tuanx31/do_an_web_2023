@@ -9,11 +9,17 @@ import { GrPrevious } from 'react-icons/gr'
 import { NavLink, Link } from 'react-router-dom';
 
 import { Category } from '~/assest/users/data/Category';
-import { useState } from "react";
+// import { useState } from "react";
 
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const Header = () => {
-    const [keyword, setkeyword] = useState("")
+    const { cartStore } = useSelector(state => state.cart)
+    let amount = 0
+    for (let index = 0; index < cartStore.length; index++) {
+        amount += cartStore[index].soluong
+    }
+    // const [keyword, setkeyword] = useState("")
     const openSearch = () => {
         const form_search = document.getElementById("form-searchmb")
 
@@ -118,7 +124,7 @@ const Header = () => {
                         </button>
                     </div>
                     <div className="position-relative">
-                        <NavLink to={"cart"} className='fs-14px cart'><IoCartOutline size={20} color="white" /><span className="rounded-circle position-absolute text-center text-white">1</span></NavLink>
+                        <NavLink to={"cart"} className='fs-14px cart'><IoCartOutline size={20} color="white" />{amount != 0 && <span className="d-flex align-items-center justify-content-center rounded-circle position-absolute text-center text-white">{amount}</span>}</NavLink>
                     </div>
                     <button
                         className="navbar-toggler border-0 shadow-none"

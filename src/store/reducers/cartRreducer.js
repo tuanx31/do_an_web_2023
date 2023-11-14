@@ -1,7 +1,7 @@
 import actionType from "../actions/actionType";
 
 const initState = {
-    cartStore: [],
+    cartStore: []
 }
 
 // const cartReducer = (state = initState, action) => {
@@ -40,7 +40,7 @@ const initState = {
 const cartReducer = (state = initState, action) => {
     switch (action.type) {
         case actionType.ADD_TO_CART:
-            console.log(action.payload)
+            // console.log(action.payload)
             const productInCart = state.cartStore.find(p => p.id === action.payload.id);
             if (!productInCart) {
                 return { cartStore: [...state.cartStore, action.payload] };
