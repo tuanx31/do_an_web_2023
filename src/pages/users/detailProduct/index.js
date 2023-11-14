@@ -19,8 +19,14 @@ import { handleArray } from '~/service/tools';
 import Uytin from '~/components/users/uytin/Uytin';
 
 
+import * as actions from '~/store/actions';
+
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify';
+
 const DetailProduct = (props) => {
-    const [title, setTitle] = useState("")
+
+    const [title, setTitle] = useState("Tuna Shop - Chi tiết sản phẩm")
     const innitlistimg = {
         img1: "",
         img2: "",
@@ -31,15 +37,21 @@ const DetailProduct = (props) => {
     const { idProduct } = useParams();
 
     const [product, setProduct] = useState({})
+
+    const dispatch = useDispatch()
+    const handleAddtoCart = (data) => {
+        dispatch(actions.addToCart(data))
+        toast.success("Thêm vào giỏ hàng thành công!");
+    }
+
     const fetchDetailProduct = async () => {
         const dProduct = await fetch1Product(idProduct);
         setProduct(dProduct);
-
     }
 
     useEffect(() => {
-        fetchDetailProduct();
-    }, [])
+        idProduct && fetchDetailProduct();
+    }, [idProduct])
     useEffect(() => {
         setCurrentImg("https://localhost:7139/resources/" + product.img);
         if (product.listImage) {
@@ -54,9 +66,9 @@ const DetailProduct = (props) => {
             setListColor(handleArray(product.color))
             setListSize(handleArray(product.size))
         }
-        product && setTitle(product.name)
+        product && product.name && setTitle(product.name)
         document.title = title;
-    }, [product])
+    }, [product, idProduct])
     const [listColor, setListColor] = useState([])
     const [listSize, setListSize] = useState([])
     const [color, setColor] = useState(listColor[0])
@@ -160,25 +172,28 @@ const DetailProduct = (props) => {
                     <div className='quantity-Product border-bottom py-4 d-flex gap-3'>
                         <label className='d-flex align-items-center'>Số Lượng : </label>
                         <input className='input-group rounded-1 border-1' type="number" id="quantity" value={amount} onChange={e => setAmount(e.target.value)} name="quantity" min="1" max="999999" />
-                        <button className='btn btn-outline-primary rounded-1'>Mua Ngay</button> <button className='btn btn-outline-success rounded-1' >Thêm vào giỏ hàng</button>
+                        <button className='btn btn-outline-primary rounded-1'>Mua Ngay</button>
+                        <button className='btn btn-outline-success rounded-1' onClick={() => handleAddtoCart({ ...product, soluong: Number(amount) })} >Thêm vào giỏ hàng</button>
                     </div>
                 </Col>
             </Row>
 
             <Uytin />
-            {isViewerOpen && (
-                <ImageViewer
-                    src={images}
-                    currentIndex={currentImage}
-                    disableScroll={false}
-                    closeOnClickOutside={true}
-                    onClose={closeImageViewer}
-                    backgroundStyle={{
-                        backgroundColor: "rgba(0,0,0,0.9)"
-                    }}
-                />
-            )}
-        </Container>
+            {
+                isViewerOpen && (
+                    <ImageViewer
+                        src={images}
+                        currentIndex={currentImage}
+                        disableScroll={false}
+                        closeOnClickOutside={true}
+                        onClose={closeImageViewer}
+                        backgroundStyle={{
+                            backgroundColor: "rgba(0,0,0,0.9)"
+                        }}
+                    />
+                )
+            }
+        </Container >
 
 
     )

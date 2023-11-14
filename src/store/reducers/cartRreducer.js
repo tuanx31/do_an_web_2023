@@ -40,10 +40,7 @@ const initState = {
 const cartReducer = (state = initState, action) => {
     switch (action.type) {
         case actionType.ADD_TO_CART:
-            // return {
-            //     ...state,
-            //     cartStore: [...state.cartStore, action.payload]
-            // }
+            console.log(action.payload)
             const productInCart = state.cartStore.find(p => p.id === action.payload.id);
             if (!productInCart) {
                 return { cartStore: [...state.cartStore, action.payload] };
@@ -54,7 +51,7 @@ const cartReducer = (state = initState, action) => {
                 if (newCart[objIndex].soluong === undefined) {
                     newCart[objIndex].soluong = 2;
                 } else {
-                    newCart[objIndex].soluong = newCart[objIndex].soluong + 1;
+                    newCart[objIndex].soluong = newCart[objIndex].soluong + action.payload.soluong;
                 }
                 return { cartStore: [...newCart] };
             }
