@@ -5,15 +5,15 @@ import "./textAnimation.scss"
 const TextAnimation = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [typeEffect] = useTypewriter({
-        words: ["Tuna shop- Uy tín tạo nên thương hiệu"],
+        words: ["UY TÍN TẠO NÊN THƯƠNG HIỆU", "70 NĂM KINH NGHIỆM ", "SỐ LƯỢNG, MẪU MÃ ĐA DẠNG"],
         loop: {},
-        typeSpeed: 100,
-        deleteSpeed: 30
+        typeSpeed: 110,
+        deleteSpeed: 70,
     })
 
     return (
         <div className="TextAnimation">
-            <h1>{typeEffect}</h1>
+            <h3> <span> TUNA SHOP-</span> <span>{typeEffect}</span></h3>
         </div>
     )
 }
