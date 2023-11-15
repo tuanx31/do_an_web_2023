@@ -4,7 +4,7 @@ const actionType = {
     UPDATE_CART: 'UPDATE_CART',
     FETCH_NEW_PRODUCT: 'FETCH_NEW_PRODUCT',
     FETCH_HOT_PRODUCT: 'FETCH_HOT_PRODUCT',
-
+    ABATE: 'ABATE'
 }
 
 export default actionType;

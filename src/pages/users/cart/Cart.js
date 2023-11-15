@@ -53,18 +53,12 @@ const Cart = () => {
 
                 </div>
                 <div>
-                    <div className="float-end text-end">
+                    <div className="float-end text-end d-flex align-items-end gap-1 flex-column mb-5">
                         <p ><span>Tổng tiền</span> <span className="fw-bold">{parseInt(total).toLocaleString()} Đ</span></p>
                         <i>Vận chuyển</i>
-                        <div className="d-flex gap-2 mt-2 mb-4 ">
-                            <button className="btn btn-primary">Cập nhật</button>
-                            <button className="btn btn-primary"><Link to={"/checkout"} className="text-white">Thanh toán</Link></button>
-                        </div>
+                        <button className="btn btn-primary float-end w-75"><Link to={"/checkout"} className="text-white">Thanh toán</Link></button>
                     </div>
-
                 </div>
-
-
             </Row>
 
         </Container>

@@ -154,7 +154,7 @@ const DetailProduct = (props) => {
                         </p>
                     </div>
                     <div className='select-ops border-bottom'>
-                        <div className='color py-3 d-flex gap-3' >
+                        {listColor && listColor.length > 0 && <div className='color py-3 d-flex gap-3' >
                             <strong className='d-flex align-items-center'>Màu sắc :</strong>
                             <select name="select-color" className='shadow-sm form-select rounded-1 border-0' value={color} onChange={(e) => setColor(e.target.value)} id="color">
                                 {
@@ -163,8 +163,8 @@ const DetailProduct = (props) => {
                                     ))
                                 }
                             </select>
-                        </div>
-                        <div className='size py-3 d-flex gap-3'>
+                        </div>}
+                        {listSize && listSize.length > 0 && <div className='size py-3 d-flex gap-3'>
                             <strong className='d-flex align-items-center'>Kích thước :</strong>
                             <select className="form-select shadow-sm rounded-1 border-0" value={size} onChange={(e) => setSize(e.target.value)} >
                                 {
@@ -173,7 +173,7 @@ const DetailProduct = (props) => {
                                     ))
                                 }
                             </select>
-                        </div>
+                        </div>}
                     </div>
                     <div className='quantity-Product border-bottom py-4 d-flex gap-3'>
                         <label className='d-flex align-items-center'>Số Lượng : </label>
