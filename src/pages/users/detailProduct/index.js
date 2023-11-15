@@ -7,7 +7,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useCallback } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import ImageViewer from 'react-simple-image-viewer';
 
@@ -25,6 +25,7 @@ import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify';
 
 const DetailProduct = (props) => {
+    const navigate = useNavigate()
     const innitlistimg = {
         img1: "",
         img2: "",
@@ -41,7 +42,10 @@ const DetailProduct = (props) => {
         dispatch(actions.addToCart(data))
         toast.success("Thêm vào giỏ hàng thành công!");
     }
-
+    const handleCheckout = (data) => {
+        dispatch(actions.Abate(data))
+        navigate('/checkout')
+    }
     const fetchDetailProduct = async () => {
         const dProduct = await fetch1Product(idProduct);
         setProduct(dProduct);
@@ -94,14 +98,18 @@ const DetailProduct = (props) => {
         setCurrentImage(index);
         setIsViewerOpen(true);
     }, []);
+
     const closeImageViewer = () => {
         setCurrentImage(0);
         setIsViewerOpen(false);
     };
+
     const handleClickImgs = (img, index) => {
         setCurrentImg(img);
         setPhotoIndex(index);
     }
+
+
     useEffect(() => {
         listColor.length > 0 && setColor(listColor[0])
         listSize.length > 0 && setSize(listSize[0])
@@ -178,7 +186,7 @@ const DetailProduct = (props) => {
                     <div className='quantity-Product border-bottom py-4 d-flex gap-3'>
                         <label className='d-flex align-items-center'>Số Lượng : </label>
                         <input className='input-group rounded-1 border-1' type="number" id="quantity" value={amount} onChange={e => { setAmount(e.target.value) }} name="quantity" min="1" max="999999" />
-                        <button className='btn btn-outline-primary rounded-1'>Mua Ngay</button>
+                        <button className='btn btn-outline-primary rounded-1' onClick={() => handleCheckout({ ...product, soluong: Number(amount), colorCart: color, sizeCart: size })}  >Mua Ngay</button>
                         <button className='btn btn-outline-success rounded-1' onClick={() => handleAddtoCart({ ...product, soluong: Number(amount), colorCart: color, sizeCart: size })} >Thêm vào giỏ hàng</button>
                     </div>
                 </Col>

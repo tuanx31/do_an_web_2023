@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 import "./Cart.scss"
@@ -9,8 +9,15 @@ import "./Cart.scss"
 import { useSelector } from 'react-redux';
 import CartItemProduct from '~/components/users/CartItemProduct';
 
+import { useDispatch } from 'react-redux'
+import * as actions from '~/store/actions';
+
+
 
 const Cart = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+
     const { cartStore } = useSelector(state => state.cart)
     let total = 0
     cartStore.forEach(item => {
@@ -19,6 +26,12 @@ const Cart = () => {
     useEffect(() => {
         document.title = "Tuna Shop-Giỏ Hàng"
     }, [])
+
+    const handleCheckout = (data) => {
+        dispatch(actions.Abate(data))
+        navigate("/checkout");
+    }
+
     return (
         <Container>
             <div className="my-2"><Link className="text-dark" to={"/"}>Trang chủ /</Link>Giỏ hàng</div>
@@ -56,7 +69,7 @@ const Cart = () => {
                     <div className="float-end text-end d-flex align-items-end gap-1 flex-column mb-5">
                         <p ><span>Tổng tiền</span> <span className="fw-bold">{parseInt(total).toLocaleString()} Đ</span></p>
                         <i>Vận chuyển</i>
-                        <button className="btn btn-primary float-end w-75"><Link to={"/checkout"} className="text-white">Thanh toán</Link></button>
+                        <button className="btn btn-primary float-end w-75" onClick={() => handleCheckout(cartStore)}>Thanh toán</button>
                     </div>
                 </div>
             </Row>

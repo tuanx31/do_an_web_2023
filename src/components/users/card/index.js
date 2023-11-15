@@ -2,19 +2,28 @@ import { Card } from "react-bootstrap"
 import { IoCartOutline } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 import "./card.scss"
-import { Link } from "react-router-dom";
-import * as actions from '~/store/actions';
+import { Link, useNavigate } from "react-router-dom";
 
+import * as actions from '~/store/actions';
 import { useDispatch } from 'react-redux'
 import { handleArray } from "~/service/tools";
 const Cards = (props) => {
+    const navigate = useNavigate();
     const { imgurl, title, price, sale_of, id, idCategory, fulldata } = props;
     const dispatch = useDispatch()
     let color = handleArray(fulldata.color)[0] || ""
     let sizeCart = handleArray(fulldata.size)[0] || ""
+
+    let data = { ...fulldata, colorCart: color, sizeCart }
+
     const handleAddtoCart = () => {
-        dispatch(actions.addToCart({ ...fulldata, colorCart: color, sizeCart }))
+        dispatch(actions.addToCart(data))
         toast.success("Thêm vào giỏ hàng thành công!");
+    }
+
+    const handleCheckout = () => {
+        dispatch(actions.Abate(data))
+        navigate("/checkout");
     }
     return (
         <>
@@ -33,7 +42,7 @@ const Cards = (props) => {
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-around">
                     <button className="btn btn-outline-warning btn-add-card" onClick={() => handleAddtoCart()}><IoCartOutline size={20} /></button>
-                    <button className="btn btn-outline-primary ">Mua Ngay</button>
+                    <button className="btn btn-outline-primary " onClick={handleCheckout}>Mua</button>
                 </Card.Footer>
             </Card>
         </>

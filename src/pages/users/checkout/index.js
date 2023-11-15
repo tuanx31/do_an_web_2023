@@ -2,18 +2,15 @@ import { Col, Container, Row } from 'react-bootstrap';
 import './checkout.scss'
 import { Link } from 'react-router-dom';
 // import logo from "~/assest/logo/logo1.png"
-import img1 from "~/assest/users/img/product/baoda1.webp";
+
 
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 
-
-
 const Checkout = () => {
-    const { cartStore } = useSelector(state => state.cart)
-
+    const { oderStore } = useSelector(state => state.checkout)
     let total = 0
-    cartStore.forEach(item => {
+    oderStore.forEach(item => {
         total += (item.price - item.price * item.sale_of / 100) * item.soluong
     });
     return (
@@ -22,20 +19,19 @@ const Checkout = () => {
                 <img src={logo} alt='' style={{ width: "150px", height: "100px" }} />
             </div> */}
             <div className="mt-3"><Link className='text-black' >Giỏ hàng /</Link>Thanh Toán</div>
-            <Row className='gap-5'>
-                <Col sm={6} className='py-4 col-12'>
-
-                    <h4 className='fw-bold my-2 text-uppercase'>Thông Tin Thanh Toán</h4>
-
-                    {cartStore.map((item, index) => (
-                        <div className='d-flex gap-3 justify-content-between border-bottom py-2'>
-
+            <h4 className='fw-bold mt-4 text-uppercase'>Thông Tin Thanh Toán</h4>
+            <Row className='gap-5 flex-row-reverse'>
+                <Col sm={6} className='col-12'>
+                    {oderStore.map((item, index) => (
+                        <div key={index} className='d-flex gap-3 justify-content-between border-bottom py-2'>
                             <img src={"https://localhost:7139/resources/" + item.img} width={65} height={65} alt='hinhN' />
                             <div >
-                                <div className='productTitle'>{item.name}</div>
+                                <div className='productTitle'>{item.name} X {item.soluong}</div>
+                                <div>{item?.colorCart} {item?.sizeCart}</div>
                                 <div className='text-muted'>{item.trademarks && item.trademarks.name}</div>
+
                             </div>
-                            <div className='d-flex align-items-center'>{item.price && ((item.price - item.price * item.sale_of / 100) * item.soluong).toLocaleString()} đ</div>
+                            <div className='d-flex align-items-center' style={{ whiteSpace: "nowrap" }}>{item.price && ((item.price - item.price * item.sale_of / 100) * item.soluong).toLocaleString()} đ</div>
                         </div>
                     ))}
 
@@ -49,7 +45,7 @@ const Checkout = () => {
                     </div>
                     <div className='d-flex justify-content-between mt-2 h5'><span>Tổng tiền</span><span>{parseInt(total).toLocaleString()} Đ</span></div>
                 </Col>
-                <Col className='py-4'>
+                <Col className=''>
                     <p><span>Bạn đã có tài khoản? </span> <span style={{ cursor: "pointer" }} className='dangnhap'>Đăng nhập</span></p>
                     <div>
                         <div className='form-floating my-3 ' >
@@ -71,9 +67,9 @@ const Checkout = () => {
                             <input type='name' className='form-control' id='floatingInput' placeholder='Ho Va Ten' />
                             <label for="floatingInput">Địa chỉ</label>
                         </div>
-                        <div>
+                        <div className='my-4'>
                             <Link to={"/cart"}>Giỏ hàng</Link>
-                            <button className='btn btn-primary rounded-0 float-end'>Đặt hàng</button>
+                            <button className='btn btn-primary float-end'>Đặt hàng</button>
                         </div>
                     </div>
                 </Col>
