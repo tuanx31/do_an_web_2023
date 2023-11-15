@@ -1,20 +1,17 @@
 import { useEffect } from 'react'
 import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { GoTrash } from "react-icons/go"
+
 
 import "./Cart.scss"
 
-import * as actions from '~/store/actions';
-import { useSelector, useDispatch } from 'react-redux';
+
+import { useSelector } from 'react-redux';
+import CartItemProduct from '~/components/users/CartItemProduct';
 
 
 const Cart = () => {
     const { cartStore } = useSelector(state => state.cart)
-    const dispatch = useDispatch()
-    const handleDeleteProduct = (item) => {
-        dispatch(actions.deleteFromCart(item))
-    }
     let total = 0
     cartStore.forEach(item => {
         total += (item.price - item.price * item.sale_of / 100) * item.soluong
@@ -40,14 +37,7 @@ const Cart = () => {
                     </thead>
                     <tbody>
                         {cartStore && cartStore.length > 0 && cartStore?.map((item, index) => (
-                            <tr className="text-center" style={{ verticalAlign: "middle" }}>
-                                <th scope="row"><Link to={`/products/${item.id_category}/detail/${item.id}`}><img src={"https://localhost:7139/resources/" + item.img} alt="hinh anh" style={{ width: "120px", height: "120px" }} /></Link></th>
-                                <td className="text-muted fw-normal" ><Link to={`/products/${item.id_category}/detail/${item.id}`} className='text-black'>{item?.name}</Link></td>
-                                <td className="fw-bold dongia">{item.price && (item.price - item.price * item.sale_of / 100).toLocaleString()}</td>
-                                <td><input type="number" min="0" style={{ width: "60px", height: "30px" }} value={item?.soluong} onChange={e => item.soluong = e.target.value} /></td>
-                                <th>{item.price && ((item.price - item.price * item.sale_of / 100) * item.soluong).toLocaleString()}</th>
-                                <td><GoTrash onClick={() => handleDeleteProduct(item)} style={{ cursor: "pointer" }} color="red" /></td>
-                            </tr>
+                            <CartItemProduct key={index} item={item} />
                         ))
                         }
                     </tbody>
@@ -58,7 +48,7 @@ const Cart = () => {
                     <p>Ghi chú cho đơn hàng</p>
                     <div className="form-floating">
                         <textarea id="floatingTextarea2" className="form-control text-muted" style={{ height: "100px" }} />
-                        <label htmlFor="floatingTextarea2" >Ghi chú cho đơn hàng. Ví dụ: Thời gian giao hàng nhanh hơn...</label>
+                        <label htmlFor="floatingTextarea2" >Ghi chú cho đơn hàng.</label>
                     </div>
 
                 </div>

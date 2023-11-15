@@ -1,20 +1,26 @@
 @media screen and (max-width : 425px) {
-    thead{
+    thead {
         display: none;
     }
-    tbody{
-        td{
+
+    tbody {
+        td {
             border-bottom-width: inherit !important;
         }
-        tr{
+
+        tr {
             display: flex;
             flex-direction: column;
-            .dongia{
+
+            .dongia {
                 display: none;
             }
-            
-            
-
         }
+    }
+}
+
+@media screen and (max-width : 1024px) {
+    td {
+        max-width: 200px;
     }
 }

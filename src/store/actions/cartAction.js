@@ -15,4 +15,10 @@ const deleteFromCart = (product) => {
     };
 }
 
-export { addToCart, deleteFromCart } 
+const updateCart = (product) => {
+    return {
+        type: actionType.UPDATE_CART,
+        payload: product
+    }
+}
+export { addToCart, deleteFromCart, updateCart } 

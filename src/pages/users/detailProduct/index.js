@@ -171,7 +171,7 @@ const DetailProduct = (props) => {
                     </div>
                     <div className='quantity-Product border-bottom py-4 d-flex gap-3'>
                         <label className='d-flex align-items-center'>Số Lượng : </label>
-                        <input className='input-group rounded-1 border-1' type="number" id="quantity" value={amount} onChange={e => setAmount(e.target.value)} name="quantity" min="1" max="999999" />
+                        <input className='input-group rounded-1 border-1' type="number" id="quantity" value={amount} onChange={e => { setAmount(e.target.value) }} name="quantity" min="1" max="999999" />
                         <button className='btn btn-outline-primary rounded-1'>Mua Ngay</button>
                         <button className='btn btn-outline-success rounded-1' onClick={() => handleAddtoCart({ ...product, soluong: Number(amount) })} >Thêm vào giỏ hàng</button>
                     </div>

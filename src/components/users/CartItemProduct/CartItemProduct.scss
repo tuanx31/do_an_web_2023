@@ -1,0 +1,13 @@
+@media screen and (max-width : 425px) {
+    .desktopItemCart {
+        display: none;
+    }
+
+    .mobileItemCart {
+        display: flex !important;
+    }
+}
+
+input {
+    outline: none;
+}
