@@ -66,12 +66,11 @@ const DetailProduct = (props) => {
             _ListImg.img4 = "https://localhost:7139/resources/" + kq[3];
             setListImg(_ListImg);
         }
-        if (product.color && product.size) {
-            setListColor(handleArray(product.color))
-            setListSize(handleArray(product.size))
-        }
-    }, [product, idProduct])
 
+        product.color && setListColor(handleArray(product.color))
+        product.size && setListSize(handleArray(product.size))
+
+    }, [product, idProduct])
     useEffect(() => {
         if (product.name) {
             document.title = product.name || "Chi Tiết sản phẩm";
@@ -166,7 +165,7 @@ const DetailProduct = (props) => {
                             <strong className='d-flex align-items-center'>Màu sắc :</strong>
                             <select name="select-color" className='shadow-sm form-select rounded-1 border-0' value={color} onChange={(e) => setColor(e.target.value)} id="color">
                                 {
-                                    listColor && listColor.map((item, index) => (
+                                    listColor.length > 0 && listColor.map((item, index) => (
                                         <option key={item + index} value={item}>{item}</option>
                                     ))
                                 }
@@ -176,7 +175,7 @@ const DetailProduct = (props) => {
                             <strong className='d-flex align-items-center'>Kích thước :</strong>
                             <select className="form-select shadow-sm rounded-1 border-0" value={size} onChange={(e) => setSize(e.target.value)} >
                                 {
-                                    listSize && listSize.map((item, index) => (
+                                    listSize.length > 0 && listSize.map((item, index) => (
                                         <option key={item + index} value={item}>{item}</option>
                                     ))
                                 }
