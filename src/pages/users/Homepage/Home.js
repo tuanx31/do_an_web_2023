@@ -14,6 +14,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import ProductCollection from "~/components/users/productCollection";
+import TextAnimation from "~/components/users/textAnimation";
+
+
 
 
 const Home = () => {
@@ -55,6 +58,7 @@ const Home = () => {
     return (
         <>
             <SliderCarousel />
+            <TextAnimation />
             <Container>
                 <div className="Sale my-4">
                     <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/hotproduct"} className="text-black position-relative text-uppercase">Sản Phẩm Hot</Link></h2>
