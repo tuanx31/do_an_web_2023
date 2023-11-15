@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 import * as actions from '~/store/actions';
 
 import { useDispatch } from 'react-redux'
+import { handleArray } from "~/service/tools";
 const Cards = (props) => {
     const { imgurl, title, price, sale_of, id, idCategory, fulldata } = props;
     const dispatch = useDispatch()
-
+    let color = handleArray(fulldata.color)[0] || ""
+    let sizeCart = handleArray(fulldata.size)[0] || ""
     const handleAddtoCart = () => {
-        dispatch(actions.addToCart(fulldata))
+        dispatch(actions.addToCart({ ...fulldata, colorCart: color, sizeCart }))
         toast.success("Thêm vào giỏ hàng thành công!");
     }
     return (

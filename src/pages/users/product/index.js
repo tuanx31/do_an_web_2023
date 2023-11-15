@@ -59,7 +59,6 @@ const Product = () => {
     const fetchHotProducts = async () => {
         try {
             const data = await fetchHotProduct();
-            console.log(data)
             if (data) {
                 setListProduct(data)
             }

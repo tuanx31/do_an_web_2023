@@ -25,8 +25,6 @@ import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify';
 
 const DetailProduct = (props) => {
-
-    const [title, setTitle] = useState("Tuna Shop - Chi tiết sản phẩm")
     const innitlistimg = {
         img1: "",
         img2: "",
@@ -63,16 +61,22 @@ const DetailProduct = (props) => {
             _ListImg.img3 = "https://localhost:7139/resources/" + kq[2];
             _ListImg.img4 = "https://localhost:7139/resources/" + kq[3];
             setListImg(_ListImg);
+        }
+        if (product.color && product.size) {
             setListColor(handleArray(product.color))
             setListSize(handleArray(product.size))
         }
-        product && product.name && setTitle(product.name)
-        document.title = title;
     }, [product, idProduct])
+
+    useEffect(() => {
+        if (product.name) {
+            document.title = product.name || "Chi Tiết sản phẩm";
+        }
+    }, [product.name]);
     const [listColor, setListColor] = useState([])
     const [listSize, setListSize] = useState([])
-    const [color, setColor] = useState(listColor[0])
-    const [size, setSize] = useState(listSize[0])
+    const [color, setColor] = useState("")
+    const [size, setSize] = useState("")
     const [amount, setAmount] = useState(1)
 
     const [currentImg, setCurrentImg] = useState();
@@ -98,7 +102,10 @@ const DetailProduct = (props) => {
         setCurrentImg(img);
         setPhotoIndex(index);
     }
-
+    useEffect(() => {
+        listColor.length > 0 && setColor(listColor[0])
+        listSize.length > 0 && setSize(listSize[0])
+    }, [listColor, listSize])
     return (
         <Container>
             <div className='routed fs-14px my-3'><Link to="" className='text-black'>Trang chủ</Link> / {product.name}</div>
@@ -167,13 +174,12 @@ const DetailProduct = (props) => {
                                 }
                             </select>
                         </div>
-
                     </div>
                     <div className='quantity-Product border-bottom py-4 d-flex gap-3'>
                         <label className='d-flex align-items-center'>Số Lượng : </label>
                         <input className='input-group rounded-1 border-1' type="number" id="quantity" value={amount} onChange={e => { setAmount(e.target.value) }} name="quantity" min="1" max="999999" />
                         <button className='btn btn-outline-primary rounded-1'>Mua Ngay</button>
-                        <button className='btn btn-outline-success rounded-1' onClick={() => handleAddtoCart({ ...product, soluong: Number(amount) })} >Thêm vào giỏ hàng</button>
+                        <button className='btn btn-outline-success rounded-1' onClick={() => handleAddtoCart({ ...product, soluong: Number(amount), colorCart: color, sizeCart: size })} >Thêm vào giỏ hàng</button>
                     </div>
                 </Col>
             </Row>
