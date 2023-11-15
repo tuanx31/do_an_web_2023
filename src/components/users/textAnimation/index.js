@@ -1,7 +1,7 @@
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { useTypewriter } from "react-simple-typewriter";
 import "./textAnimation.scss"
 
-
+import bgimg from "~/assest/users/img/home/home1.png"
 const TextAnimation = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [typeEffect] = useTypewriter({
@@ -12,7 +12,7 @@ const TextAnimation = () => {
     })
 
     return (
-        <div className="TextAnimation">
+        <div style={{ backgroundImage: `url(${bgimg})` }} className="TextAnimation">
             <h3> <span> TUNA SHOP-</span> <span>{typeEffect}</span></h3>
         </div>
     )
