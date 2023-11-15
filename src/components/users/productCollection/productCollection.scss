@@ -1,13 +1,15 @@
 .slick-arrow {
-    background-color: #040404 !important;
+    background-color: #c7c7c7 !important;
     color: unset !important;
     border-radius: 50%;
-
+    width: 40px !important;
+    height: 40px !important;
 
 
     .slick-prev {
         left: 0px;
         z-index: 999;
+
     }
 
     .slick-next {

@@ -35,7 +35,7 @@ const Header = () => {
         <>
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg bg-body-tertiary ">
                 <div className="container ">
-                    <Link className="navbar-brand fw-bold fs-3" to={""}>
+                    <Link className="navbar-brand fw-bold fs-3 " to={""}>
                         Tuna Shop
                     </Link>
                     <div
@@ -117,25 +117,28 @@ const Header = () => {
                             <AiOutlineSearch size={20} />
                         </button>
                     </form>
-                    <div className="div-search d-flex d-sm-none">
-                        <div className="space"></div>
-                        <button className="btn shadow-none border-0 rounded-0 " onClick={openSearch} >
-                            <AiOutlineSearch size={20} color="white" />
+                    <div className="d-flex align-items-center">
+                        <div className="div-search d-flex d-sm-none">
+                            {/* <div className="space"></div> */}
+                            <button className="btn shadow-none border-0 rounded-0 " onClick={openSearch} >
+                                <AiOutlineSearch size={20} color="white" />
+                            </button>
+                        </div>
+                        <div className="position-relative">
+                            <NavLink to={"cart"} className='fs-14px cart'><IoCartOutline size={23} color="white" />{amount != 0 && <span className="d-flex align-items-center justify-content-center rounded-circle position-absolute text-center text-white">{amount}</span>}</NavLink>
+                        </div>
+                        <button
+                            className="navbar-toggler border-0 shadow-none"
+                            type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar"
+                            aria-controls="offcanvasNavbar"
+                            aria-label="Toggle navigation"
+                        >
+                            <span className="navbar-toggler-icon" />
                         </button>
                     </div>
-                    <div className="position-relative">
-                        <NavLink to={"cart"} className='fs-14px cart'><IoCartOutline size={20} color="white" />{amount != 0 && <span className="d-flex align-items-center justify-content-center rounded-circle position-absolute text-center text-white">{amount}</span>}</NavLink>
-                    </div>
-                    <button
-                        className="navbar-toggler border-0 shadow-none"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar"
-                        aria-controls="offcanvasNavbar"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon" />
-                    </button>
+
                 </div>
             </nav>
         </>

@@ -52,6 +52,7 @@ const ProductCollection = (props) => {
                 </div>
             ))}
         </Slider>
+
     </>);
 }
 
