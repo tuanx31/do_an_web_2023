@@ -16,14 +16,14 @@ const Login = () => {
                         <span className="icon">
                             <ion-icon name="mail-outline" />
                         </span>
-                        <input type="text" required="" />
+                        <input type="text" required />
                         <label htmlFor="">Email</label>
                     </div>
                     <div className="input-box">
                         <span className="icon">
                             <ion-icon name="lock-closed-outline" />
                         </span>
-                        <input type="password" required="" />
+                        <input type="password" required />
                         <label htmlFor="">Mật khẩu</label>
                     </div>
                     <div className="remember-forgot">

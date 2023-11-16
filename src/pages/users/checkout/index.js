@@ -14,7 +14,7 @@ const Checkout = () => {
         total += (item.price - item.price * item.sale_of / 100) * item.soluong
     });
     return (
-        <Container>
+        <Container className='mb-5'>
             {/* <div>
                 <img src={logo} alt='' style={{ width: "150px", height: "100px" }} />
             </div> */}

@@ -40,15 +40,18 @@
 
 }
 
-.input-box label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    font-size: 1em;
-    font-weight: 50px;
-    pointer-events: none;
-    transition: .5s;
+.input-box {
+    label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        font-size: 1em;
+        font-weight: 50px;
+        pointer-events: none;
+        transition: .5s;
+    }
+
 }
 
 .input-box input:focus~label,
