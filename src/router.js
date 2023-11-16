@@ -18,6 +18,8 @@ import Checkout from "~/pages/users/checkout"
 import ChinhSachBaoHanh from "~/pages/users/chinhsachbaohanh"
 import ChinhSachBaoMat from "~/pages/users/chinhsachbaomat"
 import DieuKhoanDichVu from "~/pages/users/dieukhoandichvu"
+import Login from "~/pages/users/login/Login"
+import Register from "~/pages/users/register/Register"
 
 
 
@@ -68,9 +70,18 @@ const renderUserRouter = () => {
         {
             path: ROUTERS.USER.CSBM,
             component: <ChinhSachBaoMat />
-        }, {
+        },
+        {
             path: ROUTERS.USER.DKDV,
             component: <DieuKhoanDichVu />
+        },
+        {
+            path: ROUTERS.USER.LOGIN,
+            component: <Login />
+        },
+        {
+            path: ROUTERS.USER.REGISTER,
+            component: <Register />
         }
     ]
     return (

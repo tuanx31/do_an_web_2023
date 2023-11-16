@@ -65,7 +65,7 @@ const Contact = () => {
             <button className="btn btn-secondary w-25 rounded-0">Gửi</button>
           </div>
           <div className="col-lg-4 col-12 mt-3">
-            <iframe title="ban do"
+            <iframe title="ban do" className="w-100"
               src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7560.45929607037!2d105.703639!3d18.653688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1700057328563!5m2!1svi!2s"
               width={600}
               height={450}

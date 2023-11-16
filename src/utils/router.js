@@ -16,6 +16,8 @@ export const ROUTERS = {
         CHECKOUT: "checkout",
         CSBM: "chinh-sach-bao-mat",
         CSBH: "chinh-sach-bao-hanh",
-        DKDV: "dieu-khoan-dich-vu"
+        DKDV: "dieu-khoan-dich-vu",
+        LOGIN: 'login',
+        REGISTER: 'register'
     }
 }

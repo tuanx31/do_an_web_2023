@@ -84,8 +84,15 @@ const Header = () => {
                                 <li className="nav-item">
                                     <NavLink to={"introduce"} className='nav-link text-uppercase'>Giới Thiệu</NavLink>
                                 </li>
-                                <li className="nav-item">
-                                    <NavLink to={"account"} className='nav-link text-uppercase'>Tài khoản</NavLink>
+                                <li className="nav-item dropdown">
+                                    <NavLink to={"account"} className='nav-link dropdown-toggle text-uppercase' data-bs-toggle="dropdown"
+                                        role="button"
+                                        aria-expanded="false"  >Tài khoản</NavLink>
+                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><Link className="dropdown-item fs-14px" to={`/login`}>Đăng Nhập</Link></li>
+                                        <li><Link className="dropdown-item fs-14px" to={`/register`}>Đăng Ký</Link></li>
+
+                                    </ul>
                                 </li>
 
                             </ul>
