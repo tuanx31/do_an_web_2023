@@ -69,7 +69,7 @@ const Cart = () => {
                     <div className="float-end text-end d-flex align-items-end gap-1 flex-column mb-5">
                         <p ><span>Tổng tiền</span> <span className="fw-bold">{parseInt(total).toLocaleString()} Đ</span></p>
                         <i>Vận chuyển</i>
-                        <button className="btn btn-primary float-end w-75" onClick={() => handleCheckout(cartStore)}>Thanh toán</button>
+                        <button className="btn btn-primary" onClick={() => handleCheckout(cartStore)}>Thanh toán</button>
                     </div>
                 </div>
             </Row>
