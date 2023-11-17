@@ -4,6 +4,7 @@ import { ROUTERS } from "./utils/router"
 import AdminMasterLayout from "~/pages/admin/theme/adminMasterLayout"
 import AdminHome from "~/pages/admin/adminHome"
 import AdminProduct from "~/pages/admin/adminProduct"
+import AdminOrderProduct from "~/pages/admin/adminOrderProduct"
 
 import Home from "./pages/users/Homepage/Home"
 import Introduce from "./pages/users/Introduce"
@@ -111,6 +112,10 @@ const renderAdminRouter = () => {
         {
             path: ROUTERS.ADMIN.PRODUCT,
             component: <AdminProduct />,
+        },
+        {
+            path: ROUTERS.ADMIN.ORDER,
+            component: <AdminOrderProduct />,
         },
     ]
     return (

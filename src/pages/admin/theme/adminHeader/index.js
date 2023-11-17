@@ -27,6 +27,11 @@ const AdminHeader = () => {
                                 product
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link active text-white" aria-current="page" to="/admin/order">
+                                Order
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
