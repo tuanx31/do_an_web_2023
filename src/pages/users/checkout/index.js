@@ -13,11 +13,11 @@ const Checkout = () => {
     useEffect(() => {
         document.title = "Tuna Shop - Checkout"
     }, [])
-    const { oderStore, note } = useSelector(state => state.checkout)
-    console.log("product ::", oderStore)
+    const { orderStore, note } = useSelector(state => state.checkout)
+    console.log("product ::", orderStore)
     console.log("check note : ", note)
     let total = 0
-    oderStore.forEach(item => {
+    orderStore.forEach(item => {
         total += (item.price - item.price * item.sale_of / 100) * item.soluong
     });
     return (
@@ -29,7 +29,7 @@ const Checkout = () => {
             <h4 className='fw-bold mt-4 text-uppercase'>Thông Tin Thanh Toán</h4>
             <Row className='gap-5 flex-row-reverse'>
                 <Col sm={6} className='col-12'>
-                    {oderStore.map((item, index) => (
+                    {orderStore.length > 0 && orderStore.map((item, index) => (
                         <div key={index} className='d-flex gap-3 justify-content-between border-bottom py-2'>
                             <img src={"https://localhost:7139/resources/" + item.img} width={65} height={65} alt='hinhN' />
                             <div >
@@ -53,7 +53,7 @@ const Checkout = () => {
                     <div className='d-flex justify-content-between mt-2 h5'><span>Tổng tiền</span><span>{parseInt(total).toLocaleString()} Đ</span></div>
                 </Col>
                 <Col>
-                    <Customerdata />
+                    <Customerdata orderStore={orderStore} total={total} note={note} />
                 </Col>
             </Row>
         </Container>

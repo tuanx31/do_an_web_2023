@@ -1,142 +1,13 @@
 @import "/src/global/styles/all";
 
 .navbar {
-    min-height: 80px;
+    min-height: 95px;
 }
-
-// .text-logo {
-//     font-size: 38px;
-//     vertical-align: middle;
-// }
-
-// .dropdown:focus .dropdown-menu {
-//     display: block;
-// }
-
-// @media screen and (min-width: 991px) {
-//     .dropdown:hover .dropdown-menu {
-//         display: block;
-//         margin-top: 8px;
-//     }
-// }
-
-// @media screen and (max-width: 1025px) {
-//     .text-logo {
-//         font-size: 25px;
-//     }
-
-//     .ttk {
-//         position: absolute;
-//         width: 180px;
-//     }
-
-//     .nav-item a {
-//         font-size: 13px !important;
-//     }
-// }
-
-// @media screen and (min-width: 2000px) {
-//     .text-logo {
-//         font-size: 42px;
-//     }
-// }
 
 .navbar,
 .dropdown-menu {
     background-color: $--main-color !important;
 }
-
-// .nav-item a {
-//     color: #fff;
-
-//     &:hover {
-//         color: #999;
-//     }
-// }
-
-
-// button.navbar-toggler {
-//     background-color: #fff;
-// }
-
-// .btntoggle {
-//     position: absolute;
-//     width: 60px;
-//     height: 50px;
-//     top: 20px;
-//     right: 20px;
-
-// }
-
-
-
-// .btn-search .search {
-//     display: block !important;
-// }
-
-// .search {
-//     display: none !important;
-//     border-radius: 50px;
-//     background: rgba(22, 24, 35, .06);
-//     // border: #000 solid 2px;
-//     height: 52px;
-//     display: flex;
-//     align-items: center;
-//     padding: 12px;
-
-
-//     input {
-//         outline: none;
-//         border: none;
-//         background-color: #f1f1f2;
-//     }
-
-//     svg {
-//         width: 26px;
-//         height: 26px;
-//         cursor: pointer;
-//         color: #999;
-//     }
-
-// }
-
-// .formsearch {
-//     border-radius: 20px;
-
-//     button {
-//         outline: none;
-//         border: none;
-
-//         &:hover {
-//             background-color: #212121;
-
-//         }
-//     }
-
-//     svg {
-//         color: #fff;
-
-//     }
-// }
-
-// .active {
-//     color: #999 !important;
-//     font-weight: bold !important;
-// }
-
-// .navbar-nav .nav-link.show {
-//     color: #999;
-// }
-
-// .ttk {
-//     position: relative;
-//     float: right;
-// }
-
-
-
-
-/// code moi
 
 .sidebar {
     background-color: #333333;
@@ -180,7 +51,7 @@
 
 @media screen and (max-width: 1200px) {
     .nav-link {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .navbar-expand-lg .offcanvas .offcanvas-body {

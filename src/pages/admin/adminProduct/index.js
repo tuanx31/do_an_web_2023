@@ -48,7 +48,6 @@ const MydModalWithGrid = (props) => {
                 const element = listImage[index];
                 listImage && form.append('listImageFile', element);
             }
-
             desc && form.append('description', desc);
             design && form.append('design', design);
             await axios.post(

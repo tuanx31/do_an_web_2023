@@ -20,6 +20,7 @@ import ChinhSachBaoMat from "~/pages/users/chinhsachbaomat"
 import DieuKhoanDichVu from "~/pages/users/dieukhoandichvu"
 import Login from "~/pages/users/login/Login"
 import Register from "~/pages/users/register/Register"
+import ThankYou from "~/pages/users/thankyou"
 
 
 
@@ -82,6 +83,10 @@ const renderUserRouter = () => {
         {
             path: ROUTERS.USER.REGISTER,
             component: <Register />
+        },
+        {
+            path: ROUTERS.USER.THANKYOU,
+            component: <ThankYou />
         }
     ]
     return (

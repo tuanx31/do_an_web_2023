@@ -1,3 +1,4 @@
+
 import actionType from "./actionType";
 
 const addToCart = (product) => {
@@ -21,4 +22,10 @@ const updateCart = (product) => {
         payload: product
     }
 }
-export { addToCart, deleteFromCart, updateCart } 
+
+const deleteAllCart = () => {
+    return {
+        type: actionType.DELETE_ALL_CART
+    }
+}
+export { addToCart, deleteFromCart, updateCart, deleteAllCart } 

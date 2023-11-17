@@ -18,6 +18,7 @@ export const ROUTERS = {
         CSBH: "chinh-sach-bao-hanh",
         DKDV: "dieu-khoan-dich-vu",
         LOGIN: 'login',
-        REGISTER: 'register'
+        REGISTER: 'register',
+        THANKYOU: 'thankyou'
     }
 }
