@@ -11,9 +11,9 @@ const ProductCollection = (props) => {
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 3,
-        speed: 1000,
+        speed: 1500,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 4000,
         pauseOnHover: true,
         responsive: [
             {
@@ -22,7 +22,6 @@ const ProductCollection = (props) => {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: true,
-                    dots: true
                 }
             },
             {

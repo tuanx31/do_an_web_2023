@@ -46,18 +46,22 @@ const DetailProduct = (props) => {
         dispatch(actions.Abate(data))
         navigate('/checkout')
     }
-    const fetchDetailProduct = async () => {
-        const dProduct = await fetch1Product(idProduct);
-        setProduct(dProduct);
+    const fetchDetailProduct = async (id) => {
+        try {
+            if (id) {
+                const dProduct = await fetch1Product(id);
+                setProduct(dProduct);
+            }
+        } catch (error) {
+        }
     }
 
     useEffect(() => {
-        idProduct && fetchDetailProduct();
+        idProduct && fetchDetailProduct(idProduct);
     }, [idProduct])
     useEffect(() => {
-        setCurrentImg("https://localhost:7139/resources/" + product.img);
+        product.img && setCurrentImg("https://localhost:7139/resources/" + product.img);
         if (product.listImage) {
-
             var kq = handleArray(product.listImage);
             let _ListImg = _.cloneDeep(listImg);
             _ListImg.img1 = "https://localhost:7139/resources/" + kq[0];

@@ -1,20 +1,21 @@
 import { useEffect } from 'react'
+import { useState } from 'react';
+
 import { Container, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
-
 import "./Cart.scss"
 
-
-import { useSelector } from 'react-redux';
 import CartItemProduct from '~/components/users/CartItemProduct';
 
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux'
 import * as actions from '~/store/actions';
 
 
 
 const Cart = () => {
+    const [note, setnote] = useState("");
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
@@ -60,7 +61,7 @@ const Cart = () => {
                 <div className="mb-3 ">
                     <p>Ghi chú cho đơn hàng</p>
                     <div className="form-floating">
-                        <textarea id="floatingTextarea2" className="form-control text-muted" style={{ height: "100px" }} />
+                        <textarea value={note} onChange={e => setnote(e.target.value)} id="floatingTextarea2" className="form-control text-muted" style={{ height: "100px" }} />
                         <label htmlFor="floatingTextarea2" >Ghi chú cho đơn hàng.</label>
                     </div>
 
@@ -69,7 +70,7 @@ const Cart = () => {
                     <div className="float-end text-end d-flex align-items-end gap-1 flex-column mb-5">
                         <p ><span>Tổng tiền</span> <span className="fw-bold">{parseInt(total).toLocaleString()} Đ</span></p>
                         <i>Vận chuyển</i>
-                        <button className="btn btn-primary" onClick={() => handleCheckout(cartStore)}>Thanh toán</button>
+                        <button className="btn btn-primary" onClick={() => handleCheckout({ cartStore, note })}>Thanh toán</button>
                     </div>
                 </div>
             </Row>

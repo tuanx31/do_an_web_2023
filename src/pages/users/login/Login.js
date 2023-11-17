@@ -1,7 +1,11 @@
 import { Container } from "react-bootstrap";
 import "./login.scss"
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 const Login = () => {
+    useEffect(() => {
+        document.title = "Tuna Shop - Đăng nhập"
+    }, [])
     return (<Container>
         <div className="wrapper">
             <a href="">

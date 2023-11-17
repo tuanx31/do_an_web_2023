@@ -5,10 +5,17 @@ import { Link } from 'react-router-dom';
 
 
 import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useEffect } from 'react';
+import Customerdata from './customerdata';
 
 
 const Checkout = () => {
-    const { oderStore } = useSelector(state => state.checkout)
+    useEffect(() => {
+        document.title = "Tuna Shop - Checkout"
+    }, [])
+    const { oderStore, note } = useSelector(state => state.checkout)
+    console.log("product ::", oderStore)
+    console.log("check note : ", note)
     let total = 0
     oderStore.forEach(item => {
         total += (item.price - item.price * item.sale_of / 100) * item.soluong
@@ -31,7 +38,7 @@ const Checkout = () => {
                                 <div className='text-muted'>{item.trademarks && item.trademarks.name}</div>
 
                             </div>
-                            <div className='d-flex align-items-center' style={{ whiteSpace: "nowrap" }}>{item.price && ((item.price - item.price * item.sale_of / 100) * item.soluong).toLocaleString()} đ</div>
+                            <div className='d-flex align-items-center' style={{ whiteSpace: "nowrap" }}>{item && item.price && ((item.price - item.price * item.sale_of / 100) * item.soluong).toLocaleString()} đ</div>
                         </div>
                     ))}
 
@@ -45,33 +52,8 @@ const Checkout = () => {
                     </div>
                     <div className='d-flex justify-content-between mt-2 h5'><span>Tổng tiền</span><span>{parseInt(total).toLocaleString()} Đ</span></div>
                 </Col>
-                <Col className=''>
-                    <p><span>Bạn đã có tài khoản? </span> <span style={{ cursor: "pointer" }} className='dangnhap'>Đăng nhập</span></p>
-                    <div>
-                        <div className='form-floating my-3 ' >
-                            <input type='text' className='form-control' placeholder='Họ và tên' />
-                            <label for="floatingInput">Họ và tên</label>
-                        </div>
-
-                        <div class="d-flex flex-row bd-highlight gap-2" >
-                            <div className='form-floating my-2  w-100 bd-highlight '>
-                                <input type='email' className='form-control' id='floatingInput' placeholder='name@example.com' />
-                                <label for="floatingInput">Email</label>
-                            </div>
-                            <div className='form-floating my-2  flex-shrink-2 bd-highlight'>
-                                <input type='email' className='form-control' id='floatingInput' placeholder='Nhap so dien thoai cua ban' />
-                                <label for="floatingInput">Điện thoại</label>
-                            </div>
-                        </div>
-                        <div className='form-floating my-3 ' >
-                            <input type='name' className='form-control' id='floatingInput' placeholder='Ho Va Ten' />
-                            <label for="floatingInput">Địa chỉ</label>
-                        </div>
-                        <div className='my-4'>
-                            <Link to={"/cart"}>Giỏ hàng</Link>
-                            <button className='btn btn-primary float-end'>Đặt hàng</button>
-                        </div>
-                    </div>
+                <Col>
+                    <Customerdata />
                 </Col>
             </Row>
         </Container>

@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+    useEffect(() => {
+        document.title = "Tuna Shop - Đăng ký"
+    }, [])
     return (<Container>
         <div className="wrapper dangky">
             <a href="/boostrap.html">
