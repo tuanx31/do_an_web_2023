@@ -15,8 +15,61 @@
           
         
         text-align: center;
+        font-family: "EncodeSansSemiCondensed-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 }
+.block_strengths {
+    height: 139px;
+    transform: translate(0%, -60%);
+    .icon{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+   .iconInner{
+    width: 120px;
+    background:#333333;
+    border-radius: 50%;
+    border: 10px #bfbfbf29 solid;
+    
+   }
+   .iconInner2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 162px;
+    height:162px;
+    background-image: url("./bgYellow.png");
+    border-radius: 50%;
+    border: 10px #bfbfbf29 solid;
+    background-repeat: no-repeat;
+}
+.item{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+h4{
+    font-weight: bold;
+}
+.item1{
+      
+        svg{animation: 6s ease-in-out 0s normal none infinite running chang-rotage-anim-a1;}
+}
+.item2 {
+      
+  svg{animation: 6s ease-in-out 0s normal none infinite running chang-rotage-anim-a2;}
+}
+.item3 {
+    
+       
+        svg{animation: 6s ease-in-out 0s normal none infinite running chang-rotage-anim-a3;}
+}
+    }
+
+   
+
 
 @media screen and (max-width: 425px) {
    .TextAnimation{
@@ -32,3 +85,73 @@
    }
     
 }
+@keyframes chang-rotage-anim-a1{
+    0% {
+        transform: rotate(0deg) scale(1) skew(1deg);
+    }
+    5% {
+        transform: rotate(-25deg) scale(1) skew(1deg);
+    }
+    10% {
+        transform: rotate(25deg) scale(1) skew(1deg);
+    }
+    15% {
+        transform: rotate(-25deg) scale(1) skew(1deg);
+    }
+    20% {
+        transform: rotate(25deg) scale(1) skew(1deg);
+    }
+    25% {
+        transform: rotate(0deg) scale(1) skew(1deg);
+    }
+    100% {
+        transform: rotate(0deg) scale(1) skew(1deg);
+    }
+    }
+    @keyframes chang-rotage-anim-a3{
+        0% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+        }
+        50% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+        }
+        60% {
+            transform: rotateY(360deg) scale(1.3) skew(1deg);
+        }
+        70% {
+            transform: rotateY(0deg) scale(1) skew(1deg);
+        }
+        75% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+        }
+        100% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+        }
+    }
+    @keyframes chang-rotage-anim-a2{
+        0% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+        }
+        25% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+        }
+        30% {
+            transform: rotate(-10deg) scale(1.3) skew(1deg);
+        }
+        35% {
+            transform: rotate(10deg) scale(1.3) skew(1deg);
+        }
+        40% {
+            transform: rotate(-10deg) scale(1.3) skew(1deg);
+        }
+        45% {
+            /* transform: rotate(10deg) scale(1) skew(1deg); */
+        }
+        50% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+        }
+        100% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+    
+        }
+    } 
