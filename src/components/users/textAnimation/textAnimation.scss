@@ -71,11 +71,11 @@ h4{
    
 
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
    .TextAnimation{
     background-image: none !important;
-    
     min-height: auto;
+    
     span{
         color:rgb(43, 43, 43);
         font-size: 18px;
@@ -83,8 +83,11 @@ h4{
         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         
     }
-   }
     
+   }
+   .block_strengths{
+    display: none !important;
+}
 }
 @keyframes chang-rotage-anim-a1{
     0% {
