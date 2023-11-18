@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Container, Modal } from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
 
-import { fetchOrder, fetchOrderDetailByIdOrder } from "~/service/admin/adminService";
+import { fetchOrder, fetchOrderDetailByIdOrder, deleteOrderDetail } from "~/service/admin/adminService";
 
 import "./orderproduct.scss"
 
@@ -60,6 +60,11 @@ function MyVerticallyCenteredModal(props) {
 }
 
 const AdminOrderProduct = () => {
+    const [Delshow, setDelShow] = useState(false);
+    const [iddel, setiddel] = useState(null)
+
+
+
     const [modalShow, setModalShow] = useState(false);
     const [orderData, setOrderData] = useState([]);
     const fetchOrderp = async () => {
@@ -68,7 +73,7 @@ const AdminOrderProduct = () => {
     }
     useEffect(() => {
         fetchOrderp()
-    }, [])
+    }, [orderData])
 
     const [Data, setData] = useState({});
     const fetchData = async (id_order) => {
@@ -81,6 +86,19 @@ const AdminOrderProduct = () => {
     }
     const handleClick = (id_order) => {
         setModalShow(true); fetchData(id_order)
+    }
+    const ComfirmDelete = async () => {
+        if (iddel) {
+            const res = await deleteOrderDetail(iddel);
+            console.log(res)
+            fetchOrderp()
+        }
+        setDelShow(false)
+    }
+    const handleDelteProduct = (id) => {
+        setDelShow(true)
+        setiddel(id)
+
     }
     return (<Container>
         <h1 className="fw-bold text-center text-danger">Quản lý đơn hàng</h1>
@@ -95,6 +113,7 @@ const AdminOrderProduct = () => {
                     <th>Tổng tiền</th>
                     <th>Tạo ngày</th>
                     <th>Detail</th>
+                    <th>Xóa</th>
                 </tr>
             </thead>
             <tbody>
@@ -108,6 +127,7 @@ const AdminOrderProduct = () => {
                         <td>{item.total.toLocaleString()} đ</td>
                         <td>{item.createAt}</td>
                         <td><button className="btn btn-sm btn-success" onClick={() => handleClick(item.id)}>Xem</button></td>
+                        <td><button className="btn btn-sm btn-danger" onClick={() => handleDelteProduct(item.id)}>Xóa</button></td>
                     </tr>
                 ))}
             </tbody>
@@ -117,6 +137,25 @@ const AdminOrderProduct = () => {
             onHide={() => setModalShow(false)}
             data={Data || []}
         />
+        <Modal
+            show={Delshow}
+            onHide={() => { setDelShow(false); setiddel(null) }}
+            backdrop="static"
+            keyboard={false}
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Xoá đơn hàng ?</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                Xác nhận xóa
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={() => { setDelShow(false); setiddel(null) }}>
+                    Close
+                </Button>
+                <Button variant="danger" onClick={ComfirmDelete} >Xóa</Button>
+            </Modal.Footer>
+        </Modal>
     </Container>);
 }
 

@@ -37,6 +37,14 @@ const fetchOrderDetailByIdOrder = async (id_order) => {
 
     }
 }
+
+const deleteOrderDetail = async (id_order) => {
+    try {
+        return await axios.delete(`/api/Orders/${id_order}`)
+    } catch (error) {
+
+    }
+}
 export {
-    fetchAllProduct, deleteProduct, fetchOrder, fetchOrderDetailByIdOrder
+    fetchAllProduct, deleteProduct, fetchOrder, fetchOrderDetailByIdOrder, deleteOrderDetail
 }
