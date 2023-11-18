@@ -62,7 +62,7 @@ const Home = () => {
             <Container>
                 <div className="Sale my-4">
                     <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/hotproduct"} className="text-black position-relative text-uppercase">Sản Phẩm Hot</Link></h2>
-                    <div className="sale-products my-4 ">
+                    <div className="sale-products my-4 mb-5">
                         <Row>
                             {hotProduct && <ProductCollection data={hotProduct} />}
                         </Row>
@@ -74,7 +74,7 @@ const Home = () => {
 
                 <div className="Sale my-4">
                     <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/newproduct"} className="text-black position-relative text-uppercase">Sản Phẩm Mới Nhất</Link></h2>
-                    <div className="sale-products my-4 ">
+                    <div className="sale-products my-4 mb-5">
                         <Row>
                             {newProduct && <ProductCollection data={newProduct} />}
                         </Row>
@@ -84,8 +84,9 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className="pro mt-2">
                     <h2 className="text-center text-uppercase uytin position-relative fw-bold">Vì sao nên chọn chúng tôi</h2>
+                    <p className="text-center fs-14px">Sản phẩm từ cửa hàng của Macstore24h được thiết kế tinh tế, đẹp mắt , chất lượng đảm bảo với các mẫu đa dạng. Chúng tôi luôn sáng tạo từng ngày để đem đến cho khách hàng những sản phẩm hiện đại nhất.</p>
                     <Uytin />
                 </div>
             </Container>
