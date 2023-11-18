@@ -6,23 +6,35 @@ import './Heading.scss'
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoCartOutline } from 'react-icons/io5';
 import { GrPrevious } from 'react-icons/gr'
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 import { Category } from '~/assest/users/data/Category';
-// import { useState } from "react";
+import { useState } from "react";
 
-import { useSelector } from "react-redux/es/hooks/useSelector";
+
+import * as actions from '~/store/actions';
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
     const { cartStore } = useSelector(state => state.cart)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     let amount = 0
-    for (let index = 0; index < cartStore.length; index++) {
-        amount += cartStore[index].soluong
+    for (const element of cartStore) {
+        amount += element.soluong
     }
-    // const [keyword, setkeyword] = useState("")
+    const [keyword, setKeyword] = useState("")
+    const handleSearch = async (e) => {
+        if (e.keyCode === 13) {
+            dispatch(actions.SearchProducts(keyword))
+            navigate("/search")
+            setKeyword("")
+        }
+    }
+
+
     const openSearch = () => {
         const form_search = document.getElementById("form-searchmb")
-
         form_search.classList.remove("d-none")
     }
     const closeSearch = () => {
@@ -63,15 +75,14 @@ const Header = () => {
                                     </NavLink>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <NavLink
+                                    <button
                                         className="nav-link dropdown-toggle text-uppercase"
                                         to="products"
-                                        role="button"
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false"
                                     >
                                         Sản Phẩm
-                                    </NavLink>
+                                    </button>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         {Category?.map((product, index) => (
                                             <li key={index}><Link className="dropdown-item fs-14px" key={index} to={`/products/${product.id}`}>{product?.name}</Link></li>
@@ -99,7 +110,7 @@ const Header = () => {
                         </div>
 
                     </div>
-                    <form className="d-flex bg-white me-lg-3 position-absolute form-searchmb d-none shadow z-1" id="form-searchmb" role="search">
+                    <div className="d-flex bg-white me-lg-3 position-absolute form-searchmb d-none shadow z-1" id="form-searchmb" role="search">
                         <button className="btn border-end rounded-0 " onClick={closeSearch} type="reset">
                             <GrPrevious />
                         </button>
@@ -108,22 +119,28 @@ const Header = () => {
                             type="search"
                             placeholder="Tìm kiếm ..."
                             aria-label="Search"
+                            value={keyword}
+                            onChange={e => setKeyword(e.target.value)}
+                            onKeyUp={handleSearch}
                         />
-                        <button className="btn shadow-none border-0 rounded-0 border-start" type="submit">
+                        <button className="btn shadow-none border-0 rounded-0 border-start">
                             <AiOutlineSearch size={20} />
                         </button>
-                    </form>
-                    <form className="d-flex bg-white rounded-2 me-lg-3 form-search d-none d-sm-flex " role="search">
+                    </div>
+                    <div className="d-flex bg-white rounded-2 me-lg-3 form-search d-none d-sm-flex ">
                         <input
                             className="form-control shadow-none border-0 "
                             type="search"
                             placeholder="Tìm kiếm ..."
                             aria-label="Search"
+                            value={keyword}
+                            onChange={e => setKeyword(e.target.value)}
+                            onKeyUp={handleSearch}
                         />
-                        <button className="btn shadow-none border-0 rounded-0" type="submit">
+                        <button className="btn shadow-none border-0 rounded-0" onClick={handleSearch}>
                             <AiOutlineSearch size={20} />
                         </button>
-                    </form>
+                    </div>
                     <div className="d-flex align-items-center">
                         <div className="div-search d-flex d-sm-none">
                             {/* <div className="space"></div> */}
@@ -145,7 +162,6 @@ const Header = () => {
                             <span className="navbar-toggler-icon" />
                         </button>
                     </div>
-
                 </div>
             </nav>
         </>

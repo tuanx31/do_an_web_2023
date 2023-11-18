@@ -5,7 +5,7 @@ import appReducer from './appReducer';
 import cartReducer from './cartRreducer';
 import productReducer from './productReducer';
 import checkoutReducer from './checkoutReducer';
-
+import searchReducer from './searchReducer';
 import storage from 'redux-persist/lib/storage'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 
@@ -25,7 +25,8 @@ const rootReducer = combineReducers({
     app: appReducer,
     cart: persistReducer(cartConfig, cartReducer),
     product: productReducer,
-    checkout: checkoutReducer
+    checkout: checkoutReducer,
+    search: searchReducer,
 })
 
 export default rootReducer

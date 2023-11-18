@@ -5,7 +5,8 @@ const actionType = {
     DELETE_ALL_CART: 'DELETE_ALL_CART',
     FETCH_NEW_PRODUCT: 'FETCH_NEW_PRODUCT',
     FETCH_HOT_PRODUCT: 'FETCH_HOT_PRODUCT',
-    ABATE: 'ABATE'
+    ABATE: 'ABATE',
+    SEARCH: 'SEARCH'
 }
 
 export default actionType;

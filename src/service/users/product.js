@@ -25,6 +25,7 @@ const fetchProductByCategory = async (id) => {
     });
 }
 
+
 const fetchHotProduct = async () => {
     return await axios.get(`/api/Products/hotproduct`, {
         headers: {
@@ -39,6 +40,14 @@ const fetchNewProduct = async () => {
         }
     });
 }
+
+const SearchProduct = async (keyword) => {
+    try {
+        return await axios.get(`/api/Products/search/${keyword}`)
+    } catch (error) {
+
+    }
+}
 export {
-    fetch1Product, fetchCateGorys, fetchProductByCategory, fetchHotProduct, fetchNewProduct
+    fetch1Product, fetchCateGorys, fetchProductByCategory, fetchHotProduct, fetchNewProduct, SearchProduct
 }
