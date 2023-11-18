@@ -4,6 +4,7 @@ import * as actions from '~/store/actions';
 
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from "react-bootstrap";
+import Loading from "~/components/users/loading";
 
 const Account = () => {
 
@@ -26,6 +27,7 @@ const Account = () => {
                 <Button variant="primary" onClick={handleclick}>
                     click
                 </Button>
+                <Loading />
             </div>
         </>
 
