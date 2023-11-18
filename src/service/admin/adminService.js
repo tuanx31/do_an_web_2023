@@ -29,6 +29,14 @@ const fetchOrder = async () => {
 
     }
 }
+
+const fetchOrderDetailByIdOrder = async (id_order) => {
+    try {
+        return await axios.get(`/api/OrderDetails/SearchByIdOrder/${id_order}`)
+    } catch (error) {
+
+    }
+}
 export {
-    fetchAllProduct, deleteProduct, fetchOrder
+    fetchAllProduct, deleteProduct, fetchOrder, fetchOrderDetailByIdOrder
 }
