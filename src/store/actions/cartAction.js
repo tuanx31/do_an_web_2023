@@ -21,4 +21,5 @@ const updateCart = (product) => {
         payload: product
     }
 }
-export { addToCart, deleteFromCart, updateCart } 
+export { addToCart, deleteFromCart, updateCart }
+
