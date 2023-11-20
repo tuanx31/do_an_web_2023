@@ -1,56 +1,18 @@
 .loader {
-    width: 250px;
-    height: 50px;
-
-    line-height: 50px;
-    text-align: center;
-    font-family: helvetica, arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 900;
-    color: #ce4233;
-    letter-spacing: 0.2em;
-
-    /* Yatayda ve Düşeyde Ortalama   */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: animloader 1s linear infinite;
 }
 
-.loader::before,
-.loader::after {
-    content: "";
-    display: block;
-    width: 15px;
-    height: 15px;
-    background: #ce4233;
-    position: absolute;
-    animation: load 0.9s infinite alternate ease-in-out;
-}
-
-.loader::before {
-    top: 0;
-}
-
-.loader::after {
-    bottom: 0;
-}
-
-@keyframes load {
+@keyframes animloader {
     0% {
-        left: 0;
-        height: 30px;
-        width: 15px;
-    }
-
-    50% {
-        height: 8px;
-        width: 40px;
+        box-shadow: -72px 0 #ff0101 inset;
     }
 
     100% {
-        left: 235px;
-        height: 30px;
-        width: 15px;
+        box-shadow: 48px 0 #000000 inset;
     }
 }

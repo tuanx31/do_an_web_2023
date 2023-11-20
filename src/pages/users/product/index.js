@@ -1,12 +1,15 @@
 import { Container, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 
+import { useEffect, useState } from "react";
+
 import "./product.scss"
+
 import renderCard from "~/service/users/renderproduct";
-import { useEffect } from "react";
 import { fetchAllProduct } from "~/service/admin/adminService";
 import { fetchProductByCategory, fetchHotProduct, fetchNewProduct } from "~/service/users/product";
-import { useState } from "react";
+
+import Loading from "~/components/users/loading";
 
 
 
@@ -34,7 +37,7 @@ const Product = () => {
     //get id của giỏ hàng từ param
     const { idCategory } = useParams();
     const [listProduct, setListProduct] = useState([]);
-
+    const [loading, setLoading] = useState(false);
 
 
     const fetchNewProducts = async () => {
@@ -50,18 +53,25 @@ const Product = () => {
     }
 
     const fetchAllProducts = async () => {
-        const data = await fetchAllProduct();
-        if (data) {
-            setListProduct(data)
+        try {
+            setLoading(true)
+            const data = await fetchAllProduct();
+            data && setListProduct(data)
+            setLoading(false)
+
+        } catch (error) {
+
         }
     }
 
     const fetchHotProducts = async () => {
         try {
+            setLoading(true)
             const data = await fetchHotProduct();
             if (data) {
                 setListProduct(data)
             }
+            setLoading(false)
         } catch (error) {
             console.log(error)
         }
@@ -69,10 +79,12 @@ const Product = () => {
 
     const fetchProductByCategorys = async () => {
         try {
+            setLoading(true)
             const data = await fetchProductByCategory(idCategory);
             if (data) {
                 setListProduct(data)
             }
+            setLoading(false)
         } catch (error) {
             console.log(error)
         }
@@ -99,9 +111,7 @@ const Product = () => {
 
     return (
         <Container>
-            {/* {idCategory === "all" ? render(listProduct, "Tất cả sản phẩm") :
-                listProduct[0] && render(listProduct, listProduct[0].categories.name)} */}
-            {idCategory === "all" ? render(listProduct, "Tất cả sản phẩm") : idCategory === "hotproduct" ? render(listProduct, "Sản phẩm hot") : idCategory === "newproduct" ? render(listProduct, "Sản phẩm mới") :
+            {loading ? <Loading /> : idCategory === "all" ? render(listProduct, "Tất cả sản phẩm") : idCategory === "hotproduct" ? render(listProduct, "Sản phẩm hot") : idCategory === "newproduct" ? render(listProduct, "Sản phẩm mới") :
                 listProduct[0] && render(listProduct, listProduct[0].categories.name)}
         </Container>
     )

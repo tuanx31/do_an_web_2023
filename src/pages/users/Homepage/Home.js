@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import ProductCollection from "~/components/users/productCollection";
 import TextAnimation from "~/components/users/textAnimation";
+import Loading from "~/components/users/loading";
 
 
 
@@ -24,14 +25,17 @@ const Home = () => {
 
     const [hotProduct, setHotProduct] = useState([]);
     const [newProduct, setNewProduct] = useState([]);
-
+    const [hotloading, sethotLoading] = useState(false);
+    const [newLoading, setNewLoading] = useState(false);
 
     const fetchNewProducts = async () => {
         try {
+            sethotLoading(true)
             const newProducts = await fetchNewProduct();
             if (newProducts) {
                 setNewProduct(newProducts);
             }
+            sethotLoading(false)
         } catch (error) {
             console.log(error)
         }
@@ -39,10 +43,12 @@ const Home = () => {
     }
     const fetchHotProducts = async () => {
         try {
+            setNewLoading(true)
             const newProducts = await fetchHotProduct();
             if (newProducts) {
                 setHotProduct(newProducts);
             }
+            setNewLoading(false)
         } catch (error) {
             console.log(error)
         }
@@ -54,7 +60,6 @@ const Home = () => {
         fetchHotProducts();
         fetchNewProducts();
     }, [])
-
     return (
         <>
             <SliderCarousel />
@@ -64,7 +69,7 @@ const Home = () => {
                     <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/hotproduct"} className="text-black position-relative text-uppercase">Sản Phẩm Hot</Link></h2>
                     <div className="sale-products my-4 mb-5">
                         <Row>
-                            {hotProduct && <ProductCollection data={hotProduct} />}
+                            {hotloading ? <Loading /> : hotProduct && <ProductCollection data={hotProduct} />}
                         </Row>
                         <div className="d-flex justify-content-center">
                             <Link to={"/products/hotproduct"} className="btn btn-dark p-3 text-uppercase" >xem thêm sản phẩm hot</Link>
@@ -76,7 +81,7 @@ const Home = () => {
                     <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/newproduct"} className="text-black position-relative text-uppercase">Sản Phẩm Mới Nhất</Link></h2>
                     <div className="sale-products my-4 mb-5">
                         <Row>
-                            {newProduct && <ProductCollection data={newProduct} />}
+                            {newLoading ? <Loading /> : newProduct && <ProductCollection data={newProduct} />}
                         </Row>
                         <div className="d-flex justify-content-center">
                             <Link to={"/products/newproduct"} className="btn btn-dark p-3 text-uppercase" >xem thêm sản phẩm mới</Link>

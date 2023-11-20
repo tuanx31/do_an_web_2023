@@ -14,8 +14,6 @@ const Checkout = () => {
         document.title = "Tuna Shop - Checkout"
     }, [])
     const { orderStore, note } = useSelector(state => state.checkout)
-    console.log("product ::", orderStore)
-    console.log("check note : ", note)
     let total = 0
     orderStore.forEach(item => {
         total += (item.price - item.price * item.sale_of / 100) * item.soluong

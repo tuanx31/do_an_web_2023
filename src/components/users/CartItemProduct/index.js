@@ -36,7 +36,7 @@ const CartItemProduct = (props) => {
                 <div className='d-flex flex-column'>
                     <Link to={`/products/${item.id_category}/detail/${item.id}`} className='text-black'>{item?.name}</Link><br />
                     {(item?.colorCart || item?.sizeCart) && <p>{item?.colorCart} {item?.sizeCart}</p>}
-                    <div><button className='btn fw-bold fs-5 btn-light' onClick={() => updateCart(-1)}>-</button><input className='text-center border-0 bg-light' type="text" readOnly={true} min="0" style={{ width: "40px", height: "30px" }} value={item.soluong} /><button className='btn fw-bold fs-5 btn-light' onClick={() => updateCart(1)}>+</button></div>
+                    <div><button className='btn fw-bold fs-5 btn-light' onClick={() => updateCart(-1)}>-</button><input className='text-center border-0 bg-transparent' type="text" readOnly={true} min="0" style={{ width: "40px", height: "30px" }} value={item.soluong} /><button className='btn fw-bold fs-5 btn-light' onClick={() => updateCart(1)}>+</button></div>
                     <span>{item.price && (item.price - item.price * item.sale_of / 100).toLocaleString()} <GoTrash className='ms-3' onClick={() => handleDeleteProduct(item)} style={{ cursor: "pointer" }} color="red" /></span>
                 </div>
             </div>

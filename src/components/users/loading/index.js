@@ -1,6 +1,9 @@
 import "./loading.scss"
 const Loading = () => {
-    return (<>  <div class="loader">Loading...</div></>);
+    return (<div className="text-center w-100 h-100">
+        <span class="loader"></span>
+    </div>);
+
 }
 
 export default Loading;
