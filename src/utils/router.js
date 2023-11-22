@@ -2,7 +2,8 @@ export const ROUTERS = {
     ADMIN: {
         HOME: "admin",
         PRODUCT: "admin/product",
-        ORDER: 'admin/order'
+        ORDER: 'admin/order',
+        USER: 'admin/user'
     },
     USER: {
         HOME: "",

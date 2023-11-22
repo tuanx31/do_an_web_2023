@@ -5,6 +5,7 @@ import AdminMasterLayout from "~/pages/admin/theme/adminMasterLayout"
 import AdminHome from "~/pages/admin/adminHome"
 import AdminProduct from "~/pages/admin/adminProduct"
 import AdminOrderProduct from "~/pages/admin/adminOrderProduct"
+import AdminUser from "~/pages/admin/adminUser/User"
 
 import Home from "./pages/users/Homepage/Home"
 import Introduce from "./pages/users/Introduce"
@@ -116,6 +117,10 @@ const renderAdminRouter = () => {
         {
             path: ROUTERS.ADMIN.ORDER,
             component: <AdminOrderProduct />,
+        },
+        {
+            path: ROUTERS.ADMIN.USER,
+            component: <AdminUser />,
         },
     ]
     return (
