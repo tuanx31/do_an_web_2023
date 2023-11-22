@@ -147,13 +147,14 @@ const DetailProduct = (props) => {
                     <div className='product-inf border-bottom'>
                         <div className='product-short-desc'>
                             <ul className='fs-14px'>
-                                <li><strong>Brand: </strong><span style={{ color: "#002ED0" }}>{product.trademarks && product.trademarks.name}</span></li>
-                                <li><strong>Thiết kế: </strong><span >{product.design}</span></li>
-                                <li><strong>Vật liệu: </strong><span style={{ color: "red" }}>{product.consistent}</span></li>
-                                <li className='text-muted'>{product.desc}</li>
-                                <li><strong>Tương thích: </strong>{product.consistent}</li>
-                                <li><strong>Combo gồm : </strong><span style={{ color: "#002ED0" }}>Bao da + Túi phụ kiện</span></li>
-                                <li><strong>Màu sắc : </strong><span className='text-muted'>{product.color}</span></li>
+                                <li><strong>Brand: </strong><span style={{ color: "#002ED0" }}>{product.categories && product.categories.name}</span></li>
+                                {product.description && <li>{product.description}</li>}
+                                {product.design && <li><strong>Thiết kế: </strong><span >{product.design}</span></li>}
+                                {product.material && <li><strong>Vật liệu: </strong><span style={{ color: "red" }}>{product.material}</span></li>}
+                                {product.desc && <li className='text-muted'>{product.desc}</li>}
+                                {product.consistent && <li><strong>Tương thích: </strong>{product.consistent}</li>}
+                                {/* <li><strong>Combo gồm : </strong><span style={{ color: "#002ED0" }}>Bao da + Túi phụ kiện</span></li> */}
+                                {product.color && <li><strong>Màu sắc : </strong><span className='text-muted'>{product.color}</span></li>}
                             </ul>
                         </div>
                         <p className='line-price'>

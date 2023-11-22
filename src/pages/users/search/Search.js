@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 const Search = () => {
 
     const { searchData, keyword } = useSelector(state => state.search)
-    console.log(searchData, keyword)
 
     return (
         <Container>

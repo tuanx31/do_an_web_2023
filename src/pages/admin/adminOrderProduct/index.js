@@ -128,6 +128,7 @@ const AdminOrderProduct = () => {
                         <td>{item.createAt}</td>
                         <td><button className="btn btn-sm btn-success" onClick={() => handleClick(item.id)}>Xem</button></td>
                         <td><button className="btn btn-sm btn-danger" onClick={() => handleDelteProduct(item.id)}>Xóa</button></td>
+
                     </tr>
                 ))}
             </tbody>
