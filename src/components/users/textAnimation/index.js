@@ -8,7 +8,6 @@ const TextAnimation = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [typeEffect] = useTypewriter({
         words: ["UY TÍN TẠO NÊN THƯƠNG HIỆU", "70 NĂM KINH NGHIỆM ", "SỐ LƯỢNG, MẪU MÃ ĐA DẠNG"],
-        loop: {},
         typeSpeed: 110,
         deleteSpeed: 70,
     })
@@ -20,11 +19,7 @@ const TextAnimation = () => {
                 <h3> <span> TUNA SHOP-</span> <span>{typeEffect}</span></h3>
             </div>
             <div className="block_strengths container">
-
-
                 <Row>
-
-
                     <div className="item col item1">
                         <div className="icon ">
                             <div className="iconInner">
