@@ -66,7 +66,6 @@ const Customerdata = (props) => {
             toast.error("Đơn hàng trống")
             return
         }
-        console.log("step 2")
         setDataCustomer(initialDataCustomer)
         const res = await OrderProduct(dataOrder)
         orderStore && orderStore.map(async (item) => {
