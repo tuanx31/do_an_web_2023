@@ -8,7 +8,7 @@ const validateInput = (values) => {
     const phone_pattenrn = /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/;
     if (values.name === "") {
         error.name = "Họ tên không được để trống"
-    } else if (values.name.length < 10) {
+    } else if (values.name && values.name.length < 10) {
         error.name = "Họ tên phải lớn hơn 10 ký tự"
     }
     if (values.email === "") {
