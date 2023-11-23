@@ -1,12 +1,13 @@
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa";
 import { validateInput } from "~/service/tools";
 import { toast } from "react-toastify";
 import { registerNewUser } from "~/service/users/accountService";
+import { useSelector } from "react-redux";
 
 const initialSignupCustomer = {
     email: "",
@@ -18,6 +19,9 @@ const initialSignupCustomer = {
 }
 
 const Register = () => {
+    const navigate = useNavigate()
+
+    const { isAuthenticate } = useSelector(state => state.account)
 
     const [error, setError] = useState({});
     const [signupValues, setSigupValues] = useState(initialSignupCustomer);
@@ -47,6 +51,7 @@ const Register = () => {
         setSigupValues(Newdata)
     }
     useEffect(() => {
+        isAuthenticate && navigate("/")
         document.title = "Tuna Shop - Đăng ký"
     }, [])
 

@@ -6,7 +6,9 @@ const actionType = {
     FETCH_NEW_PRODUCT: 'FETCH_NEW_PRODUCT',
     FETCH_HOT_PRODUCT: 'FETCH_HOT_PRODUCT',
     ABATE: 'ABATE',
-    SEARCH: 'SEARCH'
+    SEARCH: 'SEARCH',
+    LOGIN: 'LOGIN',
+    LOGOUT: 'LOGOUT'
 }
 
 export default actionType;

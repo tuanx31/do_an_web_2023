@@ -4,6 +4,9 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useState } from "react";
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 function FixModal(props) {
     return (
         <Modal   {...props}
@@ -51,6 +54,7 @@ function FixModal(props) {
     )
 }
 function DeleteModal(props) {
+
     return (
         <Modal {...props}
             size="lg"
@@ -109,6 +113,12 @@ function MyVerticallyCenteredModal(props) {
 }
 
 const AdminUser = () => {
+    const navigate = useNavigate()
+
+    const { isAdmin } = useSelector(state => state.account)
+    useEffect(() => {
+        isAdmin === false && navigate("/")
+    }, [isAdmin])
     const [modalShow, setModalShow] = useState(false);
     const [fixModalShow, setFixModalShow] = useState(false);
     const [deleteMoalShow, setDeleteMoalShow] = useState(false);

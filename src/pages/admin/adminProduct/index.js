@@ -6,6 +6,8 @@ import { Button, Container, Modal } from "react-bootstrap";
 import { fetchAllProduct, deleteProduct } from '~/service/admin/adminService';
 
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const MydModalWithGrid = (props) => {
     const [name, setname] = useState()
@@ -257,6 +259,12 @@ const MydModalWithGrid = (props) => {
 
 
 const AdminProduct = () => {
+    const navigate = useNavigate()
+
+    const { isAdmin } = useSelector(state => state.account)
+    useEffect(() => {
+        isAdmin == false && navigate("/")
+    }, [isAdmin])
     const [Delshow, setDelShow] = useState(false);
     const [modalShow, setModalShow] = useState(false);
     const [iddel, setiddel] = useState(null)

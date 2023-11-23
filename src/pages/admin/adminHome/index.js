@@ -1,9 +1,16 @@
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/js/dist/modal"
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const AdminHome = (props) => {
+    const navigate = useNavigate()
 
+    const { isAdmin } = useSelector(state => state.account)
+    useEffect(() => {
+        isAdmin == false && navigate("/")
+    }, [isAdmin])
     return (
         <>
             <Container>

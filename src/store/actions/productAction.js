@@ -12,7 +12,6 @@ const fetchHotProducts = () => async (dispatch) => {
                 type: actionType.FETCH_HOT_PRODUCT,
                 newProduct: response
             })
-
         } else {
             dispatch({
                 type: actionType.FETCH_HOT_PRODUCT,

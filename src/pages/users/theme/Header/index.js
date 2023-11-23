@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
     const { cartStore } = useSelector(state => state.cart)
+    const { isAuthenticate, dataUser } = useSelector(state => state.account)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     let amount = 0
@@ -96,14 +97,18 @@ const Header = () => {
                                     <NavLink to={"introduce"} className='nav-link text-uppercase'>Giới Thiệu</NavLink>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <NavLink to={"account"} className='nav-link dropdown-toggle text-uppercase' data-bs-toggle="dropdown"
-                                        role="button"
-                                        aria-expanded="false"  >Tài khoản</NavLink>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><Link className="dropdown-item fs-14px" to={`/login`}>Đăng Nhập</Link></li>
-                                        <li><Link className="dropdown-item fs-14px" to={`/register`}>Đăng Ký</Link></li>
+                                    {isAuthenticate ? <>
+                                        <NavLink to={"/account"} className='nav-link'>{dataUser && dataUser.name}</NavLink>
+                                    </> :
+                                        <>
+                                            <NavLink to={"account"} className='nav-link dropdown-toggle text-uppercase' data-bs-toggle="dropdown"
+                                                role="button"
+                                                aria-expanded="false"  >Tài khoản</NavLink>
+                                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <li><Link className="dropdown-item fs-14px" to={`/login`}>Đăng Nhập</Link></li>
+                                                <li><Link className="dropdown-item fs-14px" to={`/register`}>Đăng Ký</Link></li>
 
-                                    </ul>
+                                            </ul></>}
                                 </li>
 
                             </ul>

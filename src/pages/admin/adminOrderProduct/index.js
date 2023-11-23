@@ -6,6 +6,8 @@ import Table from 'react-bootstrap/Table';
 import { fetchOrder, fetchOrderDetailByIdOrder, deleteOrderDetail } from "~/service/admin/adminService";
 
 import "./orderproduct.scss"
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function MyVerticallyCenteredModal(props) {
     const { data } = props
@@ -60,6 +62,12 @@ function MyVerticallyCenteredModal(props) {
 }
 
 const AdminOrderProduct = () => {
+    const navigate = useNavigate()
+
+    const { isAdmin } = useSelector(state => state.account)
+    useEffect(() => {
+        isAdmin === false && navigate("/")
+    }, [isAdmin])
     const [Delshow, setDelShow] = useState(false);
     const [iddel, setiddel] = useState(null)
 
@@ -73,7 +81,7 @@ const AdminOrderProduct = () => {
     }
     useEffect(() => {
         fetchOrderp()
-    }, [orderData])
+    }, [])
 
     const [Data, setData] = useState({});
     const fetchData = async (id_order) => {
@@ -89,8 +97,7 @@ const AdminOrderProduct = () => {
     }
     const ComfirmDelete = async () => {
         if (iddel) {
-            const res = await deleteOrderDetail(iddel);
-            console.log(res)
+            await deleteOrderDetail(iddel);
             fetchOrderp()
         }
         setDelShow(false)

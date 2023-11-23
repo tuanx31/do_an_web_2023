@@ -1,13 +1,28 @@
 import { Container } from "react-bootstrap";
 import "./login.scss"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import _ from "lodash";
 import { validateInput } from "~/service/tools";
+import { LoginUser } from "~/service/users/accountService";
+import { toast } from "react-toastify";
+
+import { useDispatch, useSelector } from 'react-redux'
+import * as actions from '~/store/actions';
+
+
+
+
 const Login = () => {
+
+    const { isAuthenticate } = useSelector(state => state.account)
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [error, seterror] = useState({});
     useEffect(() => {
+        isAuthenticate && navigate("/")
         document.title = "Tuna Shop - Đăng nhập"
     }, [])
     const itnitData = {
@@ -27,13 +42,36 @@ const Login = () => {
         setDataLogin(newData)
     }
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault()
         seterror(validateInput(dataLogin))
         if (validateInput(dataLogin).email || validateInput(dataLogin).password) {
             return
         }
+        let data = {
+            email: dataLogin.email,
+            password: dataLogin.password
+        }
+        try {
+            const res = await LoginUser(data)
+            const token = res.item1
+            const groupname = res.item2.groupname
+            const dataUser = res.item2
+            const dataAuthen = {
+                authen: true,
+                token: token,
+                data: dataUser,
+                isAdmin: groupname === "Admin" ? true : false
+            }
+            dispatch(actions.SaveLogin(dataAuthen))
+            toast.success("Đăng nhập thành công")
+            navigate("/account")
+        } catch (error) {
+            toast.error("Email hoặc mật khẩu không chính xác")
+        }
     }
+
+
 
     return (<Container>
         <div className="wrapper">
