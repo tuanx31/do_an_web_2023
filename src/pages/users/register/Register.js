@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa";
 import { validateInput } from "~/service/tools";
+import { toast } from "react-toastify";
+import { registerNewUser } from "~/service/users/accountService";
 
 const initialSignupCustomer = {
     email: "",
@@ -16,6 +18,7 @@ const initialSignupCustomer = {
 }
 
 const Register = () => {
+
     const [error, setError] = useState({});
     const [signupValues, setSigupValues] = useState(initialSignupCustomer);
     const handleEmail = (data) => {
@@ -48,7 +51,8 @@ const Register = () => {
     }, [])
 
 
-    const handleSignUp = (e) => {
+    const handleSignUp = async (e) => {
+
         e.preventDefault()
         const DataValidate = {
             email: signupValues.email,
@@ -58,12 +62,33 @@ const Register = () => {
             confirmPassword: signupValues.confirmpassword
 
         }
+
         setError(validateInput(DataValidate))
+        if ((validateInput(DataValidate).email) || (validateInput(DataValidate).name) || (validateInput(DataValidate).phone) || (validateInput(DataValidate).password) || (validateInput(DataValidate).confirmPassword)) {
+            toast.error("Thất bại")
+            return
+        }
+        let data = {
+            name: signupValues.name,
+            email: signupValues.email,
+            password: signupValues.password,
+            phoneNumber: signupValues.phone
+        }
+        try {
+
+            const response = await registerNewUser(data)
+            response ? toast.success("Đăng kí thành công") : toast.error("Thất bại")
+
+        } catch (error) {
+            toast.error("Thất bại")
+        }
+
 
     }
 
     const [showpass, setShowpass] = useState(false)
     const [showResestPass, setShowResestPass] = useState(false)
+
     return (<Container>
         <div className="wrapper dangky">
             <a href="/boostrap.html">
@@ -125,7 +150,7 @@ const Register = () => {
                     </div>
                     <div className="remember-forgot">
                         <label>
-                            <input type="checkbox" />
+                            <input type="checkbox" className="my-3 ms-2" />
                             Đồng ý Điều khoản và Dịch vụ
                         </label>
                     </div>
