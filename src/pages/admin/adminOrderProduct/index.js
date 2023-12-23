@@ -128,9 +128,9 @@ const AdminOrderProduct = () => {
                 {orderData && orderData.length > 0 && orderData.map((item, index) => (
                     <tr key={item.id}>
                         <td>{item.id}</td>
-                        <td>{item.nameCustomer}</td>
-                        <td>{item.emailCustomer}</td>
-                        <td>{item.phoneCustomer}</td>
+                        <td>{item.user && item.user.name}</td>
+                        <td>{item.user && item.user.email}</td>
+                        <td>{item.user && item.user.phoneNumber}</td>
                         <td>{item.address}</td>
                         <td>{item.total.toLocaleString()} đ</td>
                         <td>{item.note}</td>

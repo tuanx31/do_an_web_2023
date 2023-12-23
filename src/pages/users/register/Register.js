@@ -83,6 +83,7 @@ const Register = () => {
 
             const response = await registerNewUser(data)
             response ? toast.success("Đăng kí thành công") : toast.error("Thất bại")
+            response && navigate("/login")
 
         } catch (error) {
             toast.error("Thất bại")
