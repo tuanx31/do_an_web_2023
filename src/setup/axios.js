@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const fulldata = localStorage.getItem("persist:accountStore");
-const tokens = JSON.parse(fulldata).token.replace(/\"/g, '');
+let tokens;
+fulldata ? tokens = JSON.parse(fulldata).token.replace(/\"/g, '') : tokens = "";
 const s = `bearer ${tokens}`
 
 const instance = axios.create({
