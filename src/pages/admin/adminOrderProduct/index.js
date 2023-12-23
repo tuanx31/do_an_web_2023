@@ -107,7 +107,7 @@ const AdminOrderProduct = () => {
         setiddel(id)
 
     }
-    return (<Container>
+    return (<Container fluid>
         <h1 className="fw-bold text-center text-danger">Quản lý đơn hàng</h1>
         <Table hover>
             <thead>
@@ -118,6 +118,7 @@ const AdminOrderProduct = () => {
                     <th>Sdt</th>
                     <th>Địa chỉ giao</th>
                     <th>Tổng tiền</th>
+                    <th>Note</th>
                     <th>Tạo ngày</th>
                     <th>Detail</th>
                     <th>Xóa</th>
@@ -132,6 +133,7 @@ const AdminOrderProduct = () => {
                         <td>{item.phoneCustomer}</td>
                         <td>{item.address}</td>
                         <td>{item.total.toLocaleString()} đ</td>
+                        <td>{item.note}</td>
                         <td>{item.createAt}</td>
                         <td><button className="btn btn-sm btn-success" onClick={() => handleClick(item.id)}>Xem</button></td>
                         <td><button className="btn btn-sm btn-danger" onClick={() => handleDelteProduct(item.id)}>Xóa</button></td>
