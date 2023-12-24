@@ -10,7 +10,7 @@ export const ROUTERS = {
         INTRODUCE: "introduce",
         CONTACT: "contact",
         ACCOUNT: "account",
-        PRODUCT: "products/:idCategory",
+        PRODUCT: "products/:idCategory/:page",
         DETAILPRODUCT: "products/:idCategory/detail/:idProduct",
         SEARCH: "search",
         CART: "cart",

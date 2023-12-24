@@ -263,7 +263,7 @@ const AdminProduct = () => {
 
     const { isAdmin } = useSelector(state => state.account)
     useEffect(() => {
-        isAdmin == false && navigate("/")
+        isAdmin === false && navigate("/")
     }, [isAdmin])
     const [Delshow, setDelShow] = useState(false);
     const [modalShow, setModalShow] = useState(false);
@@ -274,7 +274,7 @@ const AdminProduct = () => {
     const fetchAllProducts = async () => {
         try {
             const res = await fetchAllProduct()
-            await setListProduct(res);
+            await setListProduct(res.data);
         } catch (error) {
             console.log(error)
         }

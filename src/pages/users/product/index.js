@@ -1,4 +1,4 @@
-import { Container, Row } from "react-bootstrap";
+import { Container, Pagination, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
@@ -34,6 +34,21 @@ const render = (item, title) => {
 
 
 const Product = () => {
+    const { page } = useParams();
+    const [totalPage, setTotalPage] = useState(1);
+    let items = [];
+    const Pagination_ = (page, totalPage) => {
+        let active = Number(page);
+        for (let number = 1; number <= totalPage; number++) {
+            items.push(
+                <Link key={number} to={`/products/all/${number}`} style={{ color: "unset" }}>
+                    <Pagination.Item active={number === active} href={`/products/all/${number}`}>
+                        <Link to={`/products/all/${number}`} style={{ color: "unset" }}>{number}</Link>
+                    </Pagination.Item>
+                </Link>
+            );
+        }
+    }
     //get id của giỏ hàng từ param
     const { idCategory } = useParams();
     const [listProduct, setListProduct] = useState([]);
@@ -55,8 +70,9 @@ const Product = () => {
     const fetchAllProducts = async () => {
         try {
             setLoading(true)
-            const data = await fetchAllProduct();
-            data && setListProduct(data)
+            const data = await fetchAllProduct(page);
+            data && setTotalPage(data.totalPage)
+            data && setListProduct(data.data)
             setLoading(false)
 
         } catch (error) {
@@ -107,12 +123,16 @@ const Product = () => {
         let title = "Sản phẩm";
         document.title = title;
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [idCategory])
+    }, [idCategory, page])
 
     return (
         <Container>
             {loading ? <Loading /> : idCategory === "all" ? render(listProduct, "Tất cả sản phẩm") : idCategory === "hotproduct" ? render(listProduct, "Sản phẩm hot") : idCategory === "newproduct" ? render(listProduct, "Sản phẩm mới") :
                 listProduct[0] && render(listProduct, listProduct[0].categories.name)}
+            {Pagination_(page, totalPage)}
+            <div className="d-flex justify-content-center">
+                <Pagination>{items}</Pagination>
+            </div>
         </Container>
     )
 }

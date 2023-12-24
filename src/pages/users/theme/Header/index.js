@@ -9,7 +9,7 @@ import { GrPrevious } from 'react-icons/gr'
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 import { Category } from '~/assest/users/data/Category';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 import * as actions from '~/store/actions';
@@ -88,7 +88,7 @@ const Header = () => {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         {Category?.map((product, index) => (
-                                            <li key={index}><Link className="dropdown-item fs-14px" key={index} to={`/products/${product.id}`}>{product?.name}</Link></li>
+                                            <li key={index}><Link className="dropdown-item fs-14px" key={index} to={`/products/${product.id}/1`}>{product?.name}</Link></li>
                                         ))}
                                     </ul>
                                 </li>

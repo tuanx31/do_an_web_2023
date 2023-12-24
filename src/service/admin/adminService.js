@@ -1,9 +1,12 @@
 import axios from "~/setup/axios";
 
-const fetchAllProduct = async () => {
+const fetchAllProduct = async (page) => {
     try {
 
         return await axios.get(`/api/Products`, {
+            params: {
+                'page': page
+            },
             headers: {
                 'accept': 'application/json'
             }
