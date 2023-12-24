@@ -46,3 +46,42 @@
 .sale-products {
     min-height: 500px;
 }
+
+.dd-l-plate {
+    min-height: 480px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.dd-l-plate::after,
+.dd-l-plate::before {
+    content: ' ';
+    display: table;
+}
+
+.dd-info {
+    position: absolute;
+    max-width: 457px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.t-headline-reduced {
+    font-size: 40px;
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: 0;
+    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.dd-l-mw1070 {
+    max-width: 1070px;
+    // min-width: 980px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}

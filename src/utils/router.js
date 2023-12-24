@@ -20,6 +20,6 @@ export const ROUTERS = {
         DKDV: "dieu-khoan-dich-vu",
         LOGIN: 'login',
         REGISTER: 'register',
-        THANKYOU: 'thankyou'
+        THANKYOU: 'thankyou/:idOrder'
     }
 }

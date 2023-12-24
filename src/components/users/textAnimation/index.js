@@ -4,6 +4,11 @@ import "./textAnimation.scss"
 import bgimg from "~/assest/users/img/home/home1.png"
 import { Row } from "react-bootstrap";
 
+
+import Aos from "aos";
+import "aos/dist/aos.css";
+
+import { useEffect } from "react";
 const TextAnimation = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [typeEffect] = useTypewriter({
@@ -11,16 +16,18 @@ const TextAnimation = () => {
         typeSpeed: 110,
         deleteSpeed: 70,
     })
-
+    useEffect(() => {
+        Aos.init({ duration: 1000 });
+    }, [])
     return (
         <>
 
-            <div style={{ backgroundImage: `url(${bgimg})` }} className="TextAnimation">
-                <h3> <span> TUNA SHOP-</span> <span>{typeEffect}</span></h3>
+            <div style={{ backgroundImage: `url(${bgimg})` }} className="TextAnimation" >
+                <h3 data-aos="fade-up"> <span> TUNA SHOP-</span> <span>{typeEffect}</span></h3>
             </div>
             <div className="block_strengths container">
                 <Row>
-                    <div className="item col item1">
+                    <div className="item col item1" data-aos="fade-up" >
                         <div className="icon ">
                             <div className="iconInner">
                                 <span>
@@ -54,7 +61,7 @@ const TextAnimation = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="item col item2">
+                    <div className="item col item2" data-aos="fade-up" >
                         <div className="icon">
                             <div className="iconInner2">
                                 <span className="inner">
@@ -89,7 +96,7 @@ const TextAnimation = () => {
                         </div>
 
                     </div>
-                    <div className="item col item3">
+                    <div className="item col item3" data-aos="fade-up" >
                         <div className="icon">
                             <div className="iconInner">
                                 <span className="inner">

@@ -34,4 +34,16 @@ const OrderDetailProduct = async (data) => {
     }
 }
 
-export { OrderProduct, OrderDetailProduct }
+const getOrderProductbyId = async (idOrder) => {
+    try {
+        return axios.get(`/api/Orders/${idOrder}`, {
+            headers: {
+                'accept': 'text/plain'
+            }
+        })
+    } catch (error) {
+        return error
+    }
+}
+
+export { OrderProduct, OrderDetailProduct, getOrderProductbyId }

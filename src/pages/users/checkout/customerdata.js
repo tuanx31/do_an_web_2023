@@ -61,7 +61,7 @@ const Customerdata = (props) => {
         })
         dispatch(actions.Abate({ cartStore: [], note: '' }))
         dispatch(actions.deleteAllCart())
-        navigate("/thankyou")
+        navigate(`/thankyou/${res.id}`)
 
     }
 
@@ -72,7 +72,6 @@ const Customerdata = (props) => {
                 <input type='name' className={error.address ? 'form-control is-invalid' : 'form-control'} id='floatingInput' placeholder='Ho Va Ten' value={dataCustomer.address} onChange={e => handleChangeAdress(e.target.value)} />
                 <label htmlFor="floatingInput">Địa chỉ</label>
                 {error.address && <p className="text-danger">{error.address}</p>}
-
             </div>
             <div className='my-4'>
                 <Link to={"/cart"}>Giỏ hàng</Link>

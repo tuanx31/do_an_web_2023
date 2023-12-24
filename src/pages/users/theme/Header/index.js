@@ -9,11 +9,13 @@ import { GrPrevious } from 'react-icons/gr'
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 import { Category } from '~/assest/users/data/Category';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 import * as actions from '~/store/actions';
 import { useDispatch, useSelector } from "react-redux";
+
+
 
 const Header = () => {
     const { cartStore } = useSelector(state => state.cart)
@@ -154,7 +156,7 @@ const Header = () => {
                             </button>
                         </div>
                         <div className="position-relative">
-                            <NavLink to={"cart"} className='fs-14px cart'><IoCartOutline size={23} color="white" />{amount != 0 && <span className="d-flex align-items-center justify-content-center rounded-circle position-absolute text-center text-white">{amount}</span>}</NavLink>
+                            <NavLink to={"cart"} className='fs-14px cart'><IoCartOutline size={23} color="white" />{amount !== 0 && <span className="d-flex align-items-center justify-content-center rounded-circle position-absolute text-center text-white">{amount}</span>}</NavLink>
                         </div>
                         <button
                             className="navbar-toggler border-0 shadow-none"
