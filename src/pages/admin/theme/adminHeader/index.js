@@ -23,7 +23,7 @@ const AdminHeader = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link active text-white" aria-current="page" to="/admin/product">
+                            <Link className="nav-link active text-white" aria-current="page" to="/admin/product/1">
                                 product
                             </Link>
                         </li>

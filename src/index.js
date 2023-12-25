@@ -12,10 +12,11 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import reduxCustomize from './reudux';
 import RouteCustom from "./router";
-
+import { Flip } from 'react-toastify';
 const { store, persistor } = reduxCustomize()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 
 root.render(
   <Provider store={store}>
@@ -23,16 +24,17 @@ root.render(
       <BrowserRouter>
         <RouteCustom />
         <ToastContainer
-          position="bottom-center"
+          transition={Flip}
+          position="top-center"
           autoClose={1500}
-          hideProgressBar={false}
+          hideProgressBar={true}
           newestOnTop={false}
           closeOnClick
           rtl={false}
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme="light"
+          theme="colored"
         />
       </BrowserRouter>
     </PersistGate>

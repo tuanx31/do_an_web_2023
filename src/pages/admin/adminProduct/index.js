@@ -2,11 +2,11 @@ import axios from '~/setup/axios';
 import FormData from 'form-data';
 
 import { useEffect, useState } from "react";
-import { Button, Container, Modal } from "react-bootstrap";
+import { Button, Container, Modal, Pagination } from "react-bootstrap";
 import { fetchAllProduct, deleteProduct } from '~/service/admin/adminService';
 
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const MydModalWithGrid = (props) => {
@@ -260,7 +260,8 @@ const MydModalWithGrid = (props) => {
 
 const AdminProduct = () => {
     const navigate = useNavigate()
-
+    const { page } = useParams();
+    const [totalPage, setTotalPage] = useState(1);
     const { isAdmin } = useSelector(state => state.account)
     useEffect(() => {
         isAdmin === false && navigate("/")
@@ -273,8 +274,9 @@ const AdminProduct = () => {
 
     const fetchAllProducts = async () => {
         try {
-            const res = await fetchAllProduct()
-            await setListProduct(res.data);
+            const data = await fetchAllProduct(page);
+            data && setTotalPage(data.totalPage)
+            data && setListProduct(data.data)
         } catch (error) {
             console.log(error)
         }
@@ -282,7 +284,7 @@ const AdminProduct = () => {
     }
     useEffect(() => {
         fetchAllProducts();
-    }, [modalShow])
+    }, [modalShow, page])
 
 
     const handleDelteProduct = (id) => {
@@ -298,6 +300,20 @@ const AdminProduct = () => {
         setDelShow(false)
     }
 
+    let items = [];
+    const Pagination_ = (page, totalPage) => {
+
+        let active = Number(page);
+        for (let number = 1; number <= totalPage; number++) {
+            items.push(
+                <Link key={number} to={`/admin/product/${number}`} style={{ color: "unset" }}>
+                    <Pagination.Item active={number === active} href={`/admin/product/${number}`}>
+                        <Link to={`/admin/product/${number}`} style={{ color: "unset" }}>{number}</Link>
+                    </Pagination.Item>
+                </Link>
+            );
+        }
+    }
     return (<>
         <Container>
             <Button variant="primary" className='float-end my-4' onClick={() => setModalShow(true)}>
@@ -333,7 +349,10 @@ const AdminProduct = () => {
                     </tbody>
                 </table>
             </div>
-
+            {Pagination_(page, totalPage)}
+            <div className="d-flex justify-content-center">
+                <Pagination>{items}</Pagination>
+            </div>
             <Modal
                 show={Delshow}
                 onHide={() => { setDelShow(false); setiddel(null) }}

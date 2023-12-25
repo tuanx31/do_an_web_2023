@@ -1,10 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./style.scss"
 import * as actions from '~/store/actions';
 
 import { useDispatch, useSelector } from 'react-redux'
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { useEffect } from "react";
+import DonHang from "~/components/users/donhang";
 
 const Account = () => {
     const navigate = useNavigate()
@@ -21,18 +22,20 @@ const Account = () => {
     // const { data } = useSelector(state => state.cart)
     // console.log(data)
     return (
-        <>
-            <div className="content container">
-                <h1>Xin chào {dataUser && dataUser.name}</h1>
-                {isAdmin && <h1>
-                    <a href={"/admin"}>go to admin</a>
-                </h1>}
-                <Button variant="primary" className="my-2" onClick={handleclick}>
+        <Container>
+            <div className="content d-flex justify-content-between">
+                <h1>Xin chào <span className="text-danger">{dataUser && dataUser.name}</span></h1><Button variant="primary" className="my-2" onClick={handleclick}>
                     Đăng xuất
                 </Button>
 
+
+
             </div>
-        </>
+            {isAdmin && <h1>
+                <a href={"/admin"}><button className="btn btn-lg btn-success rounded-0">go to admin</button></a>
+            </h1>}
+            <DonHang />
+        </Container>
 
     )
 }

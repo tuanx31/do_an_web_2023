@@ -8,6 +8,7 @@ import { fetchOrder, fetchOrderDetailByIdOrder, deleteOrderDetail } from "~/serv
 import "./orderproduct.scss"
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { handleDateTime } from "~/service/tools";
 
 function MyVerticallyCenteredModal(props) {
     const { data } = props
@@ -134,7 +135,7 @@ const AdminOrderProduct = () => {
                         <td>{item.address}</td>
                         <td>{item.total.toLocaleString()} đ</td>
                         <td>{item.note}</td>
-                        <td>{item.createAt}</td>
+                        <td>{handleDateTime(item.createAt)}</td>
                         <td><button className="btn btn-sm btn-success" onClick={() => handleClick(item.id)}>Xem</button></td>
                         <td><button className="btn btn-sm btn-danger" onClick={() => handleDelteProduct(item.id)}>Xóa</button></td>
 

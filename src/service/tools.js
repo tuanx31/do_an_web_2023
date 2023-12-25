@@ -40,6 +40,27 @@ const validateInput = (values) => {
     return error
 
 }
+
+
+const handleDateTime = (isoDateTime) => {
+    // Thời gian trong định dạng ISO
+
+    // Chuyển đổi sang đối tượng Date
+    const dateObject = new Date(isoDateTime);
+
+    // Lấy thông tin từ đối tượng Date
+    const year = dateObject.getFullYear();
+    const month = dateObject.getMonth() + 1; // Tháng bắt đầu từ 0, cần cộng thêm 1
+    const day = dateObject.getDate();
+    const hours = dateObject.getHours();
+    const minutes = dateObject.getMinutes();
+    const seconds = dateObject.getSeconds();
+
+    // Định dạng lại thời gian dễ nhìn
+    const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
+    return formattedDateTime
+}
 export {
-    handleArray, validateInput
+    handleArray, validateInput, handleDateTime
 }

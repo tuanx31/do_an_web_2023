@@ -14,7 +14,6 @@ const ThankYou = () => {
   const fetchDataOrder = async () => {
     const res = await getOrderProductbyId(idOrder)
     res && setDataOrder(res)
-    dataOrder && console.log(dataOrder)
   }
   const fetOrderDetail = async () => {
     const data = await fetchOrderDetailByIdOrder(idOrder)

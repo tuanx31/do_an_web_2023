@@ -45,5 +45,16 @@ const getOrderProductbyId = async (idOrder) => {
         return error
     }
 }
+const getOrderProductbyEmail = async (email) => {
+    try {
+        return axios.get(`/api/Orders/emailUser/${email}`, {
+            headers: {
+                'accept': 'text/plain'
+            }
+        })
+    } catch (error) {
+        return error
+    }
+}
 
-export { OrderProduct, OrderDetailProduct, getOrderProductbyId }
+export { OrderProduct, OrderDetailProduct, getOrderProductbyId, getOrderProductbyEmail }

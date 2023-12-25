@@ -70,20 +70,20 @@ const Home = () => {
             <div className="dd-acc-202311-holiday container" data-aos="fade-up">
                 <div className="dd-l-mw1070">
 
-                    <div class="dd-l-plate my-3">
-                        <div class="dd-content">
-                            <div class="dd-info">
-                                <h2 class="t-headline-reduced" data-aos="fade-up">
+                    <div className="dd-l-plate my-3">
+                        <div className="dd-content">
+                            <div className="dd-info">
+                                <h2 className="t-headline-reduced" data-aos="fade-up">
                                     Điều tuyệt vời đang chờ&nbsp;bạn.
                                 </h2>
                                 <p data-aos="fade-up">Mùa phụ kiện đã đến rồi đây.</p>
-                                <p class="dd-link" data-aos="fade-up">
+                                <p className="dd-link" data-aos="fade-up">
                                     <Link to={"/products/1"}>Mua ngay</Link>
                                 </p>
                             </div>
                         </div>
-                        <div class="dd-image">
-                            <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/apple-holiday-accessories-202311?wid=2140&amp;hei=960&amp;fmt=png-alpha&amp;.v=1697113198807" alt="Những ngọn đồi giấy nằm xen kẽ phụ kiện và thiết bị Apple" width="1070" height="480" data-scale-params-1="wid=1070&amp;hei=480&amp;fmt=png-alpha&amp;.v=1697113198807" data-scale-initial="2" class="dd-hero dd-invert-classic ir" />
+                        <div className="dd-image">
+                            <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/apple-holiday-accessories-202311?wid=2140&amp;hei=960&amp;fmt=png-alpha&amp;.v=1697113198807" alt="Những ngọn đồi giấy nằm xen kẽ phụ kiện và thiết bị Apple" width="1070" height="480" data-scale-params-1="wid=1070&amp;hei=480&amp;fmt=png-alpha&amp;.v=1697113198807" data-scale-initial="2" className="dd-hero dd-invert-classic ir" />
 
                         </div>
                     </div>
