@@ -48,6 +48,14 @@ const deleteOrderDetail = async (id_order) => {
 
     }
 }
+
+const getAllUser = async () => {
+    try {
+        return await axios.get("/api/Account")
+    } catch (error) {
+        console.log(error)
+    }
+}
 export {
-    fetchAllProduct, deleteProduct, fetchOrder, fetchOrderDetailByIdOrder, deleteOrderDetail
+    fetchAllProduct, deleteProduct, fetchOrder, fetchOrderDetailByIdOrder, deleteOrderDetail, getAllUser
 }

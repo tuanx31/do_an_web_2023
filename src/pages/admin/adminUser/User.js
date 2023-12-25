@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { getAllUser } from "~/service/admin/adminService";
 function FixModal(props) {
     return (
         <Modal   {...props}
@@ -113,10 +114,15 @@ function MyVerticallyCenteredModal(props) {
 }
 
 const AdminUser = () => {
+    const [dataUser, setDataUser] = useState([]);
     const navigate = useNavigate()
-
+    const fetchAllUser = async () => {
+        const res = await getAllUser();
+        res && setDataUser(res);
+    }
     const { isAdmin } = useSelector(state => state.account)
     useEffect(() => {
+        fetchAllUser();
         isAdmin === false && navigate("/")
     }, [isAdmin])
     const [modalShow, setModalShow] = useState(false);
@@ -131,6 +137,7 @@ const AdminUser = () => {
     const fixModal = () => {
         setFixModalShow(true);
     }
+    let num = 1
     return (<>
         <Container>
             <Table>
@@ -141,13 +148,23 @@ const AdminUser = () => {
                         <th>Họ tên</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
-                        <th>Tên group</th>
                         <th>Quyền</th>
                         <th>Xóa / Sửa</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    {dataUser && dataUser.map((item, index) => (
+                        <tr key={index}>
+                            <td>{num++}</td>
+                            <td>{item.id}</td>
+                            <td>{item.name}</td>
+                            <td>{item.email}</td>
+                            <td>{item.phoneNumber}</td>
+                            <td><button className='btn btn-success' onClick={() => handleClick()} >Xem</button></td>
+                            <td><button className='btn btn-warning ' onClick={() => fixModal()}>Sửa</button> <button className='btn btn-danger' onClick={() => deleteModal()}>Xóa</button></td>
+                        </tr>
+                    ))}
+                    {/* <tr>
                         <td>1</td>
                         <td>1234</td>
                         <td>Nguyễn Đình Tuấn</td>
@@ -156,7 +173,7 @@ const AdminUser = () => {
                         <td>Vinh Unniversity</td>
                         <td><button className='btn btn-success' onClick={() => handleClick()} >Xem</button></td>
                         <td><button className='btn btn-warning ' onClick={() => fixModal()}>Sửa</button> <button className='btn btn-danger' onClick={() => deleteModal()}>Xóa</button></td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </Table>
         </Container>
