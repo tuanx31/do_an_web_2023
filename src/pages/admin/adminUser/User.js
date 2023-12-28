@@ -139,7 +139,7 @@ const AdminUser = () => {
     }
     let num = 1
     return (<>
-        <Container>
+        <Container className="my-5">
             <Table>
                 <thead>
                     <tr>
@@ -148,20 +148,20 @@ const AdminUser = () => {
                         <th>Họ tên</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
-                        <th>Quyền</th>
-                        <th>Xóa / Sửa</th>
+                        {/* <th>Quyền</th>
+                        <th>Xóa / Sửa</th> */}
                     </tr>
                 </thead>
                 <tbody>
                     {dataUser && dataUser.map((item, index) => (
                         <tr key={index}>
                             <td>{num++}</td>
-                            <td>{item.id}</td>
+                            <td className="text-truncate" style={{ maxWidth: "100px" }} >{item.id}</td>
                             <td>{item.name}</td>
                             <td>{item.email}</td>
                             <td>{item.phoneNumber}</td>
-                            <td><button className='btn btn-success' onClick={() => handleClick()} >Xem</button></td>
-                            <td><button className='btn btn-warning ' onClick={() => fixModal()}>Sửa</button> <button className='btn btn-danger' onClick={() => deleteModal()}>Xóa</button></td>
+                            {/* <td><button className='btn btn-success' onClick={() => handleClick()} >Xem</button></td>
+                            <td><button className='btn btn-warning ' onClick={() => fixModal()}>Sửa</button> <button className='btn btn-danger' onClick={() => deleteModal()}>Xóa</button></td> */}
                         </tr>
                     ))}
                     {/* <tr>

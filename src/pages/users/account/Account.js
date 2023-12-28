@@ -24,7 +24,8 @@ const Account = () => {
     return (
         <Container>
             <div className="content d-flex justify-content-between">
-                <h1>Xin chào <span className="text-danger">{dataUser && dataUser.name}</span></h1><Button variant="primary" className="my-2" onClick={handleclick}>
+                <h1>Xin chào <span className="text-danger">{dataUser && dataUser.name}</span></h1>
+                <Button variant="primary" className="my-2" onClick={handleclick}>
                     Đăng xuất
                 </Button>
 

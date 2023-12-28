@@ -1,129 +1,132 @@
 @import "/src/global/styles/all";
 
-.navbar {
-    min-height: 95px;
-}
-
-.navbar,
-.dropdown-menu {
-    background-color: $--main-color !important;
-}
-
-.sidebar {
-    background-color: #333333;
-}
-
-@media screen and (max-width : 768px) {
-    .form-search {
-        width: 50%;
-    }
-}
-
-@media screen and (min-width: 992px) {
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-
-    .navbar-expand-lg .offcanvas .offcanvas-body {
-        display: unset;
-        margin-left: 60px;
-    }
-}
-
-.nav-item a {
-    position: relative;
-    color: #ffffffb0;
-
-    &:hover {
-        color: #fff;
-    }
-
-
-}
-
-.active {
-    font-weight: 500;
-}
-
-.dropdown-item:hover {
-    color: #333333 !important;
-}
-
-.nav-item {
-    padding: 3px 0;
-}
-
-@media screen and (max-width: 1200px) {
-    .nav-link {
-        font-size: 12px;
-    }
-
-    .navbar-expand-lg .offcanvas .offcanvas-body {
-        margin-left: unset;
-    }
-}
-
-@media screen and (max-width: 425px) {
-
-    .navbar-toggler {
-        float: right !important;
-    }
-
-    .form-search {
-        background-color: transparent !important;
-
-        button {
-            margin-left: 40px;
-        }
-
-        svg {
-            color: white;
-        }
-    }
+.header {
 
     .navbar {
-        min-height: 60px;
+        min-height: 95px;
     }
 
-    .div-search {
-        .space {
+    .navbar,
+    .dropdown-menu {
+        background-color: $--main-color !important;
+    }
+
+    .sidebar {
+        background-color: #333333;
+    }
+
+    @media screen and (max-width : 768px) {
+        .form-search {
+            width: 50%;
+        }
+    }
+
+    @media screen and (min-width: 992px) {
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .navbar-expand-lg .offcanvas .offcanvas-body {
+            display: unset;
+            margin-left: 60px;
+        }
+    }
+
+    .nav-item a {
+        position: relative;
+        color: #ffffffb0;
+
+        &:hover {
+            color: #fff;
+        }
+
+
+    }
+
+    .active {
+        font-weight: 500;
+    }
+
+    .dropdown-item:hover {
+        color: #333333 !important;
+    }
+
+    .nav-item {
+        padding: 3px 0;
+    }
+
+    @media screen and (max-width: 1200px) {
+        .nav-link {
+            font-size: 12px;
+        }
+
+        .navbar-expand-lg .offcanvas .offcanvas-body {
+            margin-left: unset;
+        }
+    }
+
+    @media screen and (max-width: 425px) {
+
+        .navbar-toggler {
+            float: right !important;
+        }
+
+        .form-search {
+            background-color: transparent !important;
+
+            button {
+                margin-left: 40px;
+            }
+
+            svg {
+                color: white;
+            }
+        }
+
+        .navbar {
+            min-height: 60px;
+        }
+
+        .div-search {
+            .space {
+                width: 70px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 325px) {
+        .div-search {
+            .space {
+                width: 0px;
+            }
+        }
+    }
+
+    .form-searchmb {
+        background: #000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        button {
             width: 70px;
         }
     }
-}
 
-@media screen and (max-width: 325px) {
-    .div-search {
-        .space {
-            width: 0px;
+    .form-search {
+        --bs-border-radius: 0.7rem;
+    }
+
+
+    .cart {
+        span {
+            background-color: $--color-sale;
+            width: 23px;
+            height: 23px;
+            font-size: 15px;
+            left: 14px;
+            top: -8px;
         }
-    }
-}
-
-.form-searchmb {
-    background: #000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    button {
-        width: 70px;
-    }
-}
-
-.form-search {
-    --bs-border-radius: 0.7rem;
-}
-
-
-.cart {
-    span {
-        background-color: $--color-sale;
-        width: 23px;
-        height: 23px;
-        font-size: 15px;
-        left: 14px;
-        top: -8px;
     }
 }

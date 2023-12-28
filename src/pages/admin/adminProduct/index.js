@@ -315,8 +315,8 @@ const AdminProduct = () => {
         }
     }
     return (<>
-        <Container>
-            <Button variant="primary" className='float-end my-4' onClick={() => setModalShow(true)}>
+        <Container className='my-4'>
+            <Button variant="primary" className='float-end my-4 z-3' onClick={() => setModalShow(true)}>
                 Thêm sản phẩm
             </Button>
 

@@ -13,7 +13,7 @@ const AdminHome = (props) => {
     }, [isAdmin])
     return (
         <>
-            <Container>
+            <Container className="my-5">
                 trang asdmin
                 <Link to={"/"}>go to client</Link>
             </Container>

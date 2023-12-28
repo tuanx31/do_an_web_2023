@@ -1,0 +1,10 @@
+.adminheader {
+    .navbar-toggler {
+        border: none;
+        outline: none;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}

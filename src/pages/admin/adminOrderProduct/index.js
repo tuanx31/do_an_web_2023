@@ -108,7 +108,7 @@ const AdminOrderProduct = () => {
         setiddel(id)
 
     }
-    return (<Container fluid>
+    return (<Container fluid className="my-5">
         <h1 className="fw-bold text-center text-danger">Quản lý đơn hàng</h1>
         <Table hover>
             <thead>

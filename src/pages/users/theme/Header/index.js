@@ -47,7 +47,7 @@ const Header = () => {
     }
 
     return (
-        <>
+        <div className="header">
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg bg-body-tertiary ">
                 <div className="container ">
                     <Link className="navbar-brand fw-bold fs-3 " to={""}>
@@ -171,7 +171,7 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
-        </>
+        </div>
     )
 }
 

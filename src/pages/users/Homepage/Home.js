@@ -91,25 +91,25 @@ const Home = () => {
             </div>
             <Container>
                 <div className="Sale my-4">
-                    <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/hotproduct"} className="text-black position-relative text-uppercase">Sản Phẩm Hot</Link></h2>
+                    <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/hotproduct/1"} className="text-black position-relative text-uppercase">Sản Phẩm Hot</Link></h2>
                     <div className="sale-products my-4 mb-5" data-aos="fade-up">
                         <Row>
                             {hotloading ? <Loading /> : hotProduct && <ProductCollection data={hotProduct} />}
                         </Row>
                         <div className="d-flex justify-content-center">
-                            <Link to={"/products/hotproduct"} className="btn btn-dark p-3 text-uppercase" >xem thêm sản phẩm hot</Link>
+                            <Link to={"/products/hotproduct/1"} className="btn btn-dark p-3 text-uppercase" >xem thêm sản phẩm hot</Link>
                         </div>
                     </div>
                 </div>
 
                 <div className="Sale my-4">
-                    <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/newproduct"} className="text-black position-relative text-uppercase">Sản Phẩm Mới Nhất</Link></h2>
+                    <h2 className="text-center fw-bold sale-title position-relative mb-3"><Link to={"/products/newproduct/1"} className="text-black position-relative text-uppercase">Sản Phẩm Mới Nhất</Link></h2>
                     <div className="sale-products my-4 mb-5" data-aos="fade-up">
                         <Row>
                             {newLoading ? <Loading /> : newProduct && <ProductCollection data={newProduct} />}
                         </Row>
                         <div className="d-flex justify-content-center" >
-                            <Link to={"/products/newproduct"} className="btn btn-dark p-3 text-uppercase" >xem thêm sản phẩm mới</Link>
+                            <Link to={"/products/newproduct/1"} className="btn btn-dark p-3 text-uppercase" >xem thêm sản phẩm mới</Link>
                         </div>
                     </div>
                 </div>
