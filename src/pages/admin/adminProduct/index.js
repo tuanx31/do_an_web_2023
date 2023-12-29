@@ -314,6 +314,7 @@ const AdminProduct = () => {
             );
         }
     }
+    let num = 1
     return (<>
         <Container className='my-4'>
             <Button variant="primary" className='float-end my-4 z-3' onClick={() => setModalShow(true)}>
@@ -337,7 +338,7 @@ const AdminProduct = () => {
                         {
                             listProduct && listProduct.map((item, index) => (
                                 <tr key={item.id}>
-                                    <th scope="row">{index + 1}</th>
+                                    <th scope="row">{(Number(page) - 1) * 20 + num++}</th>
                                     <th>{item.id}</th>
                                     <td><img src={"https://localhost:7139/resources/" + item.img} alt='' style={{ width: "80px" }} /></td>
                                     <td>{item.name}</td>
