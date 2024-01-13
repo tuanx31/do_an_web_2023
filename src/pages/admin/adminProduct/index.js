@@ -278,6 +278,7 @@ const ModalEditProduct = (props) => {
     const [listIdTrademark, setlistIdTrademark] = useState([])
     const [datamodellistImage, setdatamodellistImage] = useState()
     const [modelImage, setModelImage] = useState();
+    const [createAt, setCreateAt] = useState();
     // const [issucess,setIssucess] = useState(false)
 
     const setdata = () => {
@@ -296,6 +297,7 @@ const ModalEditProduct = (props) => {
         data && setdatamodellistImage(data.listImage)
         data && sethot(data.hot)
         data && setModelImage(data.img)
+        data && setCreateAt(data.createAt)
     }
     useEffect(() => {
         setdata();
@@ -303,27 +305,7 @@ const ModalEditProduct = (props) => {
     const EditProduct = async () => {
         try {
             const form = new FormData();
-            // size && form.append('size', size);
-            // id_category && form.append('id_category', id_category);
-            // color && form.append('color', color);
-            // material && form.append('Material', material);
-            // price && form.append('price', price);
-            // quantity && form.append('quantity', quantity);
-            // form.append('name', name);
-            // id_tradeMark && form.append('id_trademark', id_tradeMark);
-            // sale_of && form.append('sale_of', sale_of);
-            // consident && form.append('consistent', consident);
-            // // images && form.append('ImageFile', images);
-            // hot && form.append('hot', hot);
-            // // for (let index = 0; index < listImage.length; index++) {
-            // //     const element = listImage[index];
-            // //     listImage.length > 0 && form.append('listImageFile', element);
-            // // }
-            // desc && form.append('description', desc);
-            // design && form.append('design', design);
-            // datamodellistImage && form.append('listImage', datamodellistImage);
-            // modelImage && form.append('img', modelImage);
-
+            createAt && form.append("createAt", createAt)
             size && form.append('size', size);
             id_category && form.append('id_category', id_category);
             color && form.append('color', color);
@@ -338,15 +320,12 @@ const ModalEditProduct = (props) => {
             consident && form.append('consistent', consident);
             desc && form.append('description', desc);
             design && form.append('design', design);
-            form.append('listImage', '2');
             datamodellistImage && form.append('listImage', datamodellistImage);
             images && form.append('ImageFile', images);
             for (let index = 0; index < listImage.length; index++) {
                 const element = listImage[index];
                 listImage.length > 0 && form.append('listImageFile', element);
             }
-
-
 
             const url = `/api/Products/${idProduct}`
             console.log(url);
@@ -588,7 +567,7 @@ const AdminProduct = () => {
     }
     useEffect(() => {
         fetchAllProducts();
-    }, [modalShow, page])
+    }, [modalShow, page, ModalEditShow])
 
 
     const handleDelteProduct = (id) => {
