@@ -56,6 +56,38 @@ const getAllUser = async () => {
         console.log(error)
     }
 }
+
+const getCountProduct = async () => {
+    try {
+        return await axios.get("/api/Products/getcountProduct")
+    } catch (error) {
+        console.log(error);
+    }
+}
+const getCountOrder = async () => {
+    try {
+        return await axios.get("/api/Orders/getCountOrder")
+    } catch (error) {
+        console.log(error);
+    }
+}
+const getCountUser = async () => {
+    try {
+        return await axios.get("/api/Account/getCountUser")
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 export {
-    fetchAllProduct, deleteProduct, fetchOrder, fetchOrderDetailByIdOrder, deleteOrderDetail, getAllUser
+    fetchAllProduct,
+    deleteProduct,
+    fetchOrder,
+    fetchOrderDetailByIdOrder,
+    deleteOrderDetail,
+    getAllUser,
+    getCountProduct,
+    getCountOrder,
+    getCountUser
 }
