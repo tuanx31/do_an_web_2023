@@ -49,6 +49,7 @@ function FixModal(props) {
                 </Container>
             </Modal.Body>
             <Modal.Footer>
+                <Button variant="warning" >Sửa</Button>
                 <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
@@ -68,9 +69,7 @@ function DeleteModal(props) {
                 Xác nhận xóa
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" >
-                    Close
-                </Button>
+                <Button onClick={props.onHide}>Close</Button>
                 <Button variant="danger" >Xóa</Button>
             </Modal.Footer>
         </Modal>
@@ -120,16 +119,23 @@ const AdminUser = () => {
         const res = await getAllUser();
         res && setDataUser(res);
     }
+
     const { isAdmin } = useSelector(state => state.account)
     useEffect(() => {
         fetchAllUser();
         isAdmin === false && navigate("/")
     }, [isAdmin])
+
     const [modalShow, setModalShow] = useState(false);
     const [fixModalShow, setFixModalShow] = useState(false);
     const [deleteMoalShow, setDeleteMoalShow] = useState(false);
-    const deleteModal = () => {
+    const [iddel, setiddel] = useState(null);
+    const [listUser, setListUser] = useState([]);
+    const [dataEdit, setdataEdit] = useState(0);
+
+    const deleteModal = (id) => {
         setDeleteMoalShow(true);
+
     }
     const handleClick = () => {
         setModalShow(true);
@@ -137,19 +143,27 @@ const AdminUser = () => {
     const fixModal = () => {
         setFixModalShow(true);
     }
+    const ComfirmDelete = async () => {
+        if (iddel) {
+            await deleteModal(iddel);
+            fetchAllUser();
+        }
+        setDeleteMoalShow(false)
+    }
+
     let num = 1
     return (<>
         <Container className="my-5">
             <Table>
                 <thead>
                     <tr>
-                        <th>STT</th>
-                        <th>Id</th>
-                        <th>Họ tên</th>
-                        <th>Email</th>
-                        <th>Số điện thoại</th>
-                        {/* <th>Quyền</th>
-                        <th>Xóa / Sửa</th> */}
+                        <th scope="col">STT</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Họ tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Số điện thoại</th>
+                        <th scope="col">Quyền</th>
+                        <th scope="col">Xóa / Sửa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -160,22 +174,13 @@ const AdminUser = () => {
                             <td>{item.name}</td>
                             <td>{item.email}</td>
                             <td>{item.phoneNumber}</td>
-                            {/* <td><button className='btn btn-success' onClick={() => handleClick()} >Xem</button></td>
-                            <td><button className='btn btn-warning ' onClick={() => fixModal()}>Sửa</button> <button className='btn btn-danger' onClick={() => deleteModal()}>Xóa</button></td> */}
+                            <td><button className='btn btn-success' onClick={() => handleClick()} >Xem</button></td>
+                            <td><button className='btn btn-warning ' onClick={() => { fixModal(); fetchAllUser() }}>Sửa</button> <button className='btn btn-danger' onClick={() => deleteModal()}>Xóa</button></td>
                         </tr>
                     ))}
-                    {/* <tr>
-                        <td>1</td>
-                        <td>1234</td>
-                        <td>Nguyễn Đình Tuấn</td>
-                        <td>Nguyendinhtuanx31@gmail.com</td>
-                        <td>0824892083</td>
-                        <td>Vinh Unniversity</td>
-                        <td><button className='btn btn-success' onClick={() => handleClick()} >Xem</button></td>
-                        <td><button className='btn btn-warning ' onClick={() => fixModal()}>Sửa</button> <button className='btn btn-danger' onClick={() => deleteModal()}>Xóa</button></td>
-                    </tr> */}
                 </tbody>
             </Table>
+
         </Container>
 
         <MyVerticallyCenteredModal

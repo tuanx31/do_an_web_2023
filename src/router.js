@@ -23,6 +23,7 @@ import DieuKhoanDichVu from "~/pages/users/dieukhoandichvu"
 import Login from "~/pages/users/login/Login"
 import Register from "~/pages/users/register/Register"
 import ThankYou from "~/pages/users/thankyou"
+import AdminCategory from "~/pages/admin/adminCategory"
 
 
 
@@ -122,6 +123,10 @@ const renderAdminRouter = () => {
             path: ROUTERS.ADMIN.USER,
             component: <AdminUser />,
         },
+        {
+            path: ROUTERS.ADMIN.CATEGORY,
+            component: <AdminCategory />
+        }
     ]
     return (
         <>
