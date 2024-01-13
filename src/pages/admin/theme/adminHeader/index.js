@@ -74,6 +74,16 @@ const AdminHeader = () => {
                                     Quản lý người dùng
                                 </Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active text-black fw-bold text-uppercase" aria-current="page" to="/admin/category">
+                                    Quản lý loại sản phẩm
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active text-black fw-bold text-uppercase" aria-current="page" to="/admin/trademark">
+                                    Quản lý thương hiệu
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

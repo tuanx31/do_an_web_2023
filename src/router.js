@@ -24,6 +24,7 @@ import Login from "~/pages/users/login/Login"
 import Register from "~/pages/users/register/Register"
 import ThankYou from "~/pages/users/thankyou"
 import AdminCategory from "~/pages/admin/adminCategory"
+import AdminTradeMark from "~/pages/admin/adminTrademark"
 
 
 
@@ -126,7 +127,11 @@ const renderAdminRouter = () => {
         {
             path: ROUTERS.ADMIN.CATEGORY,
             component: <AdminCategory />
-        }
+        },
+        {
+            path: ROUTERS.ADMIN.TRADEMARK,
+            component: <AdminTradeMark />
+        },
     ]
     return (
         <>

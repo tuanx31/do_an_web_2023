@@ -115,6 +115,7 @@ function MyVerticallyCenteredModal(props) {
 const AdminUser = () => {
     const [dataUser, setDataUser] = useState([]);
     const navigate = useNavigate()
+
     const fetchAllUser = async () => {
         const res = await getAllUser();
         res && setDataUser(res);
@@ -129,11 +130,8 @@ const AdminUser = () => {
     const [modalShow, setModalShow] = useState(false);
     const [fixModalShow, setFixModalShow] = useState(false);
     const [deleteMoalShow, setDeleteMoalShow] = useState(false);
-    const [iddel, setiddel] = useState(null);
-    const [listUser, setListUser] = useState([]);
-    const [dataEdit, setdataEdit] = useState(0);
 
-    const deleteModal = (id) => {
+    const deleteModal = () => {
         setDeleteMoalShow(true);
 
     }
@@ -143,13 +141,7 @@ const AdminUser = () => {
     const fixModal = () => {
         setFixModalShow(true);
     }
-    const ComfirmDelete = async () => {
-        if (iddel) {
-            await deleteModal(iddel);
-            fetchAllUser();
-        }
-        setDeleteMoalShow(false)
-    }
+
 
     let num = 1
     return (<>

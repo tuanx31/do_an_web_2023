@@ -4,7 +4,8 @@ export const ROUTERS = {
         PRODUCT: "admin/product/:page",
         ORDER: 'admin/order',
         USER: 'admin/user',
-        CATEGORY: 'admin/category'
+        CATEGORY: 'admin/category',
+        TRADEMARK: 'admin/trademark'
     },
     USER: {
         HOME: "",

@@ -349,6 +349,7 @@ const ModalEditProduct = (props) => {
         }
 
     }
+
     const fetchdataTrademark = async () => {
         try {
             const response = await axios.get(`/api/Trademarks`, {

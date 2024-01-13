@@ -79,7 +79,18 @@ const getCountUser = async () => {
     }
 }
 
+const fetchdataTrademarks = async () => {
+    try {
+        return await axios.get(`/api/Trademarks`, {
+            headers: {
+                'accept': 'application/json'
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
 
+}
 export {
     fetchAllProduct,
     deleteProduct,
@@ -89,5 +100,6 @@ export {
     getAllUser,
     getCountProduct,
     getCountOrder,
-    getCountUser
+    getCountUser,
+    fetchdataTrademarks
 }

@@ -56,7 +56,7 @@ function MyVerticallyCenteredModal(props) {
                 </Table>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button onClick={props.onHide} variant="secondary">Đóng</Button>
             </Modal.Footer>
         </Modal>
     );
@@ -162,7 +162,7 @@ const AdminOrderProduct = () => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={() => { setDelShow(false); setiddel(null) }}>
-                    Close
+                    Đóng
                 </Button>
                 <Button variant="danger" onClick={ComfirmDelete} >Xóa</Button>
             </Modal.Footer>
