@@ -133,7 +133,7 @@ const AdminOrderProduct = () => {
                         <td>{item.user && item.user.email}</td>
                         <td>{item.user && item.user.phoneNumber}</td>
                         <td>{item.address}</td>
-                        <td>{item.total.toLocaleString()} đ</td>
+                        <td>{item.total.toLocaleString()} VND</td>
                         <td>{item.note}</td>
                         <td>{handleDateTime(item.createAt)}</td>
                         <td><button className="btn btn-sm btn-success" onClick={() => handleClick(item.id)}>Xem</button></td>

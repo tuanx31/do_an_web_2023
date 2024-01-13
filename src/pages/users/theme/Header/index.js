@@ -8,20 +8,32 @@ import { IoCartOutline } from 'react-icons/io5';
 import { GrPrevious } from 'react-icons/gr'
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 
-import { Category } from '~/assest/users/data/Category';
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 
 
 import * as actions from '~/store/actions';
 import { useDispatch, useSelector } from "react-redux";
+import { fetchAllCategory } from "~/service/admin/adminService";
 
 
 
 const Header = () => {
     const { cartStore } = useSelector(state => state.cart)
     const { isAuthenticate, dataUser } = useSelector(state => state.account)
+    const [Category, setCategory] = useState([]);
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const fetchAllCategorys = async () => {
+        const res = await fetchAllCategory()
+        res && setCategory(res)
+    }
+
+    useEffect(() => {
+        fetchAllCategorys()
+    }, [])
+
     let amount = 0
     for (const element of cartStore) {
         amount += element.soluong
@@ -87,8 +99,8 @@ const Header = () => {
                                         Sản Phẩm
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        {Category?.map((product, index) => (
-                                            <li key={index}><Link className="dropdown-item fs-14px" key={index} to={`/products/${product.id}/1`}>{product?.name}</Link></li>
+                                        {Category?.map((item, index) => (
+                                            <li key={index}><Link className="dropdown-item fs-14px" key={index} to={`/products/${item.categoryId}/1`}>{item?.name}</Link></li>
                                         ))}
                                     </ul>
                                 </li>

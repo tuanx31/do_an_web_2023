@@ -34,6 +34,25 @@ const FixModal = (props) => {
         </Modal>
     </>)
 }
+const DeleteModal = (props) => {
+    return (<>
+        <Modal {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered>
+            <Modal.Header closeButton>
+                <Modal.Title className="fw-bold w-100 text-center">XÓA THÔNG TIN</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="text-center fw-bold text-danger  " >
+                <h5> Xác nhận xóa ?</h5>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={props.onHide} className="btn-secondary">Đóng</Button>
+                <Button onClick={props.onHide} className="btn-danger" >Xóa</Button>
+            </Modal.Footer>
+        </Modal>
+    </>)
+}
 const AdminTradeMark = () => {
     const [dataTrademark, setdataTrademark] = useState([]);
     const fetchAllTrademark = async () => {
@@ -59,16 +78,16 @@ const AdminTradeMark = () => {
                         <th> ID</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Xóa/ Sửa</th>
+                        <th>Sửa / Xóa</th>
                     </tr>
                 </thead>
                 <tbody>
                     {dataTrademark && dataTrademark.map((item, index) => (
-                        <tr>
+                        <tr key={index}>
                             <td>{item.id}</td>
                             <td>{item.name}</td>
                             <td>{item.description}</td>
-                            <td><button className='btn btn-warning ' onClick={() => { setFixModalShow(true); fetchdataTrademarks() }} >Sửa</button> <button className='btn btn-danger' >Xóa</button></td>
+                            <td><button className='btn btn-warning ' onClick={() => { setFixModalShow(true); fetchdataTrademarks() }} >Sửa</button> <button className='btn btn-danger' onClick={() => { setdeleteModal(true) }} >Xóa</button></td>
                         </tr>
                     )
                     )}
@@ -79,6 +98,10 @@ const AdminTradeMark = () => {
         <FixModal
             show={fixModal}
             onHide={() => setFixModalShow(false)}
+        />
+        <DeleteModal
+            show={deleteModal}
+            onHide={() => setdeleteModal(false)}
         />
     </>)
 }

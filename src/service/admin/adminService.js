@@ -89,8 +89,19 @@ const fetchdataTrademarks = async () => {
     } catch (error) {
         console.log(error)
     }
-
 }
+const fetchAllCategory = async () => {
+    try {
+        return await axios.get(`/api/Category`, {
+            headers: {
+                'accept': 'application/json'
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export {
     fetchAllProduct,
     deleteProduct,
@@ -101,5 +112,7 @@ export {
     getCountProduct,
     getCountOrder,
     getCountUser,
-    fetchdataTrademarks
+    fetchdataTrademarks,
+    fetchAllCategory
+
 }
