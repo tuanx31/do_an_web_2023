@@ -135,6 +135,20 @@ const addCategory = async (data) => {
         console.log(error)
     }
 }
+const addTradeMarks = async (data) => {
+    console.log(data);
+    try {
+        return await axios.post(`/api/Trademarks`,
+            data,
+            {
+                headers: {
+                    'accept': 'text/plain',
+                }
+            })
+    } catch (error) {
+        console.log(error)
+    }
+}
 const getUserbyEmail = async (email) => {
     try {
         return await axios.get(`/api/Account/getUser/${email}`, {
@@ -157,6 +171,20 @@ const getRoles = async () => {
         console.log(error)
     }
 }
+const deleteCategory = async (id) => {
+    try {
+        return await axios.delete(`api/Category/${id}`)
+    } catch (error) {
+        console.log(error);
+    }
+}
+const deleteTradeMarks = async (id) => {
+    try {
+        return await axios.delete(`api/Trademarks/${id}`)
+    } catch (error) {
+        console.log(error);
+    }
+}
 export {
     fetchAllProduct,
     deleteProduct,
@@ -173,5 +201,8 @@ export {
     getUserbyEmail,
     deleteUser,
     getRoles,
-    EditUser
+    EditUser,
+    deleteCategory,
+    deleteTradeMarks,
+    addTradeMarks
 }

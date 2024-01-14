@@ -4,7 +4,7 @@ import { Button, Container, Modal, Table } from "react-bootstrap"
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { fetchAllCategory, addCategory } from '~/service/admin/adminService';
+import { fetchAllCategory, addCategory, deleteCategory } from '~/service/admin/adminService';
 
 const FixModal = (props) => {
     return (<>
@@ -49,7 +49,7 @@ const DeleteModal = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide} className="btn-secondary">Đóng</Button>
-                <Button onClick={props.onHide} className="btn-danger" >Xóa</Button>
+                <Button onClick={props.delete} className="btn-danger" >Xóa</Button>
             </Modal.Footer>
         </Modal>
     </>)
@@ -82,7 +82,7 @@ const AddModal = (props) => {
             </Modal.Header>
             <Modal.Body>
                 <div className="mb-3 form-floating">
-                    <input type="text" className="form-control rounded-0" value={dataca.name} onChange={e => setDataca({ name: e.target.value, path: "path" })} id="floatingInput" />
+                    <input type="text" className="form-control rounded-0" value={dataca.name} onChange={e => setDataca({ name: e.target.value, path: "path" })} id="floatingInput" placeholder="Them san pham" />
                     <label htmlFor="floatingInput">Loại sản phẩm</label>
                 </div>
             </Modal.Body>
@@ -99,9 +99,20 @@ const AdminCategory = () => {
     const [fixModal, setFixModalShow] = useState(false);
     const [deleteModal, setdeleteModal] = useState(false);
     const [addModal, setaddModal] = useState(false);
+    const [iddel, setiddel] = useState(null)
     const fetchAllCategorys = async () => {
         const res = await fetchAllCategory()
         res && setdataCategory(res)
+
+    }
+    const handleDeleteCategory = async () => {
+        try {
+            await deleteCategory(iddel)
+            toast.success("Xoa thanh cong")
+            setdeleteModal(false)
+        } catch {
+            toast.error("them that bai")
+        }
 
     }
     const navigate = useNavigate()
@@ -134,7 +145,7 @@ const AdminCategory = () => {
                         <tr key={index}>
                             <td>{item.categoryId}</td>
                             <td> {item.name} </td>
-                            <td><button className='btn btn-warning ' onClick={() => { setFixModalShow(true); fetchAllCategorys() }} >Sửa</button> <button className='btn btn-danger' onClick={() => { setdeleteModal(true) }} >Xóa</button></td>
+                            <td><button className='btn btn-warning ' onClick={() => { setFixModalShow(true); fetchAllCategorys() }} >Sửa</button> <button className='btn btn-danger' onClick={() => { setdeleteModal(true); setiddel(item.categoryId) }} >Xóa</button></td>
                         </tr>
                     )
                     )}
@@ -148,6 +159,7 @@ const AdminCategory = () => {
         <DeleteModal
             show={deleteModal}
             onHide={() => setdeleteModal(false)}
+            delete={() => handleDeleteCategory()}
         />
         <AddModal
             show={addModal}
