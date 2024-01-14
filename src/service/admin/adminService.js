@@ -120,7 +120,21 @@ const fetchAllCategory = async () => {
         console.log(error)
     }
 }
-
+const addCategory = async (data) => {
+    console.log(data);
+    try {
+        return await axios.post(`/api/Category`,
+            data,
+            {
+                headers: {
+                    'accept': 'text/plain',
+                    'Content-Type': 'application/json'
+                }
+            })
+    } catch (error) {
+        console.log(error)
+    }
+}
 const getUserbyEmail = async (email) => {
     try {
         return await axios.get(`/api/Account/getUser/${email}`, {
@@ -155,6 +169,7 @@ export {
     getCountUser,
     fetchdataTrademarks,
     fetchAllCategory,
+    addCategory,
     getUserbyEmail,
     deleteUser,
     getRoles,
