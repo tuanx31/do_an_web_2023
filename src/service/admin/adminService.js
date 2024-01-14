@@ -48,7 +48,13 @@ const deleteOrderDetail = async (id_order) => {
 
     }
 }
-
+const deleteUser = async (email) => {
+    try {
+        return await axios.delete(`/api/Account/${email}`)
+    } catch (error) {
+        console.log(error);
+    }
+}
 const getAllUser = async () => {
     try {
         return await axios.get("/api/Account")
@@ -56,7 +62,20 @@ const getAllUser = async () => {
         console.log(error)
     }
 }
-
+const EditUser = async (id, data) => {
+    try {
+        return await axios.put(`/api/Account/${id}`,
+            data,
+            {
+                headers: {
+                    'accept': '*/*',
+                    'Content-Type': 'application/json'
+                }
+            })
+    } catch (error) {
+        console.log(error)
+    }
+}
 const getCountProduct = async () => {
     try {
         return await axios.get("/api/Products/getcountProduct")
@@ -113,7 +132,17 @@ const getUserbyEmail = async (email) => {
         console.log(error)
     }
 }
-
+const getRoles = async () => {
+    try {
+        return await axios.get(`/api/Account/getAllRole`, {
+            headers: {
+                'accept': 'application/json'
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
 export {
     fetchAllProduct,
     deleteProduct,
@@ -126,6 +155,8 @@ export {
     getCountUser,
     fetchdataTrademarks,
     fetchAllCategory,
-    getUserbyEmail
-
+    getUserbyEmail,
+    deleteUser,
+    getRoles,
+    EditUser
 }

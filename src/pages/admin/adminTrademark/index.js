@@ -1,4 +1,3 @@
-import { MODULESPECIFIER_TYPES } from "@babel/types";
 import { useEffect, useState } from "react";
 import { Button, Container, Modal, Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -43,7 +42,7 @@ const DeleteModal = (props) => {
             <Modal.Header closeButton>
                 <Modal.Title className="fw-bold w-100 text-center">XÓA THÔNG TIN</Modal.Title>
             </Modal.Header>
-            <Modal.Body className="text-center fw-bold text-danger  " >
+            <Modal.Body className="text-center fw-bold text-danger" >
                 <h5> Xác nhận xóa ?</h5>
             </Modal.Body>
             <Modal.Footer>

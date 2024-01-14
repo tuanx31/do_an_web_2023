@@ -20,7 +20,7 @@ const validateInput = (values) => {
     if (values.password === "") {
         error.password = "Mật khẩu không được để trống"
     } else if (!password_pattenrn.test(values.password)) {
-        error.password = "Mật khẩu phải lớn hơn 8 ký tự , ít nhất một chữ cái viết hoa, viết thường,1 số và 1 ký tự đặc biệt"
+        error.password = "Mật khẩu phải lớn hơn 8 ký tự, ít nhất một chữ viết hoa,viết thường, 1 số và 1 ký tự đặc biệt"
     }
     if (values.confirmPassword === "") {
         error.confirmPassword = "Mật khẩu không được để trống"

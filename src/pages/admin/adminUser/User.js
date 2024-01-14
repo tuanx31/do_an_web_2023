@@ -9,7 +9,62 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllUser } from "~/service/admin/adminService";
 import { getUserbyEmail } from "~/service/admin/adminService";
+import { deleteUser } from "~/service/admin/adminService";
+import { getRoles } from "~/service/admin/adminService";
+import { EditUser } from "~/service/admin/adminService";
+import { toast } from "react-toastify";
+
+const initDataUser = {
+    name: '',
+    email: '',
+    phone: '',
+    role: '',
+    roleOld: ''
+}
+const initdataRole = [{
+    id: "",
+    name: "",
+    normalizedName: "",
+    concurrencyStamp: ""
+}]
+
 function FixModal(props) {
+    const { data } = props;
+    const [dataUser, setDataUser] = useState({ initDataUser });
+    const [id, setId] = useState();
+    const setData = () => {
+        data.user && setId(data.user.id)
+        const dataTmp = {
+            name: data.user && data.user.name,
+            email: data.user && data.user.email,
+            phone: data.user && data.user.phoneNumber,
+            role: data.role && data.role[0],
+            roleOld: data.role && data.role[0]
+        }
+        console.log(dataTmp);
+        dataTmp && setDataUser(dataTmp);
+    }
+    useEffect(() => {
+        setData();
+    }, [data])
+    const [dataRole, setDataRole] = useState(initdataRole);
+    const getAllRole = async () => {
+        const res = await getRoles()
+        res && setDataRole(res);
+    }
+    const editUser = async (id) => {
+        try {
+            const res = await EditUser(id, dataUser)
+            toast.success(res)
+            console.log(res);
+        } catch (error) {
+            console.log(error);
+            toast.error("Lỗi");
+        }
+    }
+    useEffect(() => {
+        getAllRole()
+    }, [])
     return (
         <Modal   {...props}
             size="lg"
@@ -25,23 +80,22 @@ function FixModal(props) {
                     <div>
                         <form>
                             <div className="mb-3 form-floating">
-                                <input type="text" className="form-control rounded-0" id="floatingInput" placeholder="Tên sản phẩm" />
-                                <label htmlFor="floatingInput">Họ tên</label>
+                                <input type="text" className="form-control rounded-0" id="floatingInput" value={dataUser.name} onChange={e => setDataUser({ ...dataUser, name: e.target.value })} />
+                                <label htmlFor="floatingInput" >Họ tên</label>
                             </div>
                             <div className="mb-3 form-floating">
-                                <input type="text" className="form-control rounded-0" id="floatingInput" placeholder="Giá sản phẩm" />
+                                <input type="text" className="form-control rounded-0" value={dataUser.email} onChange={e => setDataUser({ ...dataUser, email: e.target.value })} id="floatingInput" />
                                 <label htmlFor="floatingInput">Email</label>
                             </div>
                             <div className="mb-3 form-floating">
-                                <input type="text" className="form-control rounded-0" id="floatingInput" placeholder=" Số lượng trong kho" />
+                                <input type="text" className="form-control rounded-0" id="floatingInput" value={dataUser.phone} onChange={e => setDataUser({ ...dataUser, phone: e.target.value })} />
                                 <label htmlFor="floatingInput">Số điện thoại</label>
                             </div>
                             <div className="mb-3 form-floating">
-
-                                <Form.Select aria-label="Default select example">
-
-                                    <option value="1">Admin</option>
-                                    <option value="2">Oder</option>
+                                <Form.Select aria-label="Default select example" value={dataUser.role} onChange={e => setDataUser({ ...dataUser, role: e.target.value })}>
+                                    {dataRole.length > 0 && dataRole.map((item, index) => (
+                                        <option value={item.name} key={index} selected={item.name === dataUser.role ? true : false}>{item.name}</option>
+                                    ))}
                                 </Form.Select>
                                 <label htmlFor="floatingSelect">Group</label>
                             </div>
@@ -51,7 +105,7 @@ function FixModal(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.onHide}>Đóng</Button>
-                <Button variant="primary" >Sửa</Button>
+                <Button variant="primary" onClick={() => { editUser(id) }}>Sửa</Button>
             </Modal.Footer>
         </Modal>
     )
@@ -71,14 +125,13 @@ function DeleteModal(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>
-                <Button variant="danger" >Xóa</Button>
+                <Button variant="danger" onClick={props.delete}>Xóa</Button>
             </Modal.Footer>
         </Modal>
     )
 }
 function MyVerticallyCenteredModal(props) {
     const { data } = props
-
     return (
         <Modal
             {...props}
@@ -92,10 +145,10 @@ function MyVerticallyCenteredModal(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className="text-center">
-                <span className="fw-bold">{data.role[0]}</span>
+                <span className="fw-bold">{data.role && data.role[0]}</span>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button variant="secondary" onClick={props.onHide}>Đóng</Button>
             </Modal.Footer>
         </Modal>
     );
@@ -105,6 +158,10 @@ const AdminUser = () => {
     const [listdataUser, setlistDataUser] = useState([]);
     const navigate = useNavigate()
     const [dataUser, setdataUser] = useState({});
+    const [modalShow, setModalShow] = useState(false);
+    const [fixModalShow, setFixModalShow] = useState(false);
+    const [deleteMoalShow, setDeleteMoalShow] = useState(false);
+    const [emaildel, setEmaildel] = useState(null);
     const fetchAllUser = async () => {
         const res = await getAllUser();
         res && setlistDataUser(res);
@@ -117,15 +174,11 @@ const AdminUser = () => {
     useEffect(() => {
         fetchAllUser();
         isAdmin === false && navigate("/")
-    }, [isAdmin])
+    }, [isAdmin, fixModalShow, deleteMoalShow])
 
-    const [modalShow, setModalShow] = useState(false);
-    const [fixModalShow, setFixModalShow] = useState(false);
-    const [deleteMoalShow, setDeleteMoalShow] = useState(false);
-
-    const deleteModal = () => {
+    const deleteModal = (email) => {
         setDeleteMoalShow(true);
-
+        setEmaildel(email)
     }
     const handleClick = () => {
         setModalShow(true);
@@ -133,7 +186,13 @@ const AdminUser = () => {
     const fixModal = () => {
         setFixModalShow(true);
     }
-
+    const ComfirmDelete = async () => {
+        if (emaildel) {
+            await deleteUser(emaildel);
+            fetchAllUser();
+        }
+        setDeleteMoalShow(false)
+    }
 
     let num = 1
     return (<>
@@ -159,7 +218,7 @@ const AdminUser = () => {
                             <td>{item.email}</td>
                             <td>{item.phoneNumber}</td>
                             <td><button className='btn btn-success' onClick={() => { handleClick(item.email); getdataUser(item.email) }} >Xem</button></td>
-                            <td><button className='btn btn-warning ' onClick={() => { fixModal(); fetchAllUser() }}>Sửa</button> <button className='btn btn-danger' onClick={() => deleteModal()}>Xóa</button></td>
+                            <td><button className='btn btn-warning ' onClick={() => { fixModal(); fetchAllUser(); getdataUser(item.email) }}>Sửa</button> <button className='btn btn-danger' onClick={() => deleteModal(item.email)}>Xóa</button></td>
                         </tr>
                     ))}
                 </tbody>
@@ -175,10 +234,12 @@ const AdminUser = () => {
         <FixModal
             show={fixModalShow}
             onHide={() => setFixModalShow(false)}
+            data={dataUser}
         />
         <DeleteModal
             show={deleteMoalShow}
             onHide={() => setDeleteMoalShow(false)}
+            delete={ComfirmDelete}
         />
     </>)
 }

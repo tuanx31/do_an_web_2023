@@ -22,7 +22,7 @@ const ThankYou = () => {
   useEffect(() => {
     fetchDataOrder()
     fetOrderDetail()
-  }, [idOrder])
+  }, [idOrder, dataOrder])
   return (<>
     <div className="container thanks">
       <div>
