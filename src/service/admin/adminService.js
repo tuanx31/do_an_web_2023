@@ -101,7 +101,21 @@ const fetchAllCategory = async () => {
         console.log(error)
     }
 }
-
+const addCategory = async (data) => {
+    console.log(data);
+    try {
+        return await axios.post(`/api/Category`,
+            data,
+            {
+                headers: {
+                    'accept': 'text/plain',
+                    'Content-Type': 'application/json'
+                }
+            })
+    } catch (error) {
+        console.log(error)
+    }
+}
 export {
     fetchAllProduct,
     deleteProduct,
@@ -113,6 +127,7 @@ export {
     getCountOrder,
     getCountUser,
     fetchdataTrademarks,
-    fetchAllCategory
+    fetchAllCategory,
+    addCategory
 
 }
