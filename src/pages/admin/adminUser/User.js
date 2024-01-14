@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllUser } from "~/service/admin/adminService";
+import { getUserbyEmail } from "~/service/admin/adminService";
 function FixModal(props) {
     return (
         <Modal   {...props}
@@ -49,8 +50,8 @@ function FixModal(props) {
                 </Container>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="warning" >Sửa</Button>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button variant="secondary" onClick={props.onHide}>Đóng</Button>
+                <Button variant="primary" >Sửa</Button>
             </Modal.Footer>
         </Modal>
     )
@@ -76,6 +77,8 @@ function DeleteModal(props) {
     )
 }
 function MyVerticallyCenteredModal(props) {
+    const { data } = props
+
     return (
         <Modal
             {...props}
@@ -84,26 +87,12 @@ function MyVerticallyCenteredModal(props) {
             centered
         >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    NGƯỜI DÙNG
+                <Modal.Title id="contained-modal-title-vcenter" className="text-center w-100" >
+                    Quyền người dùng
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-                <Table>
-                    <thead>
-                        <th> ID</th>
-                        <th> Quyền</th>
-                        <th>Thông tin</th>
-                        <th>Actions</th>
-
-                    </thead>
-                    <tbody>
-                        <td> 11</td>
-                        <td>admin</td>
-                        <td>không có thông tin gì hết</td>
-                        <td><button className='btn btn-danger'>Xóa</button></td>
-                    </tbody>
-                </Table>
+            <Modal.Body className="text-center">
+                <span className="fw-bold">{data.role[0]}</span>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>
@@ -113,14 +102,17 @@ function MyVerticallyCenteredModal(props) {
 }
 
 const AdminUser = () => {
-    const [dataUser, setDataUser] = useState([]);
+    const [listdataUser, setlistDataUser] = useState([]);
     const navigate = useNavigate()
-
+    const [dataUser, setdataUser] = useState({});
     const fetchAllUser = async () => {
         const res = await getAllUser();
-        res && setDataUser(res);
+        res && setlistDataUser(res);
     }
-
+    const getdataUser = async (email) => {
+        const res = await getUserbyEmail(email)
+        res && setdataUser(res);
+    }
     const { isAdmin } = useSelector(state => state.account)
     useEffect(() => {
         fetchAllUser();
@@ -159,14 +151,14 @@ const AdminUser = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {dataUser && dataUser.map((item, index) => (
+                    {listdataUser && listdataUser.map((item, index) => (
                         <tr key={index}>
                             <td>{num++}</td>
                             <td className="text-truncate" style={{ maxWidth: "100px" }} >{item.id}</td>
                             <td>{item.name}</td>
                             <td>{item.email}</td>
                             <td>{item.phoneNumber}</td>
-                            <td><button className='btn btn-success' onClick={() => handleClick()} >Xem</button></td>
+                            <td><button className='btn btn-success' onClick={() => { handleClick(item.email); getdataUser(item.email) }} >Xem</button></td>
                             <td><button className='btn btn-warning ' onClick={() => { fixModal(); fetchAllUser() }}>Sửa</button> <button className='btn btn-danger' onClick={() => deleteModal()}>Xóa</button></td>
                         </tr>
                     ))}
@@ -178,6 +170,7 @@ const AdminUser = () => {
         <MyVerticallyCenteredModal
             show={modalShow}
             onHide={() => setModalShow(false)}
+            data={dataUser}
         />
         <FixModal
             show={fixModalShow}

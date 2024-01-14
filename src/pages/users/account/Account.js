@@ -32,8 +32,8 @@ const Account = () => {
 
 
             </div>
-            {isAdmin && <h1>
-                <a href={"/admin"}><button className="btn btn-lg btn-success rounded-0">go to admin</button></a>
+            {isAdmin && <h1 className="">
+                <a href={"/admin"}><button className="btn btn-lg btn-light fw-bold">Đến trang Admin</button></a>
             </h1>}
             <DonHang />
         </Container>

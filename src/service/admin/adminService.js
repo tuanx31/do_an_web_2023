@@ -102,6 +102,18 @@ const fetchAllCategory = async () => {
     }
 }
 
+const getUserbyEmail = async (email) => {
+    try {
+        return await axios.get(`/api/Account/getUser/${email}`, {
+            headers: {
+                'accept': 'application/json'
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export {
     fetchAllProduct,
     deleteProduct,
@@ -113,6 +125,7 @@ export {
     getCountOrder,
     getCountUser,
     fetchdataTrademarks,
-    fetchAllCategory
+    fetchAllCategory,
+    getUserbyEmail
 
 }

@@ -248,7 +248,7 @@ const MydModalWithGrid = (props) => {
             </Modal.Body>
             <Modal.Footer>
 
-                <Button className='btn-danger' onClick={props.onHide}>Close</Button>
+                <Button className='btn-secondary' onClick={props.onHide}>Đóng</Button>
                 <button className='btn btn-primary' onClick={() => {
                     addNewProduct();
                 }}>Thêm sản phẩm</button>
@@ -526,7 +526,7 @@ const ModalEditProduct = (props) => {
             </Modal.Body>
             <Modal.Footer>
 
-                <Button className='btn-danger' onClick={props.onHide}>Đóng</Button>
+                <Button className='btn-secondary' onClick={props.onHide}>Đóng</Button>
                 <button className='btn btn-primary' onClick={() => {
                     EditProduct();
                 }}>Lưu</button>

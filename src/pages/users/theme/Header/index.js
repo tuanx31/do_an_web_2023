@@ -99,6 +99,7 @@ const Header = () => {
                                         Sản Phẩm
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><Link className="dropdown-item fs-14px" to={"products/all/1"}>Tất cả sản phẩm</Link></li>
                                         {Category?.map((item, index) => (
                                             <li key={index}><Link className="dropdown-item fs-14px" key={index} to={`/products/${item.categoryId}/1`}>{item?.name}</Link></li>
                                         ))}
